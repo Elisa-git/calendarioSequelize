@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;;
+}
+
+  /*--- Formatação do HEADER ---*/
+#header{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #183884;
+  margin-bottom: 1em;
+}
+
+
+#header h1 {
+  margin: 0px 20px;
+  font-size: 22px;
+  color: #FFFFFF;
+}
+
+#barraDeNavegacao {
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
+  margin: 10px 10px 0px 20px;
+}
+
+#barraDeNavegacao li {
+  list-style: none;
+  margin-right: 10px;
+}
+
+#barraDeNavegacao li a {
+  text-decoration: none;
+  padding-bottom: 2px;
+  color: #FFFFFF;
+  margin-right: 10px;
+}
+
+#barraDeNavegacao a:hover {
+  border-bottom: 1px solid #FFFFFF;
+}
