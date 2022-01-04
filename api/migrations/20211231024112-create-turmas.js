@@ -20,6 +20,11 @@ module.exports = {
       numAlunos: {
         type: Sequelize.INTEGER
       },
+      pilares_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {model: 'Pilares', key: 'id'}
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

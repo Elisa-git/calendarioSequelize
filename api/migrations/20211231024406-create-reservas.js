@@ -20,6 +20,31 @@ module.exports = {
       color: {
         type: Sequelize.STRING
       },
+      instrutores_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {model: 'Instrutores', key: 'id'}
+      },
+      pilares_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {model: 'Pilares', key: 'id'}
+      },
+      turmas_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {model: 'Turmas', key: 'id'}
+      },
+      disciplinas_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {model: 'Disciplinas', key: 'id'}
+      },
+      locais_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {model: 'Locais', key: 'id'}
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

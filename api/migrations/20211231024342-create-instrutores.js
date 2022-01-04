@@ -23,6 +23,11 @@ module.exports = {
       disponibilidade: {
         type: Sequelize.STRING
       },
+      pilares_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {model: 'Pilares', key: 'id'}
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

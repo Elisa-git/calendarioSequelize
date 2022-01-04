@@ -13,8 +13,14 @@ module.exports = (sequelize, DataTypes) => {
       
       //Um para muitos
     
-      Turmas.hasMany(models.Eventos, {
+      Turmas.hasMany(models.Reservas, {
         foreignKey: 'disciplinas_fk'
+      })
+
+      //Muitos para um
+
+      Turmas.belongsTo(models.Pilares, {
+        foreignKey: 'pilares_id'
       })
     }
   };
