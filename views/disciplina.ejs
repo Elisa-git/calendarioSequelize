@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de disciplinas</title>
+    <link rel="stylesheet" href="style/paginas.css">
+    <link rel="stylesheet" href="style/header.css" />
+    <link rel="stylesheet" href="style/footer.css">
+    <link rel="stylesheet" href="style/modal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="img/logocec.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    
+  <%- include ('partials/header') %>
+
+    <main>
+      <section>
+          <div id="segundaHeader">
+            <div id="Titulo">
+              <h1>Disciplinas</h1>
+            </div>
+            <div id="botoes">
+              <input class="botoes" id="botaoPesquisar" type="text" placeholder="Pesquisar" value="">
+              <button class="botoes" id="botaoAdicionar" onclick="OpenModalSala()"><img id="add-icon"  src="img/add.png" width="11px">Adicionar</button>
+              <button class="botoes" id="botaoExportar" onclick="ExportToExcel()"> <img id="excelPicture" src="img/excel-i.png"> Exportar</button>
+            </div>
+          </div> 
+          <br>
+          <hr class="style-one">
+          <div id="FiltrosSection">
+            <h3>Filtros:</h3>
+            <select class="selectBox" name="setor" id="FiltroSetor">
+              <option disabled selected>Setor</option>
+              <option value="ti">TI</option>
+            </select>
+            <select class="selectBox" name="categoria" id="FiltroCategoria">
+              <option disabled selected>Turma</option>
+              <option value="autoplay">Autoplay</option>
+            </select>
+            <select class="selectBox" name="maximoItensPagina" id="maximoItensPagina">
+              <option value="10">10 por página</option>
+              <option value="30">30 por página</option>
+            </select>
+          </div>
+      </section>
+      
+      <section>
+        <table id="tbl">
+          <tr id="atributos">
+            <th>Disciplina</th>
+            <th>Setor</th>
+            <th>Turma</th>
+            <th></th>
+          </tr>
+          
+          <% disciplinas.forEach(disciplinas =>{%>
+          <tr class="tableRow">
+            <td><%- disciplinas.novadisciplina %></td>
+            <td><%- disciplinas.setor %></td>
+            <td><%- disciplinas.turma %></td>
+            <td>
+              
+              <button class="crud" id="botaoEditar" title="Editar">
+                <img src="img/edit.png"  width="16px" height="16px">
+              </button >
+              
+              
+            <form method="POST" action="/disciplinas/apagar" style="display: inline;" onsubmit="confirmarDelete(event, this)">
+              <input type="hidden" name= "id" value="<%= disciplinas.id %>">
+              <button class="crud" id="botaoApagar"  title="Apagar">
+              <img src="img/delete.png" width="17px" height="17px"> 
+              </button>
+              
+            </form>
+            </td>
+          </tr>
+          
+           <!-- <tr class="tableRow">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td> 
+              <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
+              <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
+            </td>
+          </tr> -->
+          <% }) %>
+        </table>
+
+      </section>
+
+      <section>
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              
+              <form method="post" action="disciplinas">
+                <h1 id="titulo-modal">Cadastrar Disciplina</h1>
+                <span class="close">&times;</span>
+            </div>
+            <div class="form">
+                <label for="local" class="Titulo-Campo">Nova Disciplina:</label>
+                <input type="text" id="disciplina" class="Campo-Modal-Grande" placeholder="Autoplay" name="novadisciplina" required />
+            </div>
+            <div class="form">
+                <label for="Setor" class="Titulo-Campo">Setor:</label>
+              <div class="Campo-seletor-Modal-Pequeno" required>
+                <select name="setor" id="setor" required>
+                 <option value="Operacional">Operacional</option>
+                  <option value="Líderança">Líderança</option>
+                  <option value="EAD/TI">Ead/Ti</option>
+                  <option value="Call Center">Call Center</option>
+                </select>
+              </div>
+            </div>
+              <div class="form">
+                <label for="categoria" class="Titulo-Campo">Turma:</label>
+                <div class="Campo-seletor-Modal-Pequeno" required>
+                  <select name="turma" id="turma" required>
+                    <option value="Autoplay">Autoplay</option>
+                    <option value="Autocode">Autocode</option>
+                    <option value="Capacitação PO">Capacitação PO</option>
+                  </select>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <div>
+                  <button id="botaoCancelar">Cancelar</button>
+                </div>
+                <div>
+                  <button id="botaoConfirmar" onclick="addDisciplina()">Confirmar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+    <%- include ('partials/footer') %>
+
+    <script>
+      function confirmarDelete(event, form){
+        event.preventDefault();
+        var decision = confirm('Deseja mesmo deletar?')
+        if(decision){
+          form.submit()
+        }
+      }
+    </script>
