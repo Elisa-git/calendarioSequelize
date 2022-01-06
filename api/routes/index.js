@@ -4,6 +4,7 @@ const locais = require('./locaisRoute');
 const disciplinas = require('./disciplinasRoute');
 const instrutores = require('./instrutoresRoute');
 const reservas = require('./reservasRoute');
+const calendario = require('./other');
 
 
 module.exports = app => {
@@ -13,7 +14,8 @@ module.exports = app => {
         locais,
         disciplinas,
         instrutores,
-        reservas
+        reservas,
+        calendario
     )
 }
 

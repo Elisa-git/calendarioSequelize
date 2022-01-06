@@ -4,6 +4,7 @@ const PilarCont = require('../controller/PilarCont');
 const router = Router();
 
 router
+    // .get('/reservas', async (req, res) => { res.render('index') })
     .get('/pilares', PilarCont.pegaAllRegistrosPilares)
     .get('/pilares/:id', PilarCont.pegaUmRegistroPilares)
     .post('/pilares', PilarCont.criaPilar)

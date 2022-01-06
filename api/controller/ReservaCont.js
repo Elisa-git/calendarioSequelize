@@ -1,12 +1,12 @@
 const database = require('../models')
 
 class ReservaCont {
-    static async pegaAllRegistrosReservas(req, res) {
+    static async pegaAllRegistrosReservas() {
         try {
             const allRegistrosReservas = await database.Reservas.findAll();
-            return res.status(200).json(allRegistrosReservas);
+            return allRegistrosReservas;
         } catch (error) {
-            return res.status(500).json({ mensagem: error });
+            return error.message;
         }
     }
 

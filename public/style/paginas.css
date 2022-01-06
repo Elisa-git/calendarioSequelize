@@ -202,3 +202,7 @@ hr.style-one {
     margin-right: 8px;
 }
 
+#calendar {
+    width: 80%;
+    margin: auto;
+}

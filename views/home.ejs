@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="style/index.css">
+    <link href='/calendar2/css/main.css' rel='stylesheet' />
+
+    <link rel="stylesheet" href="style/paginas.css">
+    <link rel="stylesheet" href="style/header.css" />
+    <link rel="stylesheet" href="style/footer.css">
+    <link rel="stylesheet" href="style/modal.css">
+
+    <link rel="icon" href="img/logocec.png">
+
+</head>
+<body>
+    <%- include ('partials/header') %>
+    <main>
+        <section>
+            <div class="max-container container">
+            
+                <div class="container-salas">
+                    <div id="dia-selecionado">
+
+                        <div id="daycalendar"></div>
+                        <!-- <button id="botaofullscreen"><img src="img/full-screen.png"  width="26px" onclick="openFullscreen()" onclick="closeFullscreen()"></button> -->
+                    </div>
+            
+                    <script>
+                        /* Get the documentElement (<html>) to display the page in fullscreen */
+                        var elem = document.documentElement;            
+                        /* View in fullscreen */
+                        function openFullscreen() {
+                            if (elem.requestFullscreen) {
+                                elem.requestFullscreen();
+                            } 
+                            else if (elem.webkitRequestFullscreen) { /* Safari */
+                                elem.webkitRequestFullscreen();
+                            } 
+                            else if (elem.msRequestFullscreen) { /* IE11 */
+                                elem.msRequestFullscreen();
+                            }
+                        }                        
+                    </script>
+
+                    <div class="wrapper">
+                        <a class="link-sala" href="">
+                            <div class="box">
+                                <h3>Sala 1</h3>
+                                <div class="blue agendado">
+                                    <ul>
+                                        <li>Silvio</li>
+                                        <li>08:00 - 12:00</li>
+                                        <li>Operacional</li>
+                                    </ul>
+                                </div>
+                                <div class="red agendado">
+                                    <ul>
+                                        <li>Daniel</li>
+                                        <li>12:00 - 18:00</li>
+                                        <li>Autoplay</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="box">
+                            <a class="link-sala" href="">
+                                <h3>Sala 2</h3>
+                                <div class="red agendado">
+                                    <ul>
+                                        <li>Wolmar</li>
+                                        <li>12:00 - 18:00</li>
+                                        <li>Autoplay</li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="box">
+                            <a class="link-sala" href="">
+                                <h3>Sala 3</h3>
+                            </a>
+                        </div>
+                        <div class="box">
+                            <a class="link-sala" href="">
+                                <h3>Sala 4</h3>
+                            </a>
+                        </div>
+                        <div class="box">
+                            <a class="link-sala" href="">
+                                <h3>Sala 5</h3>
+                                <div class="red agendado">
+                                    <ul>
+                                        <li>Gabriel</li>
+                                        <li>08:00 - 12:00</li>
+                                        <li>Autoplay</li>
+                                    </ul>
+                                </div>
+                                <div class="agendado green">
+                                    <ul>
+                                        <li>José</li>
+                                        <li>12:00 - 13:00</li>
+                                        <li>Evento</li>
+                                    </ul>
+                                </div>
+                                <div class="red agendado">
+                                    <ul>
+                                        <li>Gabriel</li>
+                                        <li>12:00 - 18:00</li>
+                                        <li>Autoplay</li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="box">
+                            <a class="link-sala" href="">
+                                <h3>Sala 6</h3>
+                            </a>
+                        </div> 
+                    </div>
+                </div>
+                <div class="container-calendar">
+                    <div id="calendar2"></div>
+
+                    <div class="sideBody">
+                        <div class="container-pesquisa">
+                            <button class="buttons" id="botaoAgendar">Agendar</button>
+                            <div class="container-pesquisa">
+                                <i class="icone-pesquisar fa fa-search"></i>
+                                <input class="buttons" type="text" id="botaoPesquisar" placeholder="Pesquisar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+  </main>
+    <script>
+        var data = new Date();
+        var dia = data.getDate(); 
+        var mes = data.getMonth();
+        var strData = dia + '/' + (mes+1);
+        var diaS = new Array('Domingo','Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sábado');
+        document.getElementById("daycalendar").innerHTML = `<h2>${diaS[data.getDay()]} ${strData}</h2>`;
+    </script>
+    <script src='/calendar2/js/calendar.js'></script>
+    <script src='/calendar2/js/main.js'></script>
+    <script src='/js/modal.js'></script>
+    <%- include ('partials/footer') %>
+</body>
+</html>

@@ -6,6 +6,7 @@ const routes = require('./routes');
 const app = express();
 const port = 3000;
 
+app.set('view engine', 'ejs');      //Indica ao express que será usado o ejs como engine
 app.use(cors());
 routes(app);
 
