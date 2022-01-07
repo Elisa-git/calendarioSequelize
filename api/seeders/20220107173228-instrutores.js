@@ -2,16 +2,14 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('Pilares', [
+    await queryInterface.bulkInsert('Instrutores', [
       {
-        //id = 1
-        nomePilar: "EAD/Ti",
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        //id = 2
-        nomePilar: "Serviços",
+        nomeInstrutor: "Daniel",
+        ativo: 1,
+        abreviacao: "Dani",
+        email: "Dani@email.com",
+        disponibilidade: "Disponível",
+        pilares_id: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       }

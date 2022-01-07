@@ -4,9 +4,9 @@ class InstrutorConst {
     static async pegaAllRegistrosInstrutores(req,res) {
         try {
             const allRegistrosInstrutores = await database.Instrutores.findAll();
-            return res.status(200).json(allRegistrosInstrutores);
+            return allRegistrosInstrutores;
         } catch (error) {
-            return res.status(500).json({ mensagem: error });
+            return error.message;
         }
     }
 

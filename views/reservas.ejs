@@ -22,7 +22,7 @@
         <section>
             <div id="segundaHeader">
                 <div id="Titulo">
-                <h1>Aulas</h1>
+                <h1>Reservas</h1>
                 </div>
                 
                 <div id="botoes">
@@ -161,20 +161,7 @@
                     <th>Data</th>
                     <th>Horário</th>
                 </tr>
-                <% reservas.forEach(({ turmas_id }) => { %>
-                    <tr class="tableRow">
-                        <td> <%= turmas_id %> </td>
-                        <!-- <td> <%= allRegistrosReservas.instrutores_id %> </td>
-                        <td> <%= allRegistrosReservas.locais_id %> </td>
-                        <td> <%= allRegistrosReservas.disciplinas_id %> </td>
-                        <td> <%= allRegistrosReservas.start %> </td>
-                        <td> <%= allRegistrosReservas.end %>  </td>  -->
-                        <td>
-                            <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
-                            <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
-                        </td>
-                    </tr>
-                <% }) %>
+
             </table>
         </section>
 

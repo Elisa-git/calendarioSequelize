@@ -2,18 +2,17 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('Disciplinas', [
+    await queryInterface.bulkInsert('Reservas', [
       {
-        // id = 1
-        nomeDisciplina: "Banco de dados",
+        title: "Aula 1",
+        start: "2022-01-06",
+        end: "2022-01-06",
+        color: "#ffff",
+        instrutores_id: 1,
         pilares_id: 1,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        // id = 2
-        nomeDisciplina: "Sequelize",
-        pilares_id: 2,
+        turmas_id: 1,
+        disciplinas_id: 1,
+        locais_id: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       }

@@ -8,7 +8,11 @@ router
     //     const disciplinas = await DisciplinaCont.pegaAllRegistrosDisciplinas()
     //     res.render('disciplinas', { disciplinas })
     // })         //Renderizar
-    .get('/disciplinas', DisciplinaCont.pegaAllRegistrosDisciplinas)
+    .get('/disciplinas', async (req, res) => { 
+        const disciplinas = await DisciplinaCont.pegaAllRegistrosDisciplinas()
+        res.render('disciplinas', {disciplinas} ) 
+    })
+    // .get('/disciplinas', DisciplinaCont.pegaAllRegistrosDisciplinas)
     .get('/disciplinas/:id', DisciplinaCont.pegaUmRegistroDisciplina)
     .post('/disciplinas', DisciplinaCont.criaDisciplina)
     .put('/disciplinas/:id', DisciplinaCont.atualizaDisciplina)

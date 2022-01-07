@@ -53,23 +53,6 @@
                     <th>Disciplina</th>
                     <th>Pilar</th>
                 </tr>
-                <% disciplinas.forEach(pegaAllRegistrosDisciplinas(disciplinas){ %>
-                    <tr class="tableRow">
-                        <td><%= disciplinas.nomeDisciplina %></td>
-                        <td><%= disciplinas.pilares_id %></td>
-                        <td>
-                            <button class="crud" id="botaoEditar" title="Editar">
-                                <img src="img/edit.png"  width="16px" height="16px">
-                            </button >                        
-                            <form method="POST" action="/disciplinas/apagar" style="display: inline;" onsubmit="confirmarDelete(event, this)">
-                                <input type="hidden" name= "id" value="<%= disciplinas.id %>">
-                                <button class="crud" id="botaoApagar"  title="Apagar">
-                                    <img src="img/delete.png" width="17px" height="17px"> 
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                <% }) %>
             </table>
     
         </section>

@@ -14,13 +14,13 @@ module.exports = (sequelize, DataTypes) => {
       //Um para muitos
 
       Pilares.hasMany(models.Disciplinas, {
-        foreignKey: 'pilares_fk'
+        foreignKey: 'pilares_id'
       })
       Pilares.hasMany(models.Turmas, {
-        foreignKey: 'pilares_fk'
+        foreignKey: 'pilares_id'
       })
       Pilares.hasMany(models.Instrutores, {
-        foreignKey: 'pilares_fk'
+        foreignKey: 'pilares_id'
       })
     }
   };

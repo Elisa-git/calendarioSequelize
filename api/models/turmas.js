@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       //Um para muitos
     
       Turmas.hasMany(models.Reservas, {
-        foreignKey: 'disciplinas_id'
+        foreignKey: 'turmas_id'
       })
 
       //Muitos para um

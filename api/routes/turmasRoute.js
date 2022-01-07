@@ -4,7 +4,10 @@ const TurmaCont = require('../controller/TurmaCont');
 const router = Router();
 
 router
-    // .get('/reservas', async (req, res) => { res.render('index') })
+    // .get('/turmas', async (req, res) => { 
+    //     const turmas = await TurmaCont.pegaAllRegistrosTurmas()
+    //     res.render('turmas', { turmas })
+    // })
     .get('/turmas', TurmaCont.pegaAllRegistrosTurmas)
     .get('/turmas/:id', TurmaCont.pegaUmRegistroTurma)
     .post('/turmas', TurmaCont.criaTurma)
