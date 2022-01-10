@@ -10,11 +10,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-
+      
       //Um para muitos
       
       Instrutores.hasMany(models.Reservas, {
-        foreignKey: 'instrutores_id'
+        foreignKey: 'instrutores_fk'
       })
 
       //Muitos para um
@@ -26,7 +26,6 @@ module.exports = (sequelize, DataTypes) => {
   };
   Instrutores.init({
     nomeInstrutor: DataTypes.STRING,
-    ativo: DataTypes.BOOLEAN,
     abreviacao: DataTypes.STRING,
     email: DataTypes.STRING,
     disponibilidade: DataTypes.STRING

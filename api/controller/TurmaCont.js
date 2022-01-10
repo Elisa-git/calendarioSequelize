@@ -4,11 +4,11 @@ class TurmasCont {
     static async pegaAllRegistrosTurmas(req, res) {
         try {
             const allRegistrosTurmas = await database.Turmas.findAll();
-            return res.status(200).json(allRegistrosTurmas)
-            // return allRegistrosTurmas;
+            // return res.status(200).json(allRegistrosTurmas);
+            return allRegistrosTurmas;
         } catch (error) {
-            return res.status(500).json(error.message)
-            // return error.message;
+            // return res.status(500).json(error.message);
+            return error.message;
         }
     }
 
@@ -30,10 +30,10 @@ class TurmasCont {
         const novaTurma = req.body;
         try {
             const novaTurmaCriada = await database.Turmas.create(novaTurma);
-            return res.status(200).json(allRegistrosTurmas)
+            return res.status(200).json(novaTurmaCriada);
             // return novaTurmaCriada;
         } catch (error) {
-            return res.status(500).json(error.message)
+            return res.status(500).json(error.message);
             // return error.message;
         }
     }

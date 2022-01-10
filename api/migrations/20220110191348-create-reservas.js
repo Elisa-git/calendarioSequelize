@@ -8,27 +8,31 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
+      nomeReserva: {
         type: Sequelize.STRING
       },
-      start: {
+      descricao: {
+        type: Sequelize.STRING
+      },
+      dataInicio: {
         type: Sequelize.DATE
       },
-      end: {
+      dataFim: {
         type: Sequelize.DATE
       },
-      color: {
+      hrInicio: {
+        type: Sequelize.TIME
+      },
+      hrFim: {
+        type: Sequelize.TIME
+      },
+      cor: {
         type: Sequelize.STRING
       },
       instrutores_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {model: 'Instrutores', key: 'id'}
-      },
-      pilares_id: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {model: 'Pilares', key: 'id'}
       },
       turmas_id: {
         allowNull: false,

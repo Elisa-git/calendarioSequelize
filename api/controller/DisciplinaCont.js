@@ -4,9 +4,11 @@ class DisciplinaCont {
     static async pegaAllRegistrosDisciplinas(req, res) {
         try {
             const allRegistrosDisciplinas = await database.Disciplinas.findAll({raw: true, order:[['id', 'DESC']]});
+            // return res.status(200).json(allRegistrosDisciplinas);
             return allRegistrosDisciplinas;
         } catch (error) {
             return error.message;
+            // return res.status(500).json({mensagem: error});
         }
     }
 

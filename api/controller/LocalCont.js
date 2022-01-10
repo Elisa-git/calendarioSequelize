@@ -4,8 +4,10 @@ class LocalCont {
     static async pegaAllRegistrosLocais(req, res) {
         try {
             const allRegistrosLocais = await database.Locais.findAll();
+            // return res.status(200).json(allRegistrosLocais);
             return allRegistrosLocais;
         } catch (error) {
+            // return res.status(500).json({mensagem: error});
             return error.message;
         }
     }
@@ -28,9 +30,11 @@ class LocalCont {
         const novoLocal = req.body;
         try {
             const novoLocalCriado = await database.Locais.create(novoLocal);
-            return novoLocalCriado;
+            return res.status(200).json(novoLocalCriado);
+            // return novoLocalCriado;
         } catch (error) {
-            return error.message;
+            return res.status(500).json({mensagem: error});
+            // return error.message;
         }
     }
 

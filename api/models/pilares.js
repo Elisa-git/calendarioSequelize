@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       Pilares.hasMany(models.Disciplinas, {
         foreignKey: 'pilares_id'
       })
-      Pilares.hasMany(models.Turmas, {
+      Pilares.hasMany(models.Especializacoes, {
         foreignKey: 'pilares_id'
       })
       Pilares.hasMany(models.Instrutores, {

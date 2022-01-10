@@ -4,8 +4,10 @@ class ReservaCont {
     static async pegaAllRegistrosReservas() {
         try {
             const allRegistrosReservas = await database.Reservas.findAll();
+            // return res.status(200).json(allRegistrosReservas)
             return allRegistrosReservas;
         } catch (error) {
+            // return res.status(500).json({mensagem: error})
             return error.message;
         }
     }
@@ -28,9 +30,11 @@ class ReservaCont {
         const novaReserva = req.body;
         try {
             const novaReservaCriada = await database.Reservas.create(novaReserva);
+            // return res.status(200).json(novaReservaCriada);
             return novaReservaCriada;
         } catch (error) {
             return error.message;
+            // return res.status(500).json({mensagem: error});
         }
     }
 

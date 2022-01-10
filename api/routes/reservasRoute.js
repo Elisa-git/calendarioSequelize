@@ -9,9 +9,9 @@ router
         res.render('reservas', { reservas })
     })
     // .get('/reservas', ReservaCont.pegaAllRegistrosReservas)
-    // .get('/reservas/:id', ReservaCont.pegaUmRegistroReserva)
-    // .post('/reservas', ReservaCont.criaReserva)
-    // .put('/reservas/:id', ReservaCont.atualizaReserva)
-    // .delete('/reservas/:id', ReservaCont.deletaReserva)
+    .get('/reservas/:id', ReservaCont.pegaUmRegistroReserva)
+    .post('/reservas', ReservaCont.criaReserva)
+    .put('/reservas/:id', ReservaCont.atualizaReserva)
+    .delete('/reservas/:id', ReservaCont.deletaReserva)
 
 module.exports = router;
