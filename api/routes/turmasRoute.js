@@ -1,12 +1,14 @@
 const Router = require("express");
 const TurmaCont = require('../controller/TurmaCont');
+const EspecializacaoCont = require('../controller/EspecializacaoCont');
 
 const router = Router();
 
 router
     .get('/turmas', async (req, res) => { 
         const turmas = await TurmaCont.pegaAllRegistrosTurmas()
-        res.render('turmas', { turmas })
+        const especializacoes = await EspecializacaoCont.pegaAllRegistrosEspecializacoes()
+        res.render('turmas', { turmas, especializacoes })
     })
     // .get('/turmas', TurmaCont.pegaAllRegistrosTurmas)
     .get('/turmas/:id', TurmaCont.pegaUmRegistroTurma)
