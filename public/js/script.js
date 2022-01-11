@@ -63,9 +63,9 @@ function addArea() {
   var cell2 = row.insertCell(1);
   var cell3 = row.insertCell(2);
   var cell4 = row.insertCell(3);
-  cell1.innerHTML = document.getElementById('local').value;
+  cell1.innerHTML = document.getElementById('nomeLocal').value;
   cell2.innerHTML = document.getElementById('capacidade').value;
-  cell3.innerHTML = document.getElementById('possuiSis').value;
+  cell3.innerHTML = document.getElementById('sistemas').value;
   cell4.innerHTML =  `<button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button> `+` <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>`;
 }
 

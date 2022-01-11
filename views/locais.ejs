@@ -68,19 +68,19 @@
               </div>
   
               <div class="form">
-                <label for="local" class="Titulo-Campo">Local:</label>
-                <input type="text" id="local" class="Campo-Modal-Grande" placeholder="Ex: Sala 1" required />
+                <label for="nomeLocal" class="Titulo-Campo">Local:</label>
+                <input type="text" name="nomeLocal" id="nomeLocal" class="Campo-Modal-Grande" placeholder="Ex: Sala 1" required />
               </div>
   
               <div class="form">
                 <label for="capacidade" class="Titulo-Campo">Capacidade:</label>
-                <input type="number" id="capacidade" class="Campo-Modal-Grande" placeholder="Ex: 20" required />
+                <input type="number" name="capacidade" id="capacidade" class="Campo-Modal-Grande" placeholder="Ex: 20" required />
               </div>
   
               <div class="form">
-                <label for="Setor" class="Titulo-Campo">Possui Sistemas ?</label>
+                <label for="sistemas" class="Titulo-Campo">Possui Sistemas ?</label>
                 <div class="Campo-seletor-Modal-Pequeno" required>
-                  <select name="select" id="possuiSis" required>
+                  <select name="select" name="sistemas" id="sistemas" required>
                     <option value="Possui">Possui</option>
                     <option value="Não Possui">Não Possui</option>
                   </select>
@@ -108,17 +108,17 @@
               <th>Possui Sistemas ?</th>
               <th id="colunaCrud"></th>
             </tr>
-            <%= locais.forEach(locais => { %>
-                <tr class="tableRow">
-                    <td> <% locais.nomelocal. %> </td>
-                    <td> <% locais.capacidade. %> </td>
-                    <td> <% locais.sistemas.nomeInput %> </td>
-                    <td>
-                        <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
-                        <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
-                    </td>
-                </tr>
-            <%= }) %>
+            <% locais.forEach(locais => { %>
+              <tr class="tableRow">
+                <td> <%= locais.nomeLocal %> </td>
+                <td> <%= locais.capacidade %> </td>
+                <td> <%= locais.sistemas %> </td>
+                <td>
+                  <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
+                  <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
+                </td>
+              </tr>
+            <% }) %>
           </table>
         </section>
 

@@ -9,8 +9,10 @@
     <link href="/style/header.css" rel="stylesheet">
     <link href="/style/paginas.css" rel="stylesheet">
     <link href="/style/footer.css" rel="stylesheet">
+    <link rel="stylesheet" href="style/modal.css">
 
     <link rel="icon" href="img/logocec.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
@@ -19,11 +21,73 @@
 
     <main>
 
-        <h1>Instrutores</h1>
+        <section>
+            <div id="segundaHeader">
+              <div id="Titulo">
+                <h1>Instrutores</h1>
+              </div>
+              <div id="botoes">
+                <input class="botoes" id="botaoPesquisar" type="text" placeholder="Pesquisar" value="">
+                <button class="botoes" id="botaoAdicionar" onclick="OpenModalSala()"><img id="add-icon"  src="img/add.png" width="11px">Adicionar</button>
+                <button class="botoes" id="botaoExportar" onclick="ExportToExcel()"> <img id="excelPicture" src="img/excel-i.png"> Exportar</button>
+              </div>
+            </div> 
+            <br>
+            <hr class="style-one">
+            <div id="FiltrosSection">
+                <h3>Filtros:</h3>
+                <select class="selectBox" name="maximoItensPagina" id="maximoItensPagina">
+                  <option value="10">10 por página</option>
+                  <option value="30">30 por página</option>
+                </select>
+            </div>
+        </section>
+
+        <section>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="titulo-modal">Cadastrar Instrutor</h1>
+                        <span class="close">&times;</span>
+                    </div>
+
+                    <div class="form">
+                        <label for="categoria" class="Titulo-Campo">Nome Instrutor:</label>
+                        <input type="text" id="categoria" class="Campo-Modal-Grande" placeholder="Operacional" required />
+                    </div>
+
+                    <div class="modal-footer">
+                        <div>
+                            <button id="botaoCancelar">Cancelar</button>
+                        </div>
+
+                        <div>
+                            <button id="botaoConfirmar" onclick="addCategoria()">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <table id="tbl">
+                <tr id="atributos">
+                    <th>Instrutor</th>
+                </tr>
+                <tr class="tableRow">
+                    <td class="categoria">Autoplay</td>
+                    <td>
+                    <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
+                    <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
+                    </td>
+                </tr>
+            </table>
+        </section>
 
     </main>
 
     <%- include ('partials/footer') %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </body>
 </html>

@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de disciplinas</title>
 
-    <link rel="stylesheet" href="style/paginas.css">
-    <link rel="stylesheet" href="style/header.css" />
-    <link rel="stylesheet" href="style/footer.css">
+    <link href="/style/header.css" rel="stylesheet">
+    <link href="/style/paginas.css" rel="stylesheet">
+    <link href="/style/footer.css" rel="stylesheet">
     <link rel="stylesheet" href="style/modal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
     <link rel="icon" href="img/logocec.png">
 </head>
 <body>
@@ -34,9 +34,11 @@
             
             <div id="FiltrosSection">
                 <h3>Filtros:</h3>
-                <select class="selectBox" name="pilar" id="FiltroPilar">
-                    <option disabled selected>Pilar</option>
-                    <option value="ti">EAD/TI</option>
+                <select class="selectBox" name="nomePilar" id="FiltroPilar">
+                    <option hidden selected>Pilar</option>
+                    <% pilares.forEach(pilares => { %>
+                        <option value="<% pilares.nomePilar %>"> <%= pilares.nomePilar %> </option>
+                    <% }) %>
                 </select>
 
                 <select class="selectBox" name="maximoItensPagina" id="maximoItensPagina">
@@ -46,13 +48,61 @@
             </div>
 
         </section>
+
+        <section>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="titulo-modal">Cadastrar Disciplina</h1>
+                        <span class="close">&times;</span>
+                    </div>
+                    <form method="post" action="disciplinas">
+                        <div class="form">
+                            <label for="local" class="Titulo-Campo">Nova Disciplina:</label>
+                            <input type="text" name="nomeDisciplina" id="nomeDisciplina" class="Campo-Modal-Grande" placeholder="Sequelize" required />
+                        </div>
+
+                        <div class="form">
+                            <label for="Setor" class="Titulo-Campo">Pilar:</label>
+                            <div class="Campo-seletor-Modal-Pequeno" required>
+                                <select name="pilares_id" id="pilares_id" required>
+                                    <% pilares.forEach(pilares => { %>
+                                        <option value="<%= pilares.nomePilar %>"> <%= pilares.nomePilar %> </option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <div>
+                            <button id="botaoCancelar">Cancelar</button>
+                        </div>
+                        <div>
+                            <button id="botaoConfirmar" onclick="addDisciplina()">Confirmar</button>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </section>
+
         <section>
 
             <table id="tbl">
                 <tr id="atributos">
                     <th>Disciplina</th>
                     <th>Pilar</th>
+                    <th id="colunaCrud"></th>
                 </tr>
+                <% disciplinas.forEach(disciplinas => { %>
+                    <tr class="tableRow">
+                        <td> <%= disciplinas.nomeDisciplina %> </td>
+                        <td> <%= disciplinas.pilares_id %> </td>
+                        <td>
+                            <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
+                            <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
+                        </td>
+                    </tr>
+                <% }) %>
             </table>
     
         </section>

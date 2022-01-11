@@ -1,16 +1,14 @@
 const Router = require("express");
 const DisciplinaCont = require('../controller/DisciplinaCont');
+const PilarCont = require('../controller/PilarCont');
 
 const router = Router();
 
 router
-    // .get('/disciplinas', async (req, res) => {
-    //     const disciplinas = await DisciplinaCont.pegaAllRegistrosDisciplinas()
-    //     res.render('disciplinas', { disciplinas })
-    // })         //Renderizar
     .get('/disciplinas', async (req, res) => { 
+        const pilares = await PilarCont.pegaAllRegistrosPilares()
         const disciplinas = await DisciplinaCont.pegaAllRegistrosDisciplinas()
-        res.render('disciplinas', {disciplinas} ) 
+        res.render('disciplinas', {disciplinas, pilares} ) 
     })
     // .get('/disciplinas', DisciplinaCont.pegaAllRegistrosDisciplinas)
     .get('/disciplinas/:id', DisciplinaCont.pegaUmRegistroDisciplina)
