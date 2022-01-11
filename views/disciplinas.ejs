@@ -105,13 +105,17 @@
                     <td>
 
 
-                        <form method="POST" action="disciplinas/:id" style="display: inline;"
-                            onsubmit="deletaDisciplina(event, this)">
+                        <form method="POST" style="display: inline;"
+                            onsubmit="confirmarDelete(event, this)">
                             <input type="hidden" name="id" value="<%= disciplinas.id %>">
                             <button class="crud" id="botaoApagar" title="Apagar">
-                            </button>
+                            
                             <img src="img/delete.png" width="17px" height="17px"></button>
                         </form>
+                        
+                        <button class="crud" id="botaoEditar" title="Editar">
+                            <img src="img/edit.png" width="16px" height="16px">
+                          </button>
                     </td>
                 </tr>
                 <% }) %>
