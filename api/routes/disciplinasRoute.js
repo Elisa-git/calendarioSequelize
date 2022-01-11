@@ -1,12 +1,18 @@
 const Router = require("express");
 const DisciplinaCont = require('../controller/DisciplinaCont');
+const PilarCont = require('../controller/PilarCont');
 
 const router = Router();
 
 router
-    .get('/disciplinas', DisciplinaCont.pegaAllRegistrosDisciplinas)
+    .get('/disciplinas', async (req, res) => { 
+        const pilares = await PilarCont.pegaAllRegistrosPilares()
+        const disciplinas = await DisciplinaCont.pegaAllRegistrosDisciplinas()
+        res.render('disciplinas', {disciplinas, pilares} ) 
+    })
+    // .get('/disciplinas', DisciplinaCont.pegaAllRegistrosDisciplinas)
     .get('/disciplinas/:id', DisciplinaCont.pegaUmRegistroDisciplina)
-    .post('/disciplinas/:id', DisciplinaCont.atualizaDisciplina)
+    .post('/disciplinas', DisciplinaCont.criaDisciplina)
     .put('/disciplinas/:id', DisciplinaCont.atualizaDisciplina)
     .delete('/disciplinas/:id', DisciplinaCont.deletaDisciplina)
 

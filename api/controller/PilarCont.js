@@ -4,9 +4,9 @@ class PilarCont {
     static async pegaAllRegistrosPilares(req, res) {
         try {
             const allRegistrosPilares = await database.Pilares.findAll();
-            return res.status(200).json(allRegistrosPilares);
+            return allRegistrosPilares;
         } catch (error) {
-            return res.status(500).json({mensagem: error});
+            return error.message;
         }
     }
 

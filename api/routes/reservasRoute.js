@@ -4,7 +4,11 @@ const ReservaCont = require('../controller/ReservaCont');
 const router = Router();
 
 router
-    .get('/reservas', ReservaCont.pegaAllRegistrosReservas)
+    .get('/reservas', async (req, res) => { 
+        const reservas = await ReservaCont.pegaAllRegistrosReservas()
+        res.render('reservas', { reservas })
+    })
+    // .get('/reservas', ReservaCont.pegaAllRegistrosReservas)
     .get('/reservas/:id', ReservaCont.pegaUmRegistroReserva)
     .post('/reservas', ReservaCont.criaReserva)
     .put('/reservas/:id', ReservaCont.atualizaReserva)

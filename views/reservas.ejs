@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva de sala/local</title>
+
+    <link rel="stylesheet" href="/style/paginas.css">
+    <link rel="stylesheet" href="/style/header.css" />
+    <link rel="stylesheet" href="/style/footer.css">
+    <link rel="stylesheet" href="/style/modal.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="img/logocec.png">
+
+</head>
+<body>
+    <%- include ('partials/header') %>
+    
+    <main>
+        <section>
+            <div id="segundaHeader">
+                <div id="Titulo">
+                <h1>Reservas</h1>
+                </div>
+                
+                <div id="botoes">
+                <input class="botoes" id="botaoPesquisar" type="text" placeholder="Pesquisar" value="">
+                <button class="botoes" id="botaoAdicionar" onclick="OpenModalSala()"><img id="add-icon"  src="img/add.png" width="11px">Adicionar</button>
+                <button class="botoes" id="botaoExportar" onclick="ExportToExcel()"> <img id="excelPicture" src="img/excel-i.png"> Exportar</button>
+                </div>
+            </div>
+            <br>
+            <hr class="style-one">
+            <div id="FiltrosSection">
+                <h3>Filtros:</h3>
+                <select class="selectBox" name="filtroTurma" id="filtroTurma">
+                <option disabled selected>Selecione uma turma</option>
+                <option value="idturma">Autoplay</option>
+                <option value="idturma">Autolíder</option>
+                <option value="idturma">Agente de Televendas</option>
+                </select>
+                <select class="selectBox" name="filtroProfessor" id="filtroProfessor">
+                <option disabled selected>Selecione um instrutor</option>
+                <option value="professor">Wolmar</option>
+                <option value="professor">Daniel</option>
+                <option value="professor">Silvio</option>
+                </select>
+                <select class="selectBox" name="filtroLocal" id="filtroLocal">
+                <option disabled selected>Selecione um local</option>
+                <option value="professor">Sala 1</option>
+                <option value="professor">Sala 2</option>
+                <option value="professor">Sala 3</option>
+                </select>
+                <select class="selectBox" name="filtroDisciplina" id="filtroDisciplina">
+                <option disabled selected>Selecione uma disciplina</option>
+                <option value="professor">Programção WEB</option>
+                <option value="professor">Banco de dados</option>
+                <option value="professor">Agilidade</option>
+                </select>
+                <select class="selectBox" name="filtroData" id="filtroData">
+                <option disabled selected>Selecione uma data</option>
+                </select>
+                <select class="selectBox" name="maximoItensPagina" id="maximoItensPagina">
+                <option value="10">10 por página</option>
+                <option value="30">30 por página</option>
+                </select>
+            </div>
+        </section>
+
+        <section>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                
+                    <form method="post" action="salvaraula">
+                        <div class="modal-header">
+                            <h1 id="titulo-modal">Cadastrar Aula</h1>
+                            <span class="close">&times;</span>
+                        </div>
+        
+                        <div id="turmaProfessor">
+                            <div class="form" required>
+                                <label for="turma">Turma</label>
+                                <select name="turma" id="turma" required>
+                                    <option value="Autoplay">Autoplay</option>
+                                    <option value="Autocode">Autocode</option>
+                                    <option value="Agente de televendas">Agente de televendas</option>
+                                    <option value="Autolíder">Autolíder</option>
+                                </select>
+                            </div>
+                            <div class="form" required>
+                                <label for="professor">Instrutor</label>
+                                <select name="instrutor" id="professor" required>
+                                    <option value="Daniel">Daniel Gramlich</option>
+                                    <option value="Wolmar">Wolmar Araujo</option>
+                                    <option value="Silvio">Silvio</option>
+                                </select>
+                            </div>
+                        </div>
+        
+                        <div id="localDisplina">
+                            <div class="form" required>
+                                <label for="local">Local</label>
+                                <select name="local" id="local" required>
+                                    <option value="Sala 1">Sala 1</option>
+                                    <option value="Sala 2">Sala 2</option>
+                                    <option value="Sala 3">Sala 3</option>
+                                    <option value="Sala 4">Sala 4</option>
+                                    <option value="Sala 5">Sala 5</option>
+                                    <option value="Sala 6">Sala 6</option>
+                                </select>
+                            </div>
+                            <div class="form" required>
+                                <label for="disciplina">Disciplina</label>
+                                <select name="disciplina" id="disciplina" required>
+                                    <option value="Programação WEB">Programação WEB</option>
+                                    <option value="Front-end">Front-end</option>
+                                    <option value="Back-End">Back-end</option>
+                                    <option value="Git/Github">Git/Github</option>
+                                </select>
+                            </div>
+                        </div>
+        
+                        <div class="form">
+                        <label for="dataInicio" class="Titulo-Campo">Data</label>
+                        <input type="date" id="dataInicio" name="data">
+                        </div>
+        
+                        <div id="horarios">
+                            <div class="form">
+                                <label for="Horario Inicio">Horário Inicio</label>
+                                <input type="time" id="horarioInicio" name="hrinicio" min="08:00" max="18:00" required>
+                            </div>
+                            <div class="form">
+                                <label for="Horario Fim">Horário Fim</label>
+                                <input value="" type="time" id="horarioFim" name="hrfim" min="08:00" max="18:00" required>
+                            </div>
+                        </div>
+        
+                        <div class="modal-footer">
+                            <div>
+                                <button id="botaoCancelar">Cancelar</button>
+                            </div>
+                            <div>
+                                <button id="botaoConfirmar" onclick="addAula()">Confirmar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+          
+        <section>
+            <table id="tbl">
+                <tr id="atributos">
+                    <th>Turma</th>
+                    <th>Instrutor</th>
+                    <th>Local</th>
+                    <th>Disciplina</th>
+                    <th>Data</th>
+                    <th>Horário</th>
+                </tr>
+
+            </table>
+        </section>
+
+    </main>
+
+    <%- include ('partials/footer') %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+</html>

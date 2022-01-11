@@ -4,9 +4,11 @@ class TurmasCont {
     static async pegaAllRegistrosTurmas(req, res) {
         try {
             const allRegistrosTurmas = await database.Turmas.findAll();
-            return res.status(200).json(allRegistrosTurmas);
+            // return res.status(200).json(allRegistrosTurmas);
+            return allRegistrosTurmas;
         } catch (error) {
-            return res.status(500).json({ mensagem: error });
+            // return res.status(500).json(error.message);
+            return error.message;
         }
     }
 
@@ -18,9 +20,9 @@ class TurmasCont {
                     id: Number(id)
                 }
             });
-            return res.status(200).json(umaTurma);
+            return umaTurma;
         } catch (error) {
-            return res.status(500).json({ mensagem: error });
+            return error.message;
         }
     }
 
@@ -29,8 +31,10 @@ class TurmasCont {
         try {
             const novaTurmaCriada = await database.Turmas.create(novaTurma);
             return res.status(200).json(novaTurmaCriada);
+            // return novaTurmaCriada;
         } catch (error) {
-            return res.status(500).json({ mensagem: error });
+            return res.status(500).json(error.message);
+            // return error.message;
         }
     }
 
@@ -48,9 +52,9 @@ class TurmasCont {
                     id: Number(id)
                 }
             });
-            return res.status(200).json(turmaAtualizada);
+            return turmaAtualizada;
         } catch (error) {
-            return res.status(500).json({ mensagem: error });
+            return error.message;
         }
     }
 
@@ -62,9 +66,9 @@ class TurmasCont {
                     id: Number(id)
                 }
             });
-            return res.status(200).json(`id ${id} deletado com sucesso!`);
+            return json(`id ${id} deletado com sucesso!`);
         } catch (error) {
-            return res.status(500).json({ mensagem: error });
+            return error.message;
         }
     }
 }

@@ -1,12 +1,14 @@
 const database = require('../models')
 
 class ReservaCont {
-    static async pegaAllRegistrosReservas(req, res) {
+    static async pegaAllRegistrosReservas() {
         try {
             const allRegistrosReservas = await database.Reservas.findAll();
-            return res.status(200).json(allRegistrosReservas);
+            // return res.status(200).json(allRegistrosReservas)
+            return allRegistrosReservas;
         } catch (error) {
-            return res.status(500).json({ mensagem: error });
+            // return res.status(500).json({mensagem: error})
+            return error.message;
         }
     }
 
@@ -18,9 +20,9 @@ class ReservaCont {
                     id: Number(id)
                 }
             });
-            return res.status(200).json(umaReserva);
+            return umaReserva;
         } catch (error) {
-            return res.status(500).json({ mensagem: error });
+            return error.message;
         }
     }
 
@@ -28,9 +30,11 @@ class ReservaCont {
         const novaReserva = req.body;
         try {
             const novaReservaCriada = await database.Reservas.create(novaReserva);
-            return res.status(200).json(novaReservaCriada);
+            // return res.status(200).json(novaReservaCriada);
+            return novaReservaCriada;
         } catch (error) {
-            return res.status(500).json({ mensagem: error });
+            return error.message;
+            // return res.status(500).json({mensagem: error});
         }
     }
 
@@ -48,9 +52,9 @@ class ReservaCont {
                     id: Number(id)
                 }
             });
-            return res.status(200).json(reservaAtualizada);
+            return reservaAtualizada;
         } catch (error) {
-            return res.status(500).json({ mensagem: error });
+            return error.message;
         }
     }
 
@@ -62,9 +66,9 @@ class ReservaCont {
                     id: Number(id)
                 }
             });
-            return res.status(200).json(`id ${id} deletado com sucesso!`);
+            return json(`id ${id} deletado com sucesso!`);
         } catch (error) {
-            return res.status(500).json({ mensagem: error });
+            return error.message;
         }
     }
 

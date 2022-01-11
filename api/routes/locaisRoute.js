@@ -4,7 +4,11 @@ const LocalCont = require('../controller/LocalCont');
 const router = Router()
 
 router
-    .get('/locais', LocalCont.pegaAllRegistrosLocais)
+    .get('/locais', async (req, res) => { 
+        const locais = await LocalCont.pegaAllRegistrosLocais()
+        res.render('locais', { locais })
+    })
+    // .get('/locais', LocalCont.pegaAllRegistrosLocais)
     .get('/locais/:id', LocalCont.pegaUmRegistroLocal)
     .post('/locais', LocalCont.criaLocal)
     .put('/locais/:id', LocalCont.atualizaLocal)
