@@ -15,10 +15,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       dataInicio: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
       dataFim: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
       hrInicio: {
         type: Sequelize.TIME
