@@ -111,6 +111,7 @@
 
         <section>
             <table id="tbl">
+                
                 <tr id="atributos">
                     <th>Turma</th>
                     <th>Capacitação</th>
@@ -119,7 +120,7 @@
                     <th>Alunos</th>
                     <th id="colunaCrud"></th>
                 </tr>
-                <% turmas.forEach(turmas) %>
+                <% turmas.forEach(turmas => { %>
                 <tr class="tableRow">
                     <td class="categoria">Autoplay</td>
                     <td>
@@ -127,6 +128,7 @@
                     <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
                     </td>
                 </tr>
+                <% }) %>
             </table>
         </section>
 
