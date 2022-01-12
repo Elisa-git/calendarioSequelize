@@ -14,11 +14,11 @@ module.exports = (sequelize, DataTypes) => {
       Reservas.belongsTo(models.Instrutores, {
         foreignKey: 'instrutores_id'
       });
-      Reservas.belongsTo(models.Disciplinas, {
-        foreignKey: 'disciplinas_id'
-      });
       Reservas.belongsTo(models.Turmas, {
         foreignKey: 'turmas_id'
+      });
+      Reservas.belongsTo(models.Disciplinas, {
+        foreignKey: 'disciplinas_id'
       });
       Reservas.belongsTo(models.Locais, {
         foreignKey: 'locais_id'

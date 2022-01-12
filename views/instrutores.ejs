@@ -36,6 +36,20 @@
             <hr class="style-one">
             <div id="FiltrosSection">
                 <h3>Filtros:</h3>
+                <select class="selectBox" name="nomePilar" id="FiltroPilar">
+                    <option hidden selected>Pilar</option>
+                    <% pilares.forEach(pilares => { %>
+                        <option value="<%= pilares.nomePilar %>"> <%= pilares.nomePilar %> </option>
+                    <% }) %>
+                </select>
+                <select class="selectBox" name="disponibilidade" id="disponibilidade">
+                    <option hidden selected>Disponibilidade</option>
+                    <option value="valor1">Disponível</option>
+                    <option value="valor2">Atestado</option>
+                    <option value="valor3">Licença</option>
+                    <option value="valor3">Férias</option>
+                    <option value="valor4">Desligado</option>
+                </select>
                 <select class="selectBox" name="maximoItensPagina" id="maximoItensPagina">
                   <option value="10">10 por página</option>
                   <option value="30">30 por página</option>
@@ -50,12 +64,45 @@
                         <h1 id="titulo-modal">Cadastrar Instrutor</h1>
                         <span class="close">&times;</span>
                     </div>
-
-                    <div class="form">
-                        <label for="categoria" class="Titulo-Campo">Nome Instrutor:</label>
-                        <input type="text" id="categoria" class="Campo-Modal-Grande" placeholder="Operacional" required />
-                    </div>
-
+                    <form>
+                        <div class="form">
+                            <label for="nomeInstrutor" class="Titulo-Campo">Nome Instrutor:</label>
+                            <input type="text" name="nomeInstrutor" id="nomeInstrutor" class="Campo-Modal-Grande" placeholder="Fernando Carreira" required />
+                        </div>
+                        
+                        <div class="form">
+                            <label for="abreviacao" class="Titulo-Campo">Abreviação:</label>
+                            <input type="text" name="abreviacao" id="abreviacao" class="Campo-Modal-Grande" placeholder="Fernando" required />
+                        </div>
+                          
+                        <div class="form" required>
+                            <label for="Pilar" class="Titulo-Campo">Pilar:</label>
+                            <div class="Campo-seletor-Modal-Pequeno" required>
+                                <select name="pilares_id" id="pilares_id" required>
+                                    <% pilares.forEach(pilares => { %>
+                                        <option value="<%= pilares.nomePilar %>"> <%= pilares.nomePilar %> </option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form">
+                            <label for="email" class="Titulo-Campo">Email:</label>
+                            <input type="text" name="email" id="email" class="Campo-Modal-Grande" placeholder="exemplo@autoglass.com.br" required />
+                        </div>
+                        
+                        <div class="form" required>
+                            <label for="disponibilidade">Disponibilidade</label>
+                            <select name="select" id="Setor" required>
+                                <option hidden>Disponibilidade</option>
+                                <option value="valor1">Disponível</option>
+                                <option value="valor2">Atestado</option>
+                                <option value="valor3">Licença</option>
+                                <option value="valor3">Férias</option>
+                                <option value="valor4">Desligado</option>
+                            </select>
+                        </div>
+                    </form>
                     <div class="modal-footer">
                         <div>
                             <button id="botaoCancelar">Cancelar</button>
@@ -73,14 +120,25 @@
             <table id="tbl">
                 <tr id="atributos">
                     <th>Instrutor</th>
+                    <th>Abreviação</th>
+                    <th>Email</th>
+                    <th>Disponibilidade</th>
+                    <th>Pilar</th>
+                    <th id="colunaCrud"></th>
                 </tr>
-                <tr class="tableRow">
-                    <td class="categoria">Autoplay</td>
-                    <td>
-                    <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
-                    <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
-                    </td>
-                </tr>
+                <% instrutores.forEach(instrutores => { %>
+                    <tr class="tableRow">
+                        <td> <%= instrutores.nomeInstrutor %> </td>
+                        <td> <%= instrutores.abreviacao %> </td>
+                        <td> <%= instrutores.email %> </td>
+                        <td> <%= instrutores.disponibilidade %> </td>
+                        <td> <%= instrutores.pilares_id %> </td>
+                        <td>
+                            <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
+                            <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
+                        </td>
+                    </tr>
+                <% }) %>
             </table>
         </section>
 

@@ -36,9 +36,21 @@
             <hr class="style-one">
             <div id="FiltrosSection">
                 <h3>Filtros:</h3>
+                <select class="selectBox" name="nomeEspecializacoes" id="FiltroPilar">
+                    <option hidden selected>Capacitação</option>
+                    <% especializacoes.forEach(especializacoes => { %>
+                        <option value="<%= especializacoes.nomeEspecializacoes %>"> <%= especializacoes.nomeEspecializacoes %> </option>
+                    <% }) %>
+                </select>
+                <select class="selectBox" name="dataInicio" id="dataInicio">
+                    <option value="">Data Inicio</option>
+                </select>
+                <select class="selectBox" name="dataFim" id="dataFim">
+                    <option value="">Data Fim</option>
+                </select>
                 <select class="selectBox" name="maximoItensPagina" id="maximoItensPagina">
-                  <option value="10">10 por página</option>
-                  <option value="30">30 por página</option>
+                    <option value="10">10 por página</option>
+                    <option value="30">30 por página</option>
                 </select>
             </div>
         </section>
@@ -51,10 +63,38 @@
                         <span class="close">&times;</span>
                     </div>
 
-                    <div class="form">
-                        <label for="categoria" class="Titulo-Campo">Nome Turma:</label>
-                        <input type="text" id="categoria" class="Campo-Modal-Grande" placeholder="Operacional" required />
-                    </div>
+                    <form>
+                        <div class="form" required>
+                            <label for="setor">Capacitação</label>
+                            <div class="Campo-seletor-Modal-Pequeno" required>
+                                <select name="especializacoes_id" id="especializacoes_id" required>
+                                    <% turmas.forEach(turmas => { %>
+                                        <option value="<%= turmas.especializacoes_id %>"> <%= turmas.especializacoes_id %> </option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form">
+                            <label for="codTurma" class="Titulo-Campo">Código Turma:</label>
+                            <input type="text" name="codTurma" id="codTurma" class="Campo-Modal-Grande" placeholder="Autoplay" required />
+                        </div>
+                        
+                        <div class="form">
+                            <label for="abreviacao" class="Titulo-Campo">Data Inicio:</label>
+                            <input type="date" id="dataInicio" name="dataInicio">
+                        </div>
+                        
+                        <div class="form">
+                            <label for="abreviacao" class="Titulo-Campo">Data Fim:</label>
+                            <input type="date" id="dataFim" name="dataFim">
+                        </div>
+                        
+                        <div class="form">
+                            <label for="alunos" class="Titulo-Campo">Número de alunos:</label>
+                            <input type="number" id="alunos" class="Campo-Modal-Grande" placeholder="15" required />
+                        </div>
+                    </form>
 
                     <div class="modal-footer">
                         <div>
