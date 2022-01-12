@@ -80,7 +80,7 @@
                         </div>
                         
                         <div class="form">
-                            <label for="nomeReserva" class="Titulo-Campo">Nome Evento:</label>
+                            <label for="nomeReserva" class="Titulo-Campo">Nome Reserva:</label>
                             <input type="text" name="nomeReserva" id="nomeReserva" class="Campo-Modal-Grande" placeholder="Sequelize" required />
                         </div>
 
@@ -126,21 +126,29 @@
                             </div>
                         </div>
         
-                        <div class="form">
-                        <label for="dataInicio" class="Titulo-Campo">Data</label>
-                        <input type="date" id="dataInicio" name="data">
+                        <div id="horarios">
+                            <div class="form">
+                                <label for="dataInicio" class="Titulo-Campo">Data</label>
+                                <input type="date" name="dataInicio" id="dataInicio">
+                            </div>
+                            <div class="form">
+                                <label for="dataFim" class="Titulo-Campo">Data Final</label>
+                                <input type="date" name="dataFim" id="dataFim">
+                            </div>
                         </div>
-        
+
                         <div id="horarios">
                             <div class="form">
                                 <label for="Horario Inicio">Horário Inicio</label>
-                                <input type="time" id="horarioInicio" name="hrinicio" min="08:00" max="18:00" required>
+                                <input type="time" name='hrInicio' id="hrInicio" min="08:00" max="18:00" required>
                             </div>
                             <div class="form">
                                 <label for="Horario Fim">Horário Fim</label>
-                                <input value="" type="time" id="horarioFim" name="hrfim" min="08:00" max="18:00" required>
+                                <input value="time" type="time" name="hrFim" id="hrFim" min="08:00" max="18:00" required>
                             </div>
                         </div>
+
+                        <!-- Cor? -->
 
                         <div class="form">
                             <label for="descricao" class="Titulo-Campo">Descrição:</label>
@@ -170,10 +178,21 @@
                     <th>Local</th>
                     <th>Data</th>
                     <th>Horário</th>
+                    <th id="colunaCrud"></th>
                 </tr>
                 <% reservas.forEach(reservas => { %>
                     <tr class="tableRow">
                         <td> <%= reservas.nomeReserva%> </td>
+                        <td> <%= reservas.instrutores_id%> </td>
+                        <td> <%= reservas.turmas_id%> </td>
+                        <td> <%= reservas.disciplinas_id%> </td>
+                        <td> <%= reservas.locais_id%> </td>
+                        <td> <%= reservas.dataInicio%> </td>
+                        <td> <%= reservas.hrInicio%> - <%= reservas.hrFim%> </td>
+                        <td>
+                            <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
+                            <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
+                        </td>
                     </tr>
                 <% }) %>
             </table>

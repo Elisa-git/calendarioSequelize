@@ -14,7 +14,7 @@ router
         const disciplinas = await DisciplinaCont.pegaAllRegistrosDisciplinas()
         const locais = await LocalCont.pegaAllRegistrosLocais()
         const reservas = await ReservaCont.pegaAllRegistrosReservas()
-        console.log(reservas);
+        console.log(turmas);
 
         res.render('reservas', { reservas, instrutores, turmas, disciplinas, locais })
     })
