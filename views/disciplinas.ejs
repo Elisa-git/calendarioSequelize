@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            <hr class="style-one">
+            <br><hr class="style-one">
 
             <div id="FiltrosSection">
                 <h3>Filtros:</h3>
@@ -105,17 +105,15 @@
                     <td>
 
 
-                        <form method="POST" style="display: inline;"
-                            onsubmit="confirmarDelete(event, this)">
+                        <form method="delete" style="display: inline;" onsubmit="confirmarDelete(event, this)">
                             <input type="hidden" name="id" value="<%= disciplinas.id %>">
+
+                            <button class="crud" id="botaoEditar" title="Editar">
+                                <img src="img/edit.png" width="16px" height="16px">
+                            </button>
                             <button class="crud" id="botaoApagar" title="Apagar">
-                            
-                            <img src="img/delete.png" width="17px" height="17px"></button>
+                                <img src="img/delete.png" width="17px" height="17px"></button>
                         </form>
-                        
-                        <button class="crud" id="botaoEditar" title="Editar">
-                            <img src="img/edit.png" width="16px" height="16px">
-                          </button>
                     </td>
                 </tr>
                 <% }) %>
