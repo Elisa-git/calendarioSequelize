@@ -10,7 +10,7 @@ router
         const especializacoes = await EspecializacaoCont.pegaAllRegistrosEspecializacoes()
         res.render('turmas', { turmas, especializacoes })
     })
-    // .get('/turmas', TurmaCont.pegaAllRegistrosTurmas)
+    .get('/todasturmas', TurmaCont.pegaAllRegistrosTurmas)
     .get('/turmas/:id', TurmaCont.pegaUmRegistroTurma)
     .post('/turmas', TurmaCont.criaTurma)
     .put('/turmas/:id', TurmaCont.atualizaTurma)

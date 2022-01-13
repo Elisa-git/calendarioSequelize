@@ -18,7 +18,7 @@ router
 
         res.render('reservas', { reservas, instrutores, turmas, disciplinas, locais })
     })
-    .get('/todasreservas', ReservaCont.pegaAllRegistrosReservas)
+    // .get('/todasreservas', ReservaCont.pegaAllRegistrosReservas)
     .get('/reservas/:id', ReservaCont.pegaUmRegistroReserva)
     .post('/reservas', ReservaCont.criaReserva)
     .put('/reservas/:id', ReservaCont.atualizaReserva)
