@@ -35,29 +35,29 @@
             <hr class="style-one">
             <div id="FiltrosSection">
                 <h3>Filtros:</h3>
-                <select class="selectBox" name="filtroTurma" id="filtroTurma">
-                <option disabled selected>Selecione uma turma</option>
-                <option value="idturma">Autoplay</option>
-                <option value="idturma">Autolíder</option>
-                <option value="idturma">Agente de Televendas</option>
+                <select class="selectBox" name="codTurma" id="FiltroPilar">
+                    <option hidden selected>Turma</option>
+                    <% turmas.forEach(turmas => { %>
+                        <option value="<%= turmas.codTurma %>"> <%= turmas.codTurma %> </option>
+                    <% }) %>
                 </select>
-                <select class="selectBox" name="filtroProfessor" id="filtroProfessor">
-                <option disabled selected>Selecione um instrutor</option>
-                <option value="professor">Wolmar</option>
-                <option value="professor">Daniel</option>
-                <option value="professor">Silvio</option>
+                <select class="selectBox" name="nomeEspecializacoes" id="FiltroPilar">
+                    <option hidden selected>Instrutor</option>
+                    <% instrutores.forEach(instrutores => { %>
+                        <option value="<%= instrutores.nomeInstrutor %>"> <%= instrutores.nomeInstrutor %> </option>
+                    <% }) %>
                 </select>
-                <select class="selectBox" name="filtroLocal" id="filtroLocal">
-                <option disabled selected>Selecione um local</option>
-                <option value="professor">Sala 1</option>
-                <option value="professor">Sala 2</option>
-                <option value="professor">Sala 3</option>
+                <select class="selectBox" name="nomeDisciplina" id="FiltroPilar">
+                    <option hidden selected>Disciplina</option>
+                    <% disciplinas.forEach(disciplinas => { %>
+                        <option value="<%= disciplinas.nomeDisciplina %>"> <%= disciplinas.nomeDisciplina %> </option>
+                    <% }) %>
                 </select>
-                <select class="selectBox" name="filtroDisciplina" id="filtroDisciplina">
-                <option disabled selected>Selecione uma disciplina</option>
-                <option value="professor">Programção WEB</option>
-                <option value="professor">Banco de dados</option>
-                <option value="professor">Agilidade</option>
+                <select class="selectBox" name="nomeLocal" id="FiltroPilar">
+                    <option hidden selected>Local</option>
+                    <% locais.forEach(locais => { %>
+                        <option value="<%= locais.nomeLocal %>"> <%= locais.nomeLocal %> </option>
+                    <% }) %>
                 </select>
                 <select class="selectBox" name="filtroData" id="filtroData">
                 <option disabled selected>Selecione uma data</option>
@@ -75,26 +75,32 @@
                 
                     <form method="post" action="salvaraula">
                         <div class="modal-header">
-                            <h1 id="titulo-modal">Cadastrar Aula</h1>
+                            <h1 id="titulo-modal">Reservar Evento</h1>
                             <span class="close">&times;</span>
                         </div>
-        
+                        
+                        <div class="form">
+                            <label for="nomeReserva" class="Titulo-Campo">Nome Reserva:</label>
+                            <input type="text" name="nomeReserva" id="nomeReserva" class="Campo-Modal-Grande" placeholder="Sequelize" required />
+                        </div>
+
                         <div id="turmaProfessor">
                             <div class="form" required>
-                                <label for="turma">Turma</label>
-                                <select name="turma" id="turma" required>
-                                    <option value="Autoplay">Autoplay</option>
-                                    <option value="Autocode">Autocode</option>
-                                    <option value="Agente de televendas">Agente de televendas</option>
-                                    <option value="Autolíder">Autolíder</option>
+                                <label for="turmas_id">Turma</label>
+                                <select name="turmas_id" id="turmas_id" required>
+                                    <option hidden>Turma</option>
+                                    <% reservas.forEach(reservas => { %>
+                                        <option value="<%= reservas.turmas_id %>"> <%= reservas.turmas_id %> </option>
+                                    <% }) %>
                                 </select>
                             </div>
                             <div class="form" required>
-                                <label for="professor">Instrutor</label>
-                                <select name="instrutor" id="professor" required>
-                                    <option value="Daniel">Daniel Gramlich</option>
-                                    <option value="Wolmar">Wolmar Araujo</option>
-                                    <option value="Silvio">Silvio</option>
+                                <label for="instrutores_id">Instrutor</label>
+                                <select name="instrutores_id" id="instrutores_id" required>
+                                    <option hidden>Instrutor</option>
+                                    <% reservas.forEach(reservas => { %>
+                                        <option value="<%= reservas.instrutores_id %>"> <%= reservas.instrutores_id %> </option>
+                                    <% }) %>                           
                                 </select>
                             </div>
                         </div>
@@ -103,39 +109,50 @@
                             <div class="form" required>
                                 <label for="local">Local</label>
                                 <select name="local" id="local" required>
-                                    <option value="Sala 1">Sala 1</option>
-                                    <option value="Sala 2">Sala 2</option>
-                                    <option value="Sala 3">Sala 3</option>
-                                    <option value="Sala 4">Sala 4</option>
-                                    <option value="Sala 5">Sala 5</option>
-                                    <option value="Sala 6">Sala 6</option>
+                                    <option hidden>Local</option>
+                                    <% reservas.forEach(reservas => { %>
+                                        <option value="<%= reservas.locais_id %>"> <%= reservas.locais_id %> </option>
+                                    <% }) %>
                                 </select>
                             </div>
                             <div class="form" required>
-                                <label for="disciplina">Disciplina</label>
-                                <select name="disciplina" id="disciplina" required>
-                                    <option value="Programação WEB">Programação WEB</option>
-                                    <option value="Front-end">Front-end</option>
-                                    <option value="Back-End">Back-end</option>
-                                    <option value="Git/Github">Git/Github</option>
+                                <label for="disciplinas_id">Disciplina</label>
+                                <select name="disciplinas_id" id="disciplinas_id" required>
+                                    <option hidden>Disciplina</option>
+                                    <% reservas.forEach(reservas => { %>
+                                        <option value="<%= reservas.disciplinas_id %>"> <%= reservas.disciplinas_id %> </option>
+                                    <% }) %>
                                 </select>
                             </div>
-                        </div>
-        
-                        <div class="form">
-                        <label for="dataInicio" class="Titulo-Campo">Data</label>
-                        <input type="date" id="dataInicio" name="data">
                         </div>
         
                         <div id="horarios">
                             <div class="form">
+                                <label for="dataInicio" class="Titulo-Campo">Data</label>
+                                <input type="date" name="dataInicio" id="dataInicio">
+                            </div>
+                            <div class="form">
+                                <label for="dataFim" class="Titulo-Campo">Data Final</label>
+                                <input type="date" name="dataFim" id="dataFim">
+                            </div>
+                        </div>
+
+                        <div id="horarios">
+                            <div class="form">
                                 <label for="Horario Inicio">Horário Inicio</label>
-                                <input type="time" id="horarioInicio" name="hrinicio" min="08:00" max="18:00" required>
+                                <input type="time" name='hrInicio' id="hrInicio" min="08:00" max="18:00" required>
                             </div>
                             <div class="form">
                                 <label for="Horario Fim">Horário Fim</label>
-                                <input value="" type="time" id="horarioFim" name="hrfim" min="08:00" max="18:00" required>
+                                <input value="time" type="time" name="hrFim" id="hrFim" min="08:00" max="18:00" required>
                             </div>
+                        </div>
+
+                        <!-- Cor? -->
+
+                        <div class="form">
+                            <label for="descricao" class="Titulo-Campo">Descrição:</label>
+                            <textarea name="descricao" id="descricao">Adicione alguma observação sobre sua reserva...</textarea>
                         </div>
         
                         <div class="modal-footer">
@@ -154,14 +171,30 @@
         <section>
             <table id="tbl">
                 <tr id="atributos">
-                    <th>Turma</th>
+                    <th>Reserva</th>
                     <th>Instrutor</th>
-                    <th>Local</th>
+                    <th>Turma</th>
                     <th>Disciplina</th>
+                    <th>Local</th>
                     <th>Data</th>
                     <th>Horário</th>
+                    <th id="colunaCrud"></th>
                 </tr>
-
+                <% reservas.forEach(reservas => { %>
+                    <tr class="tableRow">
+                        <td> <%= reservas.nomeReserva%> </td>
+                        <td> <%= reservas.instrutores_id%> </td>
+                        <td> <%= reservas.turmas_id%> </td>
+                        <td> <%= reservas.disciplinas_id%> </td>
+                        <td> <%= reservas.locais_id%> </td>
+                        <td> <%= reservas.dataInicio%> </td>
+                        <td> <%= reservas.hrInicio%> - <%= reservas.hrFim%> </td>
+                        <td>
+                            <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
+                            <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
+                        </td>
+                    </tr>
+                <% }) %>
             </table>
         </section>
 
