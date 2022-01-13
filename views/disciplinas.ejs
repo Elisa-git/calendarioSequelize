@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,6 +15,7 @@
 
     <link rel="icon" href="img/logocec.png">
 </head>
+
 <body>
     <%- include ('partials/header') %>
     <main>
@@ -21,23 +23,26 @@
         <section>
             <div id="segundaHeader">
                 <div id="Titulo">
-                <h1>Disciplinas</h1>
+                    <h1>Disciplinas</h1>
                 </div>
                 <div id="botoes">
-                <input class="botoes" id="botaoPesquisar" type="text" placeholder="Pesquisar" value="">
-                <button class="botoes" id="botaoAdicionar" onclick="OpenModalSala()"><img id="add-icon"  src="img/add.png" width="11px">Adicionar</button>
-                <button class="botoes" id="botaoExportar" onclick="ExportToExcel()"> <img id="excelPicture" src="img/excel-i.png"> Exportar</button>
+                    <input class="botoes" id="botaoPesquisar" type="text" placeholder="Pesquisar" value="">
+                    <button class="botoes" id="botaoAdicionar" onclick="OpenModalSala()"><img id="add-icon"
+                            src="img/add.png" width="11px">Adicionar</button>
+                    <button class="botoes" id="botaoExportar" onclick="ExportToExcel()"> <img id="excelPicture"
+                            src="img/excel-i.png"> Exportar</button>
                 </div>
-            </div> 
+            </div>
 
+            <br>
             <hr class="style-one">
-            
+
             <div id="FiltrosSection">
                 <h3>Filtros:</h3>
                 <select class="selectBox" name="nomePilar" id="FiltroPilar">
                     <option hidden selected>Pilar</option>
                     <% pilares.forEach(pilares => { %>
-                        <option value="<%= pilares.nomePilar %>"> <%= pilares.nomePilar %> </option>
+                    <option value="<%= pilares.nomePilar %>"> <%= pilares.nomePilar %> </option>
                     <% }) %>
                 </select>
                 <select class="selectBox" name="maximoItensPagina" id="maximoItensPagina">
@@ -58,7 +63,8 @@
                     <form method="post" action="disciplinas">
                         <div class="form">
                             <label for="local" class="Titulo-Campo">Nova Disciplina:</label>
-                            <input type="text" name="nomeDisciplina" id="nomeDisciplina" class="Campo-Modal-Grande" placeholder="Sequelize" required />
+                            <input type="text" name="nomeDisciplina" id="nomeDisciplina" class="Campo-Modal-Grande"
+                                placeholder="Sequelize" required />
                         </div>
 
                         <div class="form">
@@ -66,7 +72,7 @@
                             <div class="Campo-seletor-Modal-Pequeno" required>
                                 <select name="pilares_id" id="pilares_id" required>
                                     <% pilares.forEach(({id, nomePilar}) => { %>
-                                        <option value="<%= id %>"> <%= nomePilar %> </option>
+                                    <option value="<%= id %>"> <%= nomePilar %> </option>
                                     <% }) %>
                                 </select>
                             </div>
@@ -79,7 +85,7 @@
                         <div>
                             <button id="botaoConfirmar" onclick="addDisciplina()">Confirmar</button>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </section>
@@ -93,30 +99,37 @@
                     <th id="colunaCrud"></th>
                 </tr>
                 <% disciplinas.forEach(disciplinas => { %>
-                    <tr class="tableRow">
-                        <td> <%= disciplinas.nomeDisciplina %> </td>
-                        <td> <%= disciplinas.pilares_id %> </td>
-                        <td>
-                            <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
-                            <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
-                        </td>
-                    </tr>
+                <tr class="tableRow">
+                    <td> <%= disciplinas.nomeDisciplina %> </td>
+                    <td> <%= disciplinas.pilares_id %> </td>
+                    <td>
+                        <button class="crud" id="botaoEditar"><img src="img/edit.png" width="16px"
+                                height="16px"></button>
+
+                        <form method="POST" action="/disciplinas/apagar" style="display: inline;"></form>
+                        <input type="hidden" name="id" value="<%= disciplinas.id %>">
+                        <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png"
+                                width="17px" height="17px"></button>
+                        </form>
+                    </td>
+                </tr>
                 <% }) %>
             </table>
-    
+
         </section>
-        
+
     </main>
     <%- include ('partials/footer') %>
     <script>
-        function confirmarDelete(event, form){
-          event.preventDefault();
-          var decision = confirm('Deseja mesmo deletar?')
-          if(decision){
-            form.submit()
-          }
+        function confirmarDelete(event, form) {
+            event.preventDefault();
+            var decision = confirm('Deseja mesmo deletar?')
+            if (decision) {
+                form.submit()
+            }
         }
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
+
 </html>

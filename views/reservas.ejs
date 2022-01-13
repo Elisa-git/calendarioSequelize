@@ -183,10 +183,10 @@
                 <% reservas.forEach(reservas => { %>
                     <tr class="tableRow">
                         <td> <%= reservas.nomeReserva%> </td>
-                        <td> <%= reservas.instrutores_id%> </td>
-                        <td> <%= reservas.turmas_id%> </td>
-                        <td> <%= reservas.disciplinas_id%> </td>
-                        <td> <%= reservas.locais_id%> </td>
+                        <td> <%= reservas.Instrutore.nomeInstrutor%> </td>
+                        <td> <%= reservas.Turma.nomeTurma%> </td>
+                        <td> <%= reservas.Disciplina.nomeDisciplina%> </td>
+                        <td> <%= reservas.Locai.nomeLocal%> </td>
                         <td> <%= reservas.dataInicio%> </td>
                         <td> <%= reservas.hrInicio%> - <%= reservas.hrFim%> </td>
                         <td>

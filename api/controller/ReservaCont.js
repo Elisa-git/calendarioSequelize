@@ -1,9 +1,16 @@
 const database = require('../models')
 
 class ReservaCont {
-    static async pegaAllRegistrosReservas() {
+    static async pegaAllRegistrosReservas(req, res) {
         try {
-            const allRegistrosReservas = await database.Reservas.findAll();
+            const allRegistrosReservas = await database.Reservas.findAll({
+                include: [
+                    {model:database.Instrutores},
+                    {model:database.Turmas},
+                    {model:database.Locais},
+                    {model:database.Disciplinas}
+                ]
+            });
             // return res.status(200).json(allRegistrosReservas)
             return allRegistrosReservas;
         } catch (error) {
