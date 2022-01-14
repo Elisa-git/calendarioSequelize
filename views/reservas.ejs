@@ -152,7 +152,7 @@
 
                         <div class="form">
                             <label for="descricao" class="Titulo-Campo">Descrição:</label>
-                            <textarea name="descricao" id="descricao">Adicione alguma observação sobre sua reserva...</textarea>
+                            <textarea name="descricao" id="descricao" class="form-control" >Adicione alguma observação sobre sua reserva...</textarea>
                         </div>
         
                         <div class="modal-footer">
@@ -180,15 +180,16 @@
                     <th>Horário</th>
                     <th id="colunaCrud"></th>
                 </tr>
+                
                 <% reservas.forEach(reservas => { %>
                     <tr class="tableRow">
-                        <td> <%= reservas.nomeReserva%> </td>
-                        <td> <%= reservas.instrutores_id%> </td>
-                        <td> <%= reservas.turmas_id%> </td>
-                        <td> <%= reservas.disciplinas_id%> </td>
-                        <td> <%= reservas.locais_id%> </td>
-                        <td> <%= reservas.dataInicio%> </td>
-                        <td> <%= reservas.hrInicio%> - <%= reservas.hrFim%> </td>
+                        <td> <%= reservas.nomeReserva %> </td>
+                        <td> <%= reservas.Instrutore.nomeInstrutor %> </td>
+                        <td> <%= reservas.Turma.codTurma %> </td>
+                        <td> <%= reservas.Disciplina.nomeDisciplina %> </td>
+                        <td> <%= reservas.Locai.nomeLocal %> </td>
+                        <td> <%= reservas.dataInicio %> </td>
+                        <td> <%= reservas.hrInicio %> - <%= reservas.hrFim %> </td>
                         <td>
                             <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
                             <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>

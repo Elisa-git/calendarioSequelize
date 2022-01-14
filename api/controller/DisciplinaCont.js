@@ -3,7 +3,9 @@ const database = require('../models');
 class DisciplinaCont {
     static async pegaAllRegistrosDisciplinas(req, res) {
         try {
-            const allRegistrosDisciplinas = await database.Disciplinas.findAll({raw: true, order:[['id', 'DESC']]});
+            const allRegistrosDisciplinas = await database.Disciplinas.findAll({
+                include: [{model:database.Pilares}]
+            }, {raw: true, order:[['id', 'DESC']]});
             // return res.status(200).json(allRegistrosDisciplinas);
             return allRegistrosDisciplinas;
         } catch (error) {

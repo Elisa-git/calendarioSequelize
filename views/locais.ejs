@@ -56,35 +56,37 @@
                 <h1 id="titulo-modal">Cadastrar Local</h1>
                 <span class="close">&times;</span>
               </div>
-  
-              <div class="form">
-                <label for="nomeLocal" class="Titulo-Campo">Local:</label>
-                <input type="text" name="nomeLocal" id="nomeLocal" class="Campo-Modal-Grande" placeholder="Ex: Sala 1" required />
-              </div>
-  
-              <div class="form">
-                <label for="capacidade" class="Titulo-Campo">Capacidade:</label>
-                <input type="number" name="capacidade" id="capacidade" class="Campo-Modal-Grande" placeholder="Ex: 20" required />
-              </div>
-  
-              <div class="form">
-                <label for="sistemas" class="Titulo-Campo">Possui Sistemas ?</label>
-                <div class="Campo-seletor-Modal-Pequeno" required>
-                  <select name="select" name="sistemas" id="sistemas" required>
-                    <option value="0">Possui</option>
-                    <option value="1">Não Possui</option>
-                  </select>
+              <form method="POST" action="/locais">
+                <div class="form">
+                  <label for="nomeLocal" class="Titulo-Campo">Local:</label>
+                  <input type="text" name="nomeLocal" id="nomeLocal" class="Campo-Modal-Grande" placeholder="Ex: Sala 1" required />
                 </div>
-              </div>
-  
-              <div class="modal-footer">
-                <div>
-                  <button id="botaoCancelar">Cancelar</button>
+    
+                <div class="form">
+                  <label for="capacidade" class="Titulo-Campo">Capacidade:</label>
+                  <input type="number" name="capacidade" id="capacidade" class="Campo-Modal-Grande" placeholder="Ex: 20" required />
                 </div>
-                <div>
-                  <button id="botaoConfirmar" onclick="addArea()">Confirmar</button>
+    
+                <div class="form">
+                  <label for="sistemas" class="Titulo-Campo">Possui Sistemas ?</label>
+                  <div class="Campo-seletor-Modal-Pequeno" required>
+                    <select name="select" name="sistemas" id="sistemas" required>
+                      <option value="0">Possui</option>
+                      <option value="1">Não Possui</option>
+                    </select>
+                  </div>
                 </div>
-              </div>
+    
+                <div class="modal-footer">
+                  <div>
+                    <button id="botaoCancelar">Cancelar</button>
+                  </div>
+                  
+                  <div>
+                    <button type="submit">Confirmar</button>
+                  </div>
+                </div>
+              </form>
   
             </div>
           </div>
@@ -102,10 +104,15 @@
               <tr class="tableRow">
                 <td> <%= locais.nomeLocal %> </td>
                 <td> <%= locais.capacidade %> </td>
-                <td> <%= locais.sistemas %> </td>
+                <td> 
+                  <% if (locais.sistemas == 0) { %>
+                    <p> Sim</p>
+                  <%} else { %>
+                    <p> Não </p>
+                  <% } %>
                 <td>
                   <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
-                  <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
+                  <button class="crud" type=""><img src="img/delete.png" width="17px" height="17px"></button>
                 </td>
               </tr>
             <% }) %>

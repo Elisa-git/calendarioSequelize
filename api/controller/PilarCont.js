@@ -26,11 +26,14 @@ class PilarCont {
 
     static async criaPilar(req, res) {
         const novoPilar = req.body;
+        console.log(novoPilar);
         try {
             const novoPilarCriado = await database.Pilares.create(novoPilar);
-            return res.status(200).json(novoPilarCriado);
+            // return res.status(200).json(novoPilarCriado);
+            return novoPilarCriado
         } catch (error) {
-            return res.status(500).json({mensagem: error})
+            // return res.status(500).json({mensagem: error})
+            return error.message
         }
     }
 

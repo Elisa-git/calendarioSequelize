@@ -1,6 +1,9 @@
 const Router = require("express");
 const DisciplinaCont = require('../controller/DisciplinaCont');
 const PilarCont = require('../controller/PilarCont');
+const bodyParse = require('body-parser')
+
+
 
 const router = Router();
 

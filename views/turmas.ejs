@@ -65,7 +65,7 @@
 
                     <form>
                         <div class="form" required>
-                            <label for="setor">Capacitação</label>
+                            <label for="especializacoes_id">Capacitação</label>
                             <div class="Campo-seletor-Modal-Pequeno" required>
                                 <select name="especializacoes_id" id="especializacoes_id" required>
                                     <% turmas.forEach(turmas => { %>
@@ -81,18 +81,18 @@
                         </div>
                         
                         <div class="form">
-                            <label for="abreviacao" class="Titulo-Campo">Data Inicio:</label>
-                            <input type="date" id="dataInicio" name="dataInicio">
+                            <label for="dataInicio" class="Titulo-Campo">Data Inicio:</label>
+                            <input type="date" name="dataInicio" id="dataInicio">
                         </div>
                         
                         <div class="form">
-                            <label for="abreviacao" class="Titulo-Campo">Data Fim:</label>
+                            <label for="dataFim" class="Titulo-Campo">Data Fim:</label>
                             <input type="date" id="dataFim" name="dataFim">
                         </div>
                         
                         <div class="form">
-                            <label for="alunos" class="Titulo-Campo">Número de alunos:</label>
-                            <input type="number" id="alunos" class="Campo-Modal-Grande" placeholder="15" required />
+                            <label for="numAlunos" class="Titulo-Campo">Número de alunos:</label>
+                            <input type="number" name="numAlunos" id="numAlunos" class="Campo-Modal-Grande" placeholder="15" required />
                         </div>
                     </form>
 
@@ -110,17 +110,28 @@
         </section>
 
         <section>
-            <table id="tbl">
-                <tr id="atributos">
-                    <th>Turma</th>
-                </tr>
-                <tr class="tableRow">
-                    <td class="categoria">Autoplay</td>
-                    <td>
-                    <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
-                    <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
-                    </td>
-                </tr>
+                <table id="tbl">
+                    <tr id="atributos">
+                        <th>Turma</th>
+                        <th>Capacitação</th>
+                        <th>Data Início</th>
+                        <th>Data Fim</th>
+                        <th>Alunos</th>
+                        <th id="colunaCrud"></th>
+                    </tr>
+                    <% turmas.forEach(turmas => { %>
+                        <tr class="tableRow">
+                            <td> <%= turmas.codTurma %> </td>
+                            <td> <%= turmas.Especializaco.nomeEspecializacoes %> </td>
+                            <td> <%= turmas.dataInicio %> </td>
+                            <td> <%= turmas.dataFim %> </td>
+                            <td> <%= turmas.numAlunos %> </td>
+                            <td>
+                                <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
+                                <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
+                            </td>
+                        </tr>
+                    <% }) %>
             </table>
         </section>
 

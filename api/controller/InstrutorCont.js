@@ -3,7 +3,11 @@ const database = require('../models');
 class InstrutorConst {
     static async pegaAllRegistrosInstrutores(req,res) {
         try {
-            const allRegistrosInstrutores = await database.Instrutores.findAll();
+            const allRegistrosInstrutores = await database.Instrutores.findAll({
+                include: [{
+                    model: database.Pilares
+                }]
+            });
             // return res.status(200).json(allRegistrosInstrutores);
             return allRegistrosInstrutores;
         } catch (error) {

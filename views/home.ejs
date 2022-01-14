@@ -47,81 +47,28 @@
                         }                        
                     </script>
 
+<!-- ordenar ordem alfabetica -->
                     <div class="wrapper">
-                        <a class="link-sala" href="">
-                            <div class="box">
-                                <h3>Sala 1</h3>
-                                <div class="blue agendado">
-                                    <ul>
-                                        <li>Silvio</li>
-                                        <li>08:00 - 12:00</li>
-                                        <li>Operacional</li>
-                                    </ul>
-                                </div>
-                                <div class="red agendado">
-                                    <ul>
-                                        <li>Daniel</li>
-                                        <li>12:00 - 18:00</li>
-                                        <li>Autoplay</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="box">
+                        <% locais.forEach(locais => { %>
                             <a class="link-sala" href="">
-                                <h3>Sala 2</h3>
-                                <div class="red agendado">
-                                    <ul>
-                                        <li>Wolmar</li>
-                                        <li>12:00 - 18:00</li>
-                                        <li>Autoplay</li>
-                                    </ul>
+                                <div class="box">
+                                    <h3> <%= locais.nomeLocal %> </h3>
+                                    <% if (reservas.locais_id == this) { %>
+
+                                        <div class="blue agendado">
+                                            <ul>
+                                                <li> <%= reservas.Instrutore.nomeInstrutor %> </li>
+                                                <li> <%= reservas.hrInicio %> - <%= reservas.hrFim %> </li>
+                                                <li> <%= reservas.Turma.codTurma %> </li>
+                                            </ul>
+                                        </div>
+                                    <% } %>
                                 </div>
                             </a>
-                        </div>
-                        <div class="box">
-                            <a class="link-sala" href="">
-                                <h3>Sala 3</h3>
-                            </a>
-                        </div>
-                        <div class="box">
-                            <a class="link-sala" href="">
-                                <h3>Sala 4</h3>
-                            </a>
-                        </div>
-                        <div class="box">
-                            <a class="link-sala" href="">
-                                <h3>Sala 5</h3>
-                                <div class="red agendado">
-                                    <ul>
-                                        <li>Gabriel</li>
-                                        <li>08:00 - 12:00</li>
-                                        <li>Autoplay</li>
-                                    </ul>
-                                </div>
-                                <div class="agendado green">
-                                    <ul>
-                                        <li>José</li>
-                                        <li>12:00 - 13:00</li>
-                                        <li>Evento</li>
-                                    </ul>
-                                </div>
-                                <div class="red agendado">
-                                    <ul>
-                                        <li>Gabriel</li>
-                                        <li>12:00 - 18:00</li>
-                                        <li>Autoplay</li>
-                                    </ul>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="box">
-                            <a class="link-sala" href="">
-                                <h3>Sala 6</h3>
-                            </a>
-                        </div> 
+                        <% }) %>
                     </div>
                 </div>
+
                 <div class="container-calendar">
                     <div id="calendar2"></div>
 

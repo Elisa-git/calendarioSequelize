@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
       selectable: true,
       dayMaxEvents: true, // allow "more" link when too many events
       events: {
-        url: "http://localhost:8080/reservas"
+        url: "http://localhost:3000/reservas"
       }
     });
 

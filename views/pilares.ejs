@@ -50,21 +50,21 @@
                         <h1 id="titulo-modal">Cadastrar Pilar</h1>
                         <span class="close">&times;</span>
                     </div>
-
-                    <div class="form">
-                        <label for="nomePilar" class="Titulo-Campo">Nome Pilar:</label>
-                        <input type="text" name="nomePilar" id="nomePilar" class="Campo-Modal-Grande" placeholder="Operacional" required />
-                    </div>
-
-                    <div class="modal-footer">
-                        <div>
-                            <button id="botaoCancelar">Cancelar</button>
+                    <form method="POST" action="http://localhost:3000/pilares">
+                        <div class="form">
+                            <label for="nomePilar" class="Titulo-Campo">Nome Pilar:</label>
+                            <input type="text" name="nomePilar" id="nomePilar" class="Campo-Modal-Grande" placeholder="Operacional" required />
                         </div>
-
-                        <div>
-                            <button id="botaoConfirmar" onclick="addCategoria()">Confirmar</button>
+                        <div class="modal-footer">
+                            <div>
+                                <button id="botaoCancelar">Cancelar</button>
+                            </div>
+                            
+                            <div>
+                                <button type="submit">Confirmar</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </section>
@@ -73,13 +73,14 @@
             <table id="tbl">
                 <tr id="atributos">
                     <th>Pilar</th>
+                    <th id="colunaCrud"></th>
                 </tr>
                 <% pilares.forEach(pilares => { %>
                     <tr class="tableRow">
                         <td><%= pilares.nomePilar %></td>
                         <td>
-                        <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
-                        <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
+                            <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
+                            <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
                         </td>
                     </tr>
                 <% }) %>

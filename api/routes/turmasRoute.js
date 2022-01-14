@@ -8,6 +8,7 @@ router
     .get('/turmas', async (req, res) => { 
         const turmas = await TurmaCont.pegaAllRegistrosTurmas()
         const especializacoes = await EspecializacaoCont.pegaAllRegistrosEspecializacoes()
+        console.log(turmas);
         res.render('turmas', { turmas, especializacoes })
     })
     // .get('/turmas', TurmaCont.pegaAllRegistrosTurmas)
