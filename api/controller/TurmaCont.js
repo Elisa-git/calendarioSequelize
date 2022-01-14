@@ -4,9 +4,9 @@ class TurmasCont {
     static async pegaAllRegistrosTurmas(req, res) {
         try {
             const allRegistrosTurmas = await database.Turmas.findAll({
-                include: [
-                    {model:database.Especializacoes}
-                ]
+                include: [{
+                    model: database.Especializacoes
+                }]
             });
             // return res.status(200).json(allRegistrosTurmas);
             return allRegistrosTurmas;
