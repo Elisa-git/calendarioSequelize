@@ -11,11 +11,11 @@ class ReservaCont {
                     {model:database.Disciplinas}
                 ]
             });
-            // return res.status(200).json(allRegistrosReservas)
-            return allRegistrosReservas;
+            return res.status(200).json(allRegistrosReservas)
+            // return allRegistrosReservas;
         } catch (error) {
-            // return res.status(500).json({mensagem: error})
-            return error.message;
+            return res.status(500).json({mensagem: error})
+            // return error.message;
         }
     }
 
