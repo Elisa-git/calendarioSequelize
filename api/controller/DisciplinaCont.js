@@ -1,7 +1,4 @@
 const database = require('../models');
-const express = require('express')
-const router = express.Router()
-
 
 class DisciplinaCont {
     static async pegaAllRegistrosDisciplinas(req, res) {
@@ -75,26 +72,6 @@ class DisciplinaCont {
         }
     }
 }
-router.post('/disciplinas/apagar', (req, res) => {
-    var id = req.body.id
-    if (id != undefined) {
 
-        if (!isNaN(id)) {
-
-            Disciplinas.destroy({
-                where: {
-                    id: id
-                }
-            }).then(() => {
-                res.redirect('/disciplinas')
-            })
-
-        } else {     //Se não for um número
-            res.redirect('/disciplinas')
-        }
-    } else {     //Se for nullo
-        res.redirect('/disciplinas')
-    }
-})
 
 module.exports = DisciplinaCont;

@@ -60,7 +60,7 @@
                         <h1 id="titulo-modal">Cadastrar Disciplina</h1>
                         <span class="close">&times;</span>
                     </div>
-                    <form method="post" action="disciplinas">
+                    <form method="post" action="http://localhost:8080/disciplinas">
                         <div class="form">
                             <label for="local" class="Titulo-Campo">Nova Disciplina:</label>
                             <input type="text" name="nomeDisciplina" id="nomeDisciplina" class="Campo-Modal-Grande"
@@ -108,7 +108,7 @@
 
                         <form method="POST" action="/disciplinas/apagar" style="display: inline;"></form>
                         <input type="hidden" name="id" value="<%= disciplinas.id %>">
-                        <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png"
+                        <button class="crud" id="botaoApagar"><img src="img/delete.png"
                                 width="17px" height="17px"></button>
                         </form>
                     </td>

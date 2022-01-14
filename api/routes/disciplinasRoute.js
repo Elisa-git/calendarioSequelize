@@ -16,7 +16,7 @@ router
         const disciplinas = await DisciplinaCont.pegaAllRegistrosDisciplinas()
         res.render('disciplinas', { disciplinas, pilares })
     })
-    .get('/todasdisciplinas', DisciplinaCont.pegaAllRegistrosDisciplinas)
+    // .get('/disciplinas', DisciplinaCont.pegaAllRegistrosDisciplinas)
     .get('/disciplinas/:id', DisciplinaCont.pegaUmRegistroDisciplina)
     .post('/disciplinas', DisciplinaCont.criaDisciplina)
     .put('/disciplinas/:id', DisciplinaCont.atualizaDisciplina)
