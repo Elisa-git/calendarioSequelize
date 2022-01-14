@@ -12,7 +12,7 @@
 // }
 
 
-function addAula() {
+function addReserva() {
   var table = document.getElementById("tbl");
   var row = table.insertRow(-1);
   var cell1 = row.insertCell(0);
@@ -23,12 +23,13 @@ function addAula() {
   var cell6 = row.insertCell(5);
   var cell7 = row.insertCell(6);
   var cell8 = row.insertCell(7);
-  cell1.innerHTML = document.getElementById('turma').value;
-  cell2.innerHTML = document.getElementById('professor').value;
-  cell3.innerHTML = document.getElementById('local').value;
-  cell4.innerHTML = document.getElementById('disciplina').value;
-  cell5.innerHTML = document.getElementById('dataInicio').value;
-  cell6.innerHTML = document.getElementById('horarioInicio' + 'horarioFim').value;
+  cell1.innerHTML = document.getElementById('nomeReserva').value;
+  cell2.innerHTML = document.getElementById('instrutores_id').value;
+  cell3.innerHTML = document.getElementById('turmas_id').value;
+  cell4.innerHTML = document.getElementById('disciplinas_id').value;
+  cell5.innerHTML = document.getElementById('locais_id').value;
+  cell6.innerHTML = document.getElementById('dataInicio').value;
+  cell7.innerHTML = document.getElementById('hrInicio' + 'hrFim').value;
   cell8.innerHTML = `<button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button> `+` <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>`;
 }
 
@@ -49,11 +50,9 @@ function addDisciplina() {
   var cell1 = row.insertCell(0);
   var cell2 = row.insertCell(1);
   var cell3 = row.insertCell(2);
-  var cell4 = row.insertCell(3);
-  cell1.innerHTML = document.getElementById('disciplina').value;
-  cell2.innerHTML = document.getElementById('setor').value;
-  cell3.innerHTML = document.getElementById('turma').value;
-  cell4.innerHTML = `<button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button> `+` <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>`;
+  cell1.innerHTML = document.getElementById('nomeDisciplina').value;
+  cell2.innerHTML = document.getElementById('pilares_id').value;
+  cell3.innerHTML = `<button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button> `+` <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>`;
 }
 
 function addArea() {

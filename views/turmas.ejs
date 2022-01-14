@@ -68,8 +68,8 @@
                             <label for="setor">Capacitação</label>
                             <div class="Campo-seletor-Modal-Pequeno" required>
                                 <select name="especializacoes_id" id="especializacoes_id" required>
-                                    <% turmas.forEach(turmas => { %>
-                                        <option value="<%= turmas.especializacoes_id %>"> <%= turmas.especializacoes_id %> </option>
+                                    <% especializacoes.forEach(({id, nomeEspecializacoes}) => { %>
+                                        <option value="<%= id %>"> <%= nomeEspecializacoes %> </option>
                                     <% }) %>
                                 </select>
                             </div>
@@ -111,16 +111,28 @@
 
         <section>
             <table id="tbl">
+                
                 <tr id="atributos">
                     <th>Turma</th>
+                    <th>Capacitação</th>
+                    <th>Data Início</th>
+                    <th>Data Fim</th>
+                    <th>Alunos</th>
+                    <th id="colunaCrud"></th>
                 </tr>
+                <% turmas.forEach(turmas => { %>
                 <tr class="tableRow">
-                    <td class="categoria">Autoplay</td>
+                    <td><%= turmas.nomeTurma%></td>
+                    <td><%= turmas.Especializaco.nomeEspecializacoes%></td>
+                    <td><%= turmas.dataInicio%></td>
+                    <td><%= turmas.dataFim%></td>
+                    <td><%= turmas.numAlunos%></td>
                     <td>
                     <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
                     <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
                     </td>
                 </tr>
+                <% }) %>
             </table>
         </section>
 

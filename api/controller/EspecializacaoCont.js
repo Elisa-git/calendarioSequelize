@@ -4,7 +4,11 @@ class EspecializacaoCont {
 
     static async pegaAllRegistrosEspecializacoes(req, res) {
         try {
-            const allRegistrosEspecializacoes = await database.Especializacoes.findAll();
+            const allRegistrosEspecializacoes = await database.Especializacoes.findAll({
+                include: [{
+                    model: database.Pilares
+                }]
+            });
             return allRegistrosEspecializacoes;
             // return res.status(200).json(allRegistrosEspecializacoes); 
         } catch (error) {
