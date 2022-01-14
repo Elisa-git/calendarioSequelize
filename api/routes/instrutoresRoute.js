@@ -10,7 +10,7 @@ router
         const pilares = await PilarCont.pegaAllRegistrosPilares()
         res.render('instrutores', { instrutores, pilares })
     })    
-    // .get('/instrutores', InstrutorConst.pegaAllRegistrosInstrutores)
+    .get('/todosinstrutores', InstrutorConst.pegaAllRegistrosInstrutores)
     .get('/instrutores/:id', InstrutorConst.pegaUmRegistroInstrutor)
     .post('/instrutores', InstrutorConst.criaInstrutor)
     .put('/instrutores/:id', InstrutorConst.atualizaInstrutor)

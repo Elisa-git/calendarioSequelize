@@ -10,6 +10,7 @@ router
         const pilares = await PilarCont.pegaAllRegistrosPilares()
         res.render('especializacoes', { especializacoes, pilares })
     })
+    .get('/todasespecializacoes', EspecializacaoCont.pegaAllRegistrosEspecializacoes)
     .get('/especializacoes/:id', EspecializacaoCont.pegaUmRegistroEspecializacao)
     .post('/especializacoes', EspecializacaoCont.criaEspecializacao)
     .put('/especializacoes/:id', EspecializacaoCont.atualizaEspecializacao)
