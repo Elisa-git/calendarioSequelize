@@ -5,7 +5,6 @@ class ReservaCont {
         try {
             const allRegistrosReservas = await database.Reservas.findAll({
                 include: [
-<<<<<<< HEAD
                     { model: database.Instrutores },
                     { model: database.Turmas },
                     { model: database.Disciplinas },
@@ -14,19 +13,9 @@ class ReservaCont {
             }, {raw: true, order:[['id', 'DESC']]});
             // return res.status(200).json(allRegistrosReservas)
             return allRegistrosReservas;
-=======
-                    {model:database.Instrutores},
-                    {model:database.Turmas},
-                    {model:database.Locais},
-                    {model:database.Disciplinas}
-                ]
-            });
-            return res.status(200).json(allRegistrosReservas)
-            // return allRegistrosReservas;
->>>>>>> def8d01396f2ddfff3d9901a96c7498eaf1f8816
         } catch (error) {
-            return res.status(500).json({mensagem: error})
-            // return error.message;
+            // return res.status(500).json({mensagem: error})
+            return error.message;
         }
     }
 

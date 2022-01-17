@@ -2,14 +2,7 @@ const Router = require("express");
 const express = require('express')
 const DisciplinaCont = require('../controller/DisciplinaCont');
 const PilarCont = require('../controller/PilarCont');
-<<<<<<< HEAD
-const bodyParse = require('body-parser')
-
-
-
-=======
 const Disciplina = require('../index')
->>>>>>> def8d01396f2ddfff3d9901a96c7498eaf1f8816
 const router = Router();
 const bodyParser = require('body-parser')
 

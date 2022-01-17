@@ -99,7 +99,6 @@
                     <th id="colunaCrud"></th>
                 </tr>
                 <% disciplinas.forEach(disciplinas => { %>
-<<<<<<< HEAD
                     <tr class="tableRow">
                         <td> <%= disciplinas.nomeDisciplina %> </td>
                         <td> <%= disciplinas.Pilare.nomePilar %> </td>
@@ -108,22 +107,6 @@
                             <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
                         </td>
                     </tr>
-=======
-                <tr class="tableRow">
-                    <td> <%= disciplinas.nomeDisciplina %> </td>
-                    <td> <%= disciplinas.Pilare.nomePilar %> </td>
-                    <td>
-                        <button class="crud" id="botaoEditar"><img src="img/edit.png" width="16px"
-                                height="16px"></button>
-
-                        <form method="POST" action="/disciplinas/apagar" style="display: inline;"></form>
-                        <input type="hidden" name="id" value="<%= disciplinas.id %>">
-                        <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png"
-                                width="17px" height="17px"></button>
-                        </form>
-                    </td>
-                </tr>
->>>>>>> def8d01396f2ddfff3d9901a96c7498eaf1f8816
                 <% }) %>
             </table>
 

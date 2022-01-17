@@ -8,11 +8,8 @@ class DisciplinaCont {
         try {
             const allRegistrosDisciplinas = await database.Disciplinas.findAll({
                 include: [{model:database.Pilares}]
-<<<<<<< HEAD
             }, {raw: true, order:[['id', 'DESC']]});
-=======
-            },{ raw: true, order: [['id', 'DESC']] });
->>>>>>> def8d01396f2ddfff3d9901a96c7498eaf1f8816
+
             // return res.status(200).json(allRegistrosDisciplinas);
             return allRegistrosDisciplinas;
         } catch (error) {

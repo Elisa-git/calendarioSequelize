@@ -183,15 +183,6 @@
                 
                 <% reservas.forEach(reservas => { %>
                     <tr class="tableRow">
-<<<<<<< HEAD
-                        <td> <%= reservas.nomeReserva %> </td>
-                        <td> <%= reservas.Instrutore.nomeInstrutor %> </td>
-                        <td> <%= reservas.Turma.codTurma %> </td>
-                        <td> <%= reservas.Disciplina.nomeDisciplina %> </td>
-                        <td> <%= reservas.Locai.nomeLocal %> </td>
-                        <td> <%= reservas.dataInicio %> </td>
-                        <td> <%= reservas.hrInicio %> - <%= reservas.hrFim %> </td>
-=======
                         <td> <%= reservas.nomeReserva%> </td>
                         <td> <%= reservas.Instrutore.nomeInstrutor%> </td>
                         <td> <%= reservas.Turma.nomeTurma%> </td>
@@ -199,7 +190,6 @@
                         <td> <%= reservas.Locai.nomeLocal%> </td>
                         <td> <%= reservas.dataInicio%> </td>
                         <td> <%= reservas.hrInicio%> - <%= reservas.hrFim%> </td>
->>>>>>> def8d01396f2ddfff3d9901a96c7498eaf1f8816
                         <td>
                             <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
                             <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
