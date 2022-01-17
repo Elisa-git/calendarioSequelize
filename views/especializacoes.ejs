@@ -83,6 +83,44 @@
             </div>
         </section>
 
+        <!-- MODAL EDITAR -->
+
+        <section>
+            <div id="modalEditar" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="titulo-modal">Editar Capacitação</h1>
+                        <span class="close">&times;</span>
+                    </div>
+                    <form>
+                        <div class="form">
+                            <label for="nomeEspecializacoes" class="Titulo-Campo">Nome Capacitação:</label>
+                            <input type="text" name="nomeEspecializacoes" id="nomeEspecializacoes" class="Campo-Modal-Grande" placeholder="AutoPlay" required />
+                        </div>
+                        <div class="form">
+                            <label for="Pilar" class="Titulo-Campo">Pilar:</label>
+                            <div class="Campo-seletor-Modal-Pequeno" required>
+                                <select name="pilares_id" id="pilares_id" required>
+                                    <% pilares.forEach(pilares => { %>
+                                        <option value="<%= pilares.nomePilar %>"> <%= pilares.nomePilar %> </option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <div>
+                            <button id="botaoCancelarEditar">Cancelar</button>
+                        </div>
+
+                        <div>
+                            <button id="botaoConfirmar" >Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section>
             <table id="tbl">
                 <tr id="atributos">
