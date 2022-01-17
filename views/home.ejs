@@ -53,15 +53,7 @@
                             <a class="link-sala" href="">
                                 <div class="box">
                                     <h3> <%= locais.nomeLocal %> </h3>
-                                    <% if (reservas.locais_id == locais.this ) { %>
-                                        <div class="agendado" style="background-color: <%= reservas.cor %>;">
-                                            <ul>
-                                                <li> <%= reservas.Instrutore.nomeInstrutor %> </li>
-                                                <li> <%= reservas.hrInicio %> - <%= reservas.hrFim %> </li>
-                                                <li> <%= reservas.Turma.codTurma %> </li>
-                                            </ul>
-                                        </div>
-                                    <% } %>
+
                                 </div>
                             </a>
                         <% }) %>
