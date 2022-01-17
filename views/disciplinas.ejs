@@ -84,6 +84,45 @@
             </div>
         </section>
 
+        <!-- MODAL EDITAR -->
+
+        <section>
+            <div id="modalEditar" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="titulo-modal">Editar Disciplina</h1>
+                        <span class="close">&times;</span>
+                    </div>
+                    <form method="post" action="disciplinas">
+                        <div class="form">
+                            <label for="local" class="Titulo-Campo">Nova Disciplina:</label>
+                            <input type="text" name="nomeDisciplina" id="nomeDisciplina" class="Campo-Modal-Grande" placeholder="Sequelize" required />
+                        </div>
+
+                        <div class="form">
+                            <label for="Pilar" class="Titulo-Campo">Pilar:</label>
+                            <div class="Campo-seletor-Modal-Pequeno" required>
+                                <select name="pilares_id" id="pilares_id" required>
+                                    <% pilares.forEach(pilares => { %>
+                                        <option value="<%= pilares.nomePilar %>"> <%= pilares.nomePilar %> </option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <div>
+                            <button id="botaoCancelarEditar">Cancelar</button>
+                        </div>
+                        <div>
+                            <button id="botaoConfirmar">Confirmar</button>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </section>
+
+
         <section>
 
             <table id="tbl">
