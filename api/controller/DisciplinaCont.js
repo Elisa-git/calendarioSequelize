@@ -32,7 +32,7 @@ class DisciplinaCont {
         const novaDisciplina = req.body;
         try {
             const novaDisciplinaCriada = await database.Disciplinas.create(novaDisciplina);
-            return res.status(500).json(novaDisciplinaCriada);
+            return res.status(200).json(novaDisciplinaCriada);
         } catch (error) {
             return res.status(500).json({ mensagem: error });
         }
@@ -52,7 +52,7 @@ class DisciplinaCont {
                     id: Number(id)
                 }
             });
-            return res.status(500).json(disciplinaAtualizada);
+            return res.status(200).json(disciplinaAtualizada);
         } catch (error) {
             return res.status(500).json({ mensagem: error });
         }
@@ -66,7 +66,7 @@ class DisciplinaCont {
                     id: Number(id)
                 }
             });
-            return res.status(500).json({ mensagem: `id ${id} deletado com sucesso!` });
+            return res.status(200).json({ mensagem: `id ${id} deletado com sucesso!` });
         } catch (error) {
             return res.status(500).json({ mensagem: error });
         }

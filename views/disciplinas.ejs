@@ -106,11 +106,11 @@
                         <button class="crud" id="botaoEditar"><img src="img/edit.png" width="16px"
                                 height="16px"></button>
 
-                        <form method="POST" action="/disciplinas/apagar" style="display: inline;"></form>
-                        <input type="hidden" name="id" value="<%= disciplinas.id %>">
-                        <button class="crud" id="botaoApagar"><img src="img/delete.png"
-                                width="17px" height="17px"></button>
-                        </form>
+                        <form method="POST" action="/disciplinas/apagar" style="display: inline;">
+                            <form>
+                                <input type="hidden" name="id" value= "<%= disciplinas.id %>">
+                                <button type="submit" class="crud" id="botaoApagar"><img src="img/delete.png" width="17px" height="17px"></button>
+                            </form>
                     </td>
                 </tr>
                 <% }) %>
