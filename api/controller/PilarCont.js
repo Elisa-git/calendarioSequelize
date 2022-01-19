@@ -29,9 +29,9 @@ class PilarCont {
         console.log(novoPilar);
         try {
             const novoPilarCriado = await database.Pilares.create(novoPilar);
-            return res.status(200).json({message: "Criado com sucesso!"});
+            return res.status(200).json({ message: "Criado com sucesso!" });
         } catch (error) {
-            return res.status(500).json({mensagem: error})
+            return res.status(500).json({ mensagem: error })
             // return error.message
         }
     }

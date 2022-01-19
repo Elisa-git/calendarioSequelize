@@ -1,3 +1,7 @@
+window.onload = () => {
+    Especializacoes.adicionar()
+}
+
 class Especializacoes {
     constructor() {
         this.nomeEspecializacoes = document.querySelector('#nomeEspecializacoes').value
@@ -10,7 +14,7 @@ class Especializacoes {
         form.addEventListener("submit", async (event) => {
             event.preventDefault()
             const info = new Especializacoes()
-
+            console.log(info);
             await fetch("http://localhost:3000/especializacoes", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
@@ -26,5 +30,3 @@ class Especializacoes {
     }
 
 }
-
-Especializacoes.adicionar()

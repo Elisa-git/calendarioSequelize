@@ -25,23 +25,20 @@ class EspecializacaoCont {
                     id: Number(id)
                 }
             });
-            return res.status(200).json({ mensagem: "Capacitação criada :)" });
+            return res.status(200).json(umaEspecializacao);
         } catch (error) {
-            return res.status(500).json({ mensagem: error });
+            return res.status(500).json({ message: error });
         }
     }
 
     static async criaEspecializacao(req, res) {
         const novaEspecializacao = req.body;
         try {
-            const novaEspecializacaoCriada = await database.Especializacoes.create(novaEspecializacao, {
-                include: [{
-                    model: database.Pilares
-                }]
-            });
-            return res.status(200).json(novaEspecializacaoCriada);
+            const novaEspecializacaoCriada = await database.Especializacoes.create(novaEspecializacao);
+            return res.status(200).json({ message: 'Capacitação criada :)'});
         } catch (error) {
-            return res.status(500).json({ mensagem: error });
+            console.log(error);
+            return res.status(500).json({ message: error });
         }
     }
 

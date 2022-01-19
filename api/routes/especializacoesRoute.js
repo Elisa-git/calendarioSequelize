@@ -18,6 +18,7 @@ router
     })
     
     .put('/especializacoes/:id', EspecializacaoCont.atualizaEspecializacao)
+    
     .delete('/especializacoes/:id', EspecializacaoCont.deletaEspecializacao)
 
 module.exports = router;

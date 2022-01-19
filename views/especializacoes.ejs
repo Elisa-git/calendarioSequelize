@@ -65,7 +65,7 @@
                             <div class="Campo-seletor-Modal-Pequeno">
                                 <select name="pilares_id" id="pilares_id">
                                     <% pilares.forEach(pilares => { %>
-                                        <option value="<%= pilares.pilares_id %>"> <%= pilares.nomePilar %> </option>
+                                        <option value="<%= pilares.id %>"> <%= pilares.nomePilar %> </option>
                                     <% }) %>
                                 </select>
                             </div>
@@ -76,7 +76,7 @@
                             </div>
 
                             <div>
-                                <button type="submit" formmethod="post">Confirmar</button>
+                                <button type="submit">Confirmar</button>
                             </div>
                         </div>
 
@@ -107,15 +107,5 @@
 
     </main>
     <%- include ('partials/footer') %>
-    <script>
-        function confirmarDelete(event, form){
-          event.preventDefault();
-          var decision = confirm('Deseja mesmo deletar?')
-          if(decision){
-            form.submit()
-          }
-        }
-    </script>
     <script src="/js/methods/especializacoes.js"></script>
-</body>
 </html>
