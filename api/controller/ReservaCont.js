@@ -37,11 +37,11 @@ class ReservaCont {
         const novaReserva = req.body;
         try {
             const novaReservaCriada = await database.Reservas.create(novaReserva);
-            // return res.status(200).json(novaReservaCriada);
-            return novaReservaCriada;
+            return res.status(200).json({ message: 'Criado com sucesso :)'});
+            // return novaReservaCriada;
         } catch (error) {
-            return error.message;
-            // return res.status(500).json({mensagem: error});
+            // return error.message;
+            return res.status(500).json({ mensagem: error });
         }
     }
 
@@ -77,6 +77,15 @@ class ReservaCont {
         } catch (error) {
             return error.message;
         }
+    }
+
+    static async adapter(req, res) {
+        const eventos = {
+            title: await database.Reservas.nomeReserva,
+            start: await database.Reservas.dataInicio,
+            end: await database.Reservas.dataFim
+        }
+            return this.pegaAllRegistrosReservas.eventos
     }
 
 }

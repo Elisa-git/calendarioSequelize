@@ -11,7 +11,10 @@ router
         
         res.render('home', { reservas, locais } ) 
     })
-    .get('/calendario', async (req, res) => { res.render('calendario') })
+    .get('/calendario', async (req, res) => { 
+        const eventos = await ReservaCont.adapter()
+        res.render('calendario', { eventos }) 
+    })
     // .get('/teste', async (req, res) => { 
     //     const reservas = await ReservaCont.pegaAllRegistrosReservas()
     //     res.render('teste', { reservas } ) 
