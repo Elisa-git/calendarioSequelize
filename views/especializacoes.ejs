@@ -54,31 +54,33 @@
                         <h1 id="titulo-modal">Cadastrar Capacitação</h1>
                         <span class="close">&times;</span>
                     </div>
-                    <form>
+                    <form id="form">
+
                         <div class="form">
                             <label for="nomeEspecializacoes" class="Titulo-Campo">Nome Capacitação:</label>
                             <input type="text" name="nomeEspecializacoes" id="nomeEspecializacoes" class="Campo-Modal-Grande" placeholder="AutoPlay" required />
                         </div>
                         <div class="form">
-                            <label for="Pilar" class="Titulo-Campo">Pilar:</label>
-                            <div class="Campo-seletor-Modal-Pequeno" required>
-                                <select name="pilares_id" id="pilares_id" required>
+                            <label for="pilares_id" class="Titulo-Campo">Pilar:</label>
+                            <div class="Campo-seletor-Modal-Pequeno">
+                                <select name="pilares_id" id="pilares_id">
                                     <% pilares.forEach(pilares => { %>
-                                        <option value="<%= pilares.nomePilar %>"> <%= pilares.nomePilar %> </option>
+                                        <option value="<%= pilares.pilares_id %>"> <%= pilares.nomePilar %> </option>
                                     <% }) %>
                                 </select>
                             </div>
                         </div>
-                    </form>
-                    <div class="modal-footer">
-                        <div>
-                            <button id="botaoCancelar">Cancelar</button>
+                        <div calss="modal-footer">
+                            <div>
+                                <button id="botaoCancelar">Cancelar</button>
+                            </div>
+
+                            <div>
+                                <button type="submit" formmethod="post">Confirmar</button>
+                            </div>
                         </div>
 
-                        <div>
-                            <button id="botaoConfirmar" onclick="addCategoria()">Confirmar</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </section>
@@ -114,6 +116,6 @@
           }
         }
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/methods/especializacoes.js"></script>
 </body>
 </html>

@@ -50,7 +50,7 @@
                         <h1 id="titulo-modal">Cadastrar Pilar</h1>
                         <span class="close">&times;</span>
                     </div>
-                    <form method="POST" action="http://localhost:3000/pilares">
+                    <form id="form">
                         <div class="form">
                             <label for="nomePilar" class="Titulo-Campo">Nome Pilar:</label>
                             <input type="text" name="nomePilar" id="nomePilar" class="Campo-Modal-Grande" placeholder="Operacional" required />
@@ -61,7 +61,7 @@
                             </div>
                             
                             <div>
-                                <button type="submit">Confirmar</button>
+                                <button formmethod="post" type="submit">Confirmar</button>
                             </div>
                         </div>
                     </form>
@@ -90,7 +90,6 @@
     </main>
 
     <%- include ('partials/footer') %>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script src="/js/methods/pilares.js"></script>
 </body>
 </html>

@@ -11,9 +11,7 @@ router
     .get('/pilares/:id', PilarCont.pegaUmRegistroPilares)
 
     .post('/pilares', async (req, res) => {
-        const pilares = await PilarCont.criaPilar(req, res)
-        console.log(pilares);
-        res.redirect('pilares')
+        await PilarCont.criaPilar(req, res)
     })
 
     .put('/pilares/:id', PilarCont.atualizaPilar)

@@ -25,7 +25,7 @@ class EspecializacaoCont {
                     id: Number(id)
                 }
             });
-            return res.status(200).json(umaEspecializacao);
+            return res.status(200).json({ mensagem: "Capacitação criada :)" });
         } catch (error) {
             return res.status(500).json({ mensagem: error });
         }
@@ -34,7 +34,11 @@ class EspecializacaoCont {
     static async criaEspecializacao(req, res) {
         const novaEspecializacao = req.body;
         try {
-            const novaEspecializacaoCriada = await database.Especializacoes.create(novaEspecializacao);
+            const novaEspecializacaoCriada = await database.Especializacoes.create(novaEspecializacao, {
+                include: [{
+                    model: database.Pilares
+                }]
+            });
             return res.status(200).json(novaEspecializacaoCriada);
         } catch (error) {
             return res.status(500).json({ mensagem: error });

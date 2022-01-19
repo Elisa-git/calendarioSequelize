@@ -22,7 +22,7 @@ class Locais {
                 console.log(dados.message);
                 setTimeout(()=>{
                     location.reload()
-                }, 2000)
+                }, 900)
             })
         })
     }
