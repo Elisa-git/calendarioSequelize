@@ -14,7 +14,7 @@ class Especializacoes {
         form.addEventListener("submit", async (event) => {
             event.preventDefault()
             const info = new Especializacoes()
-            console.log(info);
+
             await fetch("http://localhost:3000/especializacoes", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
@@ -22,7 +22,7 @@ class Especializacoes {
             }).then(async (response) => {
                 const dados = await response.json()
                 console.log(dados.message);
-                setTimeout(()=>{
+                setTimeout(() => {
                     location.reload()
                 }, 900)    
             })

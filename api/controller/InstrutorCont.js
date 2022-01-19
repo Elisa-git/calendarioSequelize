@@ -34,8 +34,9 @@ class InstrutorConst {
         const novoInstrutor = req.body;
         try {
             const novoInstrutorCriado = await database.Instrutores.create(novoInstrutor);
-            return res.status(200).json(novoInstrutorCriado);
+            return res.status(200).json({ message: 'Criado com sucesso :)' });
         } catch (error) {
+            console.log(error);
             return res.status(500).json({ mensagem: error });
         }
     }

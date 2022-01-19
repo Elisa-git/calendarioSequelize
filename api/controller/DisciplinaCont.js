@@ -36,7 +36,7 @@ class DisciplinaCont {
         const novaDisciplina = req.body;
         try {
             const novaDisciplinaCriada = await database.Disciplinas.create(novaDisciplina);
-            return res.status(200).json({message: "Criado com sucesso!"});
+            return res.status(200).json({message: "Criado com sucesso :)"});
         } catch (error) {
             return res.status(500).json({ mensagem: error });
         }

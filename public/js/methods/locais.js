@@ -20,7 +20,7 @@ class Locais {
             }).then(async (response) => {
                 const dados = await response.json()
                 console.log(dados.message);
-                setTimeout(()=>{
+                setTimeout(() => {
                     location.reload()
                 }, 900)
             })

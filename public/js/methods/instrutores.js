@@ -1,10 +1,13 @@
 window.onload = () => {
-    Disciplinas.adicionar()
+    Instrutores.adicionar()
 }
 
-class Disciplinas {
+class Instrutores {
     constructor() {
-        this.nomeDisciplina = document.querySelector('#nomeDisciplina').value
+        this.nomeInstrutor = document.querySelector('#nomeInstrutor').value
+        this.abreviacao = document.querySelector('#abreviacao').value
+        this.email = document.querySelector('#email').value
+        this.disponibilidade = document.querySelector('#disponibilidade').value
         this.pilares_id = Number(document.querySelector('#pilares_id').value)
     }
 
@@ -13,20 +16,19 @@ class Disciplinas {
 
         form.addEventListener("submit", async (event) => {
             event.preventDefault()
-            const info = new Disciplinas()
+            const info = new Instrutores()
 
-            await fetch("http://localhost:3000/disciplinas", {
+            await fetch("http://localhost:3000/instrutores", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(info)
             }).then(async (response) => {
                 const dados = await response.json()
-                console.log(dados.message);        
+                console.log(dados.message);
                 setTimeout(() => {
                     location.reload()
-                }, 900)
+                }, 900)    
             })
         })
     }
-
 }

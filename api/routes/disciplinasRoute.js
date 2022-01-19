@@ -10,12 +10,15 @@ router
         const disciplinas = await DisciplinaCont.pegaAllRegistrosDisciplinas()
         res.render('disciplinas', { disciplinas, pilares })
     })
-    // .get('/disciplinas', DisciplinaCont.pegaAllRegistrosDisciplinas)
+
     .get('/disciplinas/:id', DisciplinaCont.pegaUmRegistroDisciplina)
+
     .post('/disciplinas', async (req, res) => {
         await DisciplinaCont.criaDisciplina(req, res)
     })
+
     .put('/disciplinas/:id', DisciplinaCont.atualizaDisciplina)
+
     .delete('/disciplinas/:id', DisciplinaCont.deletaDisciplina)
 
 module.exports = router;

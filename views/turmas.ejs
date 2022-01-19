@@ -63,13 +63,13 @@
                         <span class="close">&times;</span>
                     </div>
 
-                    <form>
+                    <form id='form'>
                         <div class="form" required>
                             <label for="especializacoes_id">Capacitação</label>
                             <div class="Campo-seletor-Modal-Pequeno" required>
                                 <select name="especializacoes_id" id="especializacoes_id" required>
-                                    <% especializacoes.forEach(({id, nomeEspecializacoes}) => { %>
-                                        <option value="<%= id %>"> <%= nomeEspecializacoes %> </option>
+                                    <% especializacoes.forEach(especializacoes => { %>
+                                        <option value="<%= especializacoes.id %>"> <%= especializacoes.nomeEspecializacoes %> </option>
                                     <% }) %>
                                 </select>
                             </div>
@@ -94,17 +94,18 @@
                             <label for="numAlunos" class="Titulo-Campo">Número de alunos:</label>
                             <input type="number" name="numAlunos" id="numAlunos" class="Campo-Modal-Grande" placeholder="15" required />
                         </div>
+
+                        <div class="modal-footer">
+                            <div>
+                                <button id="botaoCancelar">Cancelar</button>
+                            </div>
+
+                            <div>
+                                <button type="submit">Confirmar</button>
+                            </div>
+                        </div>
+
                     </form>
-
-                    <div class="modal-footer">
-                        <div>
-                            <button id="botaoCancelar">Cancelar</button>
-                        </div>
-
-                        <div>
-                            <button id="botaoConfirmar" onclick="addCategoria()">Confirmar</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -113,8 +114,8 @@
             <table id="tbl">
                 
                 <tr id="atributos">
-                    <th>Turma</th>
                     <th>Capacitação</th>
+                    <th>Turma</th>
                     <th>Data Início</th>
                     <th>Data Fim</th>
                     <th>Alunos</th>
@@ -122,25 +123,24 @@
                 </tr>
                 <% turmas.forEach(turmas => { %>
                 <tr class="tableRow">
-                    <td><%= turmas.nomeTurma%></td>
-                    <td><%= turmas.Especializaco.nomeEspecializacoes%></td>
-                    <td><%= turmas.dataInicio%></td>
-                    <td><%= turmas.dataFim%></td>
-                    <td><%= turmas.numAlunos%></td>
+                    <td> <%= turmas.Especializaco.nomeEspecializacoes %> </td>
+                    <td> <%= turmas.codTurma %> </td>
+                    <td> <%= turmas.dataInicio %> </td>
+                    <td> <%= turmas.dataFim %> </td>
+                    <td> <%= turmas.numAlunos %> </td>
                     <td>
-                    <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
-                    <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
+                        <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
+                        <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
                     </td>
                 </tr>
                 <% }) %>
->>>>>>> def8d01396f2ddfff3d9901a96c7498eaf1f8816
             </table>
         </section>
 
     </main>
 
     <%- include ('partials/footer') %>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/methods/tumas.js"></script>
 
 </body>
 </html>
