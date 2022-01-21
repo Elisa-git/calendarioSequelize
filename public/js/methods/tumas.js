@@ -9,13 +9,18 @@ class Turmas {
         this.especializacoes_id = Number(document.querySelector('#especializacoes_id').value)
     }
 
+    // Adicona dados
+
     static adicionar() {
+        // Seleciona todos com o id form
         const form = document.querySelector('#form')
 
+        // Listener que criará o elemento quando o evento de submit for acionado
         form.addEventListener('submit', async (event) => {
-            event.preventDefault()
-            const info = new Turmas()
+            event.preventDefault()          //Não recarrega a página
+            const info = new Turmas()          //Não recarrega a página
 
+            // Requisição
             await fetch("http://localhost:3000/turmas", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
@@ -23,6 +28,8 @@ class Turmas {
             }).then(async (response) => {
                 const dados = await response.json()
                 console.log(dados.message);
+
+                // Recarrega a página
                 setTimeout(() => {
                     location.reload()
                 }, 900)
@@ -30,19 +37,32 @@ class Turmas {
         })
     }
 
-    static deletar() {
-        const todos = document.querySelectorAll('.tableRow')
+    // Apagar dados
 
+    static deletar() {
+        // Seleciona todos com o id apagar
+        const todos = document.querySelectorAll('#apagar')
+
+        // Percorre os elementos com o id selecionado
         todos.forEach(function(todos) {
+
+            // Listener que apagará o elemento quando o evento de clique for acionado
             todos.addEventListener("click", async function() {
                 let id = document.getElementById('id').textContent
                 this.remove()
-                // console.log(id);
+
+                // Requisição
                 await fetch(`http://localhost:3000/turmas/${id}`, {
                     method: "DELETE"
                 }).then(async (response) => {
+                    this.remove()
                     const dados = await response.json()
                     console.log(dados.message);
+
+                    // Recarrega a página
+                    setTimeout(() => {
+                        location.reload()
+                    })
                 })
             })            
         })

@@ -13,13 +13,18 @@ class Reservas {
         this.locais_id = Number(document.querySelector('#locais_id').value)
     }
 
-    static adicionar() {
+    // Adiciona elemento
+
+    static adicionar() {        
+        // Seleciona todos com o id form
         const form = document.querySelector('#form')
 
+        // Listener que criará o elemento quando o evento de submit for acionado
         form.addEventListener("submit", async (event) => {
-            event.preventDefault()
-            const info = new Reservas()
+            event.preventDefault()          //Não recarrega a página
+            const info = new Reservas()          //Não recarrega a página
 
+            // Requisição
             await fetch("http://localhost:3000/reservas", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
@@ -27,6 +32,8 @@ class Reservas {
             }).then(async (response) => {
                 const dados = await response.json()
                 console.log(dados.message);
+
+                // Recarrega a página
                 setTimeout(() => {
                     location.reload()
                 }, 900)
@@ -34,19 +41,32 @@ class Reservas {
         })
     }
 
-    static deletar() {
-        const todos = document.querySelectorAll('.tableRow')
+    // Apagar dados
 
+    static deletar() {
+        // Seleciona todos com o id apagar
+        const todos = document.querySelectorAll('#apagar')
+
+        // Percorre os elementos com o id selecionado
         todos.forEach(function(todos) {
+
+            // Listener que apagará o elemento quando o evento de clique for acionado
             todos.addEventListener("click", async function() {
                 let id = document.getElementById('id').textContent
                 this.remove()
-                // console.log(id);
+                                
+                // Requisição
                 await fetch(`http://localhost:3000/reservas/${id}`, {
                     method: "DELETE"
                 }).then(async (response) => {
+                    this.remove()
                     const dados = await response.json()
                     console.log(dados.message);
+                                        
+                    // Recarrega a página
+                    setTimeout(() => {
+                        location.reload()
+                    })
                 })
             })            
         })

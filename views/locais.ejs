@@ -109,7 +109,7 @@
             </tr>
             <% locais.forEach(locais=> { %>
               <tr class="tableRow">
-                <td hidden id="id"> <%= locais.id %> </td>
+                <td type="hidden" id="id"> <%= locais.id %> </td>
                 <td> <%= locais.nomeLocal %> </td>
                 <td> <%= locais.capacidade %> </td>
                 <td> <% if (locais.sistemas==0) { %>
@@ -123,7 +123,7 @@
                   <button id="apagar" class="crud botaoApagar" type="submit"> <img src="img/delete.png" width="17px" height="17px"> </button>
                 </td>
               </tr>
-              <% }) %>
+            <% }) %>
           </table>
         </section>
 
