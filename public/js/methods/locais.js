@@ -44,6 +44,7 @@ class Locais {
             })            
         })
     }
+
 }
 
 Locais.adicionar()

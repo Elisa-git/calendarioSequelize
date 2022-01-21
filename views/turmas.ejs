@@ -122,17 +122,18 @@
                     <th id="colunaCrud"></th>
                 </tr>
                 <% turmas.forEach(turmas => { %>
-                <tr class="tableRow">
-                    <td> <%= turmas.Especializaco.nomeEspecializacoes %> </td>
-                    <td> <%= turmas.codTurma %> </td>
-                    <td> <%= turmas.dataInicio %> </td>
-                    <td> <%= turmas.dataFim %> </td>
-                    <td> <%= turmas.numAlunos %> </td>
-                    <td>
-                        <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
-                        <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
-                    </td>
-                </tr>
+                    <tr class="tableRow">
+                        <td hidden id="id"> <%= turmas.id %> </td>
+                        <td> <%= turmas.Especializaco.nomeEspecializacoes %> </td>
+                        <td> <%= turmas.codTurma %> </td>
+                        <td> <%= turmas.dataInicio %> </td>
+                        <td> <%= turmas.dataFim %> </td>
+                        <td> <%= turmas.numAlunos %> </td>
+                        <td>
+                            <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
+                            <button id="apagar" class="crud botaoApagar" type="submit"> <img src="img/delete.png" width="17px" height="17px"> </button>
+                        </td>
+                    </tr>
                 <% }) %>
             </table>
         </section>

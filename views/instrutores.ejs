@@ -129,6 +129,7 @@
                 </tr>
                 <% instrutores.forEach(instrutores => { %>
                     <tr class="tableRow">
+                        <td hidden id="id"> <%= instrutores.id %> </td>
                         <td> <%= instrutores.nomeInstrutor %> </td>
                         <td> <%= instrutores.abreviacao %> </td>
                         <td> <%= instrutores.email %> </td>
@@ -136,7 +137,7 @@
                         <td> <%= instrutores.Pilare.nomePilar %> </td>
                         <td>
                             <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
-                            <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
+                            <button id="apagar" class="crud botaoApagar" type="submit"> <img src="img/delete.png" width="17px" height="17px"> </button>
                         </td>
                     </tr>
                 <% }) %>
