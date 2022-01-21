@@ -64,21 +64,6 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        nomeReserva: 'Nome',
-        descricao: 'Formação dos alunos da Autocode 20202/1',
-        dataInicio: '2022-01-05',
-        dataFim: '2022-03-07',
-        hrInicio: '11:00:00',
-        hrFim: '17:00:00',
-        cor: '#F4A460',
-        instrutores_id: 2,
-        turmas_id: 1,
-        disciplinas_id: 2,
-        locais_id: 25,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
         nomeReserva: 'Formação Autocode',
         descricao: 'Formação dos alunos da Autocode 20202/1',
         dataInicio: '2022-01-05',
@@ -89,7 +74,7 @@ module.exports = {
         instrutores_id: 3,
         turmas_id: 1,
         disciplinas_id: 1,
-        locais_id: 23,
+        locais_id: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -104,7 +89,7 @@ module.exports = {
         instrutores_id: 2,
         turmas_id: 1,
         disciplinas_id: 1,
-        locais_id: 22,
+        locais_id: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       }

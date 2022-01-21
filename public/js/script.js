@@ -16,5 +16,3 @@ $('#botaoPesquisar').keyup(function() {
         return !~text.indexOf(val);
     }).hide();
 });
-
-// funcao para pegar formulario

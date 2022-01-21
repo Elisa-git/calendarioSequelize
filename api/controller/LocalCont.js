@@ -33,7 +33,7 @@ class LocalCont {
 
         try {
             const novoLocalCriado = await database.Locais.create(novoLocal);
-            return res.status(200).json({message: "Criado com sucesso!"});
+            return res.status(200).json({ message: "Criado com sucesso!" });
             // return novoLocalCriado;
         } catch (error) {
             return res.status(500).json({mensagem: error});
@@ -63,17 +63,17 @@ class LocalCont {
 
     static async deletaLocal(req, res) {
         const { id } = req.params;
+        console.log(id);
         try {
             await database.Locais.destroy({
                 where: {
                     id: Number(id)
                 }
             });
-            // return res.status(200).json({ mensagem: `id ${id} deletado com sucesso!` });
-            return
+            return res.status(200).json({ mensagem: `id ${id} deletado com sucesso!` });
         } catch (error) {
-            // return res.status(500).json({ mensagem: error });
-            return error.message
+            return res.status(500).json({ mensagem: error.message })
+            // return error.message
         }
     }
 }
