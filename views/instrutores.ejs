@@ -62,7 +62,6 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 id="titulo-modal">Cadastrar Instrutor</h1>
-                        <span class="close">&times;</span>
                     </div>
                     <form id="form">
                         
@@ -106,7 +105,6 @@
                             <div>
                                 <button id="botaoCancelar">Cancelar</button>
                             </div>
-
                             <div>
                                 <button formmethod="post" type="submit">Confirmar</button>
                             </div>
@@ -115,6 +113,66 @@
                     </form>
                 </div>
             </div>
+        </section>
+
+        <!-- MODAL EDITAR -->
+
+        <section>
+            <div id="modalEditar" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="titulo-modal">Editar Instrutor</h1>
+                    </div>
+                    <form>
+                        <div class="form">
+                            <label for="nomeInstrutor" class="Titulo-Campo">Nome Instrutor:</label>
+                            <input type="text" name="nomeInstrutor" id="nomeInstrutor" class="Campo-Modal-Grande" placeholder="Fernando Carreira" required />
+                        </div>
+                        
+                        <div class="form">
+                            <label for="abreviacao" class="Titulo-Campo">Abreviação:</label>
+                            <input type="text" name="abreviacao" id="abreviacao" class="Campo-Modal-Grande" placeholder="Fernando" required />
+                        </div>
+                          
+                        <div class="form" required>
+                            <label for="Pilar" class="Titulo-Campo">Pilar:</label>
+                            <div class="Campo-seletor-Modal-Pequeno" required>
+                                <select name="pilares_id" id="pilares_id" required>
+                                    <% pilares.forEach(pilares => { %>
+                                        <option value="<%= pilares.nomePilar %>"> <%= pilares.nomePilar %> </option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form">
+                            <label for="email" class="Titulo-Campo">Email:</label>
+                            <input type="text" name="email" id="email" class="Campo-Modal-Grande" placeholder="exemplo@autoglass.com.br" required />
+                        </div>
+                        
+                        <div class="form" required>
+                            <label for="disponibilidade">Disponibilidade</label>
+                            <select name="select" id="Setor" required>
+                                <option hidden>Disponibilidade</option>
+                                <option value="valor1">Disponível</option>
+                                <option value="valor2">Atestado</option>
+                                <option value="valor3">Licença</option>
+                                <option value="valor3">Férias</option>
+                                <option value="valor4">Desligado</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                          <div>
+                              <button id="botaoCancelarEditar">Cancelar</button>
+                          </div>
+
+                          <div>
+                              <button id="botaoConfirmar" >Confirmar</button>
+                          </div>
+                      </div>
+                    </form>
+                </div>
+            </div>      
         </section>
 
         <section>
