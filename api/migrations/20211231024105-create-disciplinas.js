@@ -16,6 +16,10 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {model: 'Pilares', key: 'id'}
       },
+      deletedAt: {
+        allowNull: true,
+        type: Sequelize.DATE
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

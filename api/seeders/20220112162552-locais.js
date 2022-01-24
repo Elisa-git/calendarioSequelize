@@ -18,7 +18,28 @@ module.exports = {
         updatedAt: new Date()
       },
       {
+        nomeLocal: 'Sala 3',
+        sistemas: 0,
+        capacidade: 21,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        nomeLocal: 'Sala 4',
+        sistemas: 1,
+        capacidade: 13,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
         nomeLocal: 'Área Externa 1',
+        sistemas: 0,
+        capacidade: 20,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        nomeLocal: 'Área Externa 2',
         sistemas: 0,
         capacidade: 20,
         createdAt: new Date(),

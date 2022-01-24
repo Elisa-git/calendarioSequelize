@@ -10,10 +10,15 @@ router
         const pilares = await PilarCont.pegaAllRegistrosPilares()
         res.render('instrutores', { instrutores, pilares })
     })    
-    // .get('/instrutores', InstrutorConst.pegaAllRegistrosInstrutores)
+
     .get('/instrutores/:id', InstrutorConst.pegaUmRegistroInstrutor)
-    .post('/instrutores', InstrutorConst.criaInstrutor)
+
+    .post('/instrutores', async (req, res) => {
+        await InstrutorConst.criaInstrutor(req, res)
+    })
+
     .put('/instrutores/:id', InstrutorConst.atualizaInstrutor)
+
     .delete('/instrutores/:id', InstrutorConst.deletaInstrutor)
 
 module.exports = router;

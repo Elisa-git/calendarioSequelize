@@ -3,7 +3,11 @@ const database = require('../models')
 class TurmasCont {
     static async pegaAllRegistrosTurmas(req, res) {
         try {
-            const allRegistrosTurmas = await database.Turmas.findAll();
+            const allRegistrosTurmas = await database.Turmas.findAll({
+                include: [{
+                    model: database.Especializacoes
+                }]
+            });
             // return res.status(200).json(allRegistrosTurmas);
             return allRegistrosTurmas;
         } catch (error) {

@@ -4,7 +4,11 @@ class EspecializacaoCont {
 
     static async pegaAllRegistrosEspecializacoes(req, res) {
         try {
-            const allRegistrosEspecializacoes = await database.Especializacoes.findAll();
+            const allRegistrosEspecializacoes = await database.Especializacoes.findAll({
+                include: [{
+                    model: database.Pilares
+                }]
+            });
             return allRegistrosEspecializacoes;
             // return res.status(200).json(allRegistrosEspecializacoes); 
         } catch (error) {
@@ -23,7 +27,7 @@ class EspecializacaoCont {
             });
             return res.status(200).json(umaEspecializacao);
         } catch (error) {
-            return res.status(500).json({ mensagem: error });
+            return res.status(500).json({ message: error });
         }
     }
 
@@ -31,9 +35,10 @@ class EspecializacaoCont {
         const novaEspecializacao = req.body;
         try {
             const novaEspecializacaoCriada = await database.Especializacoes.create(novaEspecializacao);
-            return res.status(200).json(novaEspecializacaoCriada);
+            return res.status(200).json({ message: 'Capacitação criada :)'});
         } catch (error) {
-            return res.status(500).json({ mensagem: error });
+            console.log(error);
+            return res.status(500).json({ message: error });
         }
     }
 

@@ -16,10 +16,16 @@ router
         const reservas = await ReservaCont.pegaAllRegistrosReservas()
         res.render('reservas', { reservas, instrutores, turmas, disciplinas, locais })
     })
-    // .get('/reservas', ReservaCont.pegaAllRegistrosReservas)
+
     .get('/reservas/:id', ReservaCont.pegaUmRegistroReserva)
-    .post('/reservas', ReservaCont.criaReserva)
+
+    .post('/reservas', async(req, res) => {
+        await ReservaCont.criaReserva(req, res)
+    })
+
     .put('/reservas/:id', ReservaCont.atualizaReserva)
+
     .delete('/reservas/:id', ReservaCont.deletaReserva)
+
 
 module.exports = router;

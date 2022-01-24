@@ -1,9 +1,15 @@
 const database = require('../models');
+const express = require('express')
+const router = express.Router()
+
 
 class DisciplinaCont {
     static async pegaAllRegistrosDisciplinas(req, res) {
         try {
-            const allRegistrosDisciplinas = await database.Disciplinas.findAll({raw: true, order:[['id', 'DESC']]});
+            const allRegistrosDisciplinas = await database.Disciplinas.findAll({
+                include: [{model:database.Pilares}]
+            }, {raw: true, order:[['id', 'DESC']]});
+
             // return res.status(200).json(allRegistrosDisciplinas);
             return allRegistrosDisciplinas;
         } catch (error) {
@@ -30,7 +36,7 @@ class DisciplinaCont {
         const novaDisciplina = req.body;
         try {
             const novaDisciplinaCriada = await database.Disciplinas.create(novaDisciplina);
-            return res.status(500).json(novaDisciplinaCriada);
+            return res.status(200).json({message: "Criado com sucesso :)"});
         } catch (error) {
             return res.status(500).json({ mensagem: error });
         }
@@ -70,5 +76,26 @@ class DisciplinaCont {
         }
     }
 }
+router.post('/disciplinas/apagar', (req, res) => {
+    var id = req.body.id
+    if (id != undefined) {
+
+        if (!isNaN(id)) {
+
+            Disciplinas.destroy({
+                where: {
+                    id: id
+                }
+            }).then(() => {
+                res.redirect('/disciplinas')
+            })
+
+        } else {     //Se não for um número
+            res.redirect('/disciplinas')
+        }
+    } else {     //Se for nullo
+        res.redirect('/disciplinas')
+    }
+})
 
 module.exports = DisciplinaCont;

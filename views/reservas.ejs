@@ -73,7 +73,7 @@
             <div id="myModal" class="modal">
                 <div class="modal-content">
                 
-                    <form method="post" action="salvaraula">
+                    <form id="form">
                         <div class="modal-header">
                             <h1 id="titulo-modal">Reservar Evento</h1>
                         </div>
@@ -88,8 +88,8 @@
                                 <label for="turmas_id">Turma</label>
                                 <select name="turmas_id" id="turmas_id" required>
                                     <option hidden>Turma</option>
-                                    <% reservas.forEach(reservas => { %>
-                                        <option value="<%= reservas.turmas_id %>"> <%= reservas.turmas_id %> </option>
+                                    <% turmas.forEach(turmas => { %>
+                                        <option value="<%= turmas.id %>"> <%= turmas.Especializaco.nomeEspecializacoes %> <%= turmas.codTurma %> </option>
                                     <% }) %>
                                 </select>
                             </div>
@@ -97,8 +97,8 @@
                                 <label for="instrutores_id">Instrutor</label>
                                 <select name="instrutores_id" id="instrutores_id" required>
                                     <option hidden>Instrutor</option>
-                                    <% reservas.forEach(reservas => { %>
-                                        <option value="<%= reservas.instrutores_id %>"> <%= reservas.instrutores_id %> </option>
+                                    <% instrutores.forEach(instrutores => { %>
+                                        <option value="<%= instrutores.id %>"> <%= instrutores.nomeInstrutor %> </option>
                                     <% }) %>                           
                                 </select>
                             </div>
@@ -109,8 +109,8 @@
                                 <label for="local">Local</label>
                                 <select name="local" id="local" required>
                                     <option hidden>Local</option>
-                                    <% reservas.forEach(reservas => { %>
-                                        <option value="<%= reservas.locais_id %>"> <%= reservas.locais_id %> </option>
+                                    <% locais.forEach(locais => { %>
+                                        <option value="<%= locais.id %>"> <%= locais.nomeLocal %> </option>
                                     <% }) %>
                                 </select>
                             </div>
@@ -118,8 +118,8 @@
                                 <label for="disciplinas_id">Disciplina</label>
                                 <select name="disciplinas_id" id="disciplinas_id" required>
                                     <option hidden>Disciplina</option>
-                                    <% reservas.forEach(reservas => { %>
-                                        <option value="<%= reservas.disciplinas_id %>"> <%= reservas.disciplinas_id %> </option>
+                                    <% disciplinas.forEach(disciplinas=> { %>
+                                        <option value="<%= disciplinas.id %>"> <%= disciplinas.nomeDisciplina %> </option>
                                     <% }) %>
                                 </select>
                             </div>
@@ -159,7 +159,7 @@
                                 <button id="botaoCancelar">Cancelar</button>
                             </div>
                             <div>
-                                <button id="botaoConfirmar" onclick="addAula()">Confirmar</button>
+                                <button type="submit">Confirmar</button>
                             </div>
                         </div>
                     </form>
@@ -282,16 +282,17 @@
                 
                 <% reservas.forEach(reservas => { %>
                     <tr class="tableRow">
-                        <td> <%= reservas.nomeReserva %> </td>
-                        <td> <%= reservas.instrutores_id %> </td>
-                        <td> <%= reservas.turmas_id %> </td>
-                        <td> <%= reservas.disciplinas_id %> </td>
-                        <td> <%= reservas.locais_id %> </td>
-                        <td> <%= reservas.dataInicio %> </td>
-                        <td> <%= reservas.hrInicio %> - <%= reservas.hrFim %> </td>
+                        <td hidden id="id"> <%= reservas.id %> </td>
+                        <td> <%= reservas.nomeReserva%> </td>
+                        <td> <%= reservas.Instrutore.nomeInstrutor%> </td>
+                        <td> <%= reservas.Turma.nomeTurma%> </td>
+                        <td> <%= reservas.Disciplina.nomeDisciplina%> </td>
+                        <td> <%= reservas.Locai.nomeLocal%> </td>
+                        <td> <%= reservas.dataInicio%> </td>
+                        <td> <%= reservas.hrInicio%> - <%= reservas.hrFim%> </td>
                         <td>
-                            <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
-                            <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
+                            <button class="crud botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
+                            <button id="apagar" class="crud botaoApagar" type="submit"> <img src="img/delete.png" width="17px" height="17px"> </button>
                         </td>
                     </tr>
                 <% }) %>
@@ -301,6 +302,7 @@
     </main>
 
     <%- include ('partials/footer') %>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/methods/reservas.js"></script>
+
 </body>
 </html>

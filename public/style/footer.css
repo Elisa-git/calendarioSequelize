@@ -3,12 +3,12 @@
   padding: 0;
 }
 .Fundo {
-  background-color: rgb(12, 12, 136);
+  background-color: #183884;
   padding: 0;
   margin: 0;
 }
 .footerBg {
-  background-color: rgb(24, 56, 132);
+  background-color: #183884;
   z-index: 13;
   min-height: 48px;
   display: flex;

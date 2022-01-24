@@ -1,9 +1,16 @@
 const database = require('../models')
 
 class ReservaCont {
-    static async pegaAllRegistrosReservas() {
+    static async pegaAllRegistrosReservas(req, res) {
         try {
-            const allRegistrosReservas = await database.Reservas.findAll();
+            const allRegistrosReservas = await database.Reservas.findAll({
+                include: [
+                    { model: database.Instrutores },
+                    { model: database.Turmas },
+                    { model: database.Disciplinas },
+                    { model: database.Locais }
+                ]
+            }, {raw: true, order:[['id', 'DESC']]});
             // return res.status(200).json(allRegistrosReservas)
             return allRegistrosReservas;
         } catch (error) {
@@ -30,11 +37,11 @@ class ReservaCont {
         const novaReserva = req.body;
         try {
             const novaReservaCriada = await database.Reservas.create(novaReserva);
-            // return res.status(200).json(novaReservaCriada);
-            return novaReservaCriada;
+            return res.status(200).json({ message: 'Criado com sucesso :)'});
+            // return novaReservaCriada;
         } catch (error) {
-            return error.message;
-            // return res.status(500).json({mensagem: error});
+            // return error.message;
+            return res.status(500).json({ mensagem: error });
         }
     }
 
@@ -70,6 +77,15 @@ class ReservaCont {
         } catch (error) {
             return error.message;
         }
+    }
+
+    static async adapter(req, res) {
+        const eventos = {
+            title: await database.Reservas.nomeReserva,
+            start: await database.Reservas.dataInicio,
+            end: await database.Reservas.dataFim
+        }
+            return this.pegaAllRegistrosReservas.eventos
     }
 
 }

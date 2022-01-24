@@ -6,11 +6,14 @@ const router = Router();
 router
     .get('/pilares', async (req, res) => { 
         const pilares = await PilarCont.pegaAllRegistrosPilares()
-        console.log(pilares);
         res.render('pilares', { pilares })
     })
     .get('/pilares/:id', PilarCont.pegaUmRegistroPilares)
-    .post('/pilares', PilarCont.criaPilar)
+
+    .post('/pilares', async (req, res) => {
+        await PilarCont.criaPilar(req, res)
+    })
+
     .put('/pilares/:id', PilarCont.atualizaPilar)
     .delete('/pilares/:id', PilarCont.deletaPilar)
 

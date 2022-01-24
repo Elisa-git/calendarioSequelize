@@ -63,7 +63,8 @@
                     <div class="modal-header">
                         <h1 id="titulo-modal">Cadastrar Instrutor</h1>
                     </div>
-                    <form>
+                    <form id="form">
+                        
                         <div class="form">
                             <label for="nomeInstrutor" class="Titulo-Campo">Nome Instrutor:</label>
                             <input type="text" name="nomeInstrutor" id="nomeInstrutor" class="Campo-Modal-Grande" placeholder="Fernando Carreira" required />
@@ -75,11 +76,11 @@
                         </div>
                           
                         <div class="form" required>
-                            <label for="Pilar" class="Titulo-Campo">Pilar:</label>
-                            <div class="Campo-seletor-Modal-Pequeno" required>
-                                <select name="pilares_id" id="pilares_id" required>
+                            <label for="pilares_id" class="Titulo-Campo">Pilar:</label>
+                            <div class="Campo-seletor-Modal-Pequeno">
+                                <select name="pilares_id" id="pilares_id">
                                     <% pilares.forEach(pilares => { %>
-                                        <option value="<%= pilares.nomePilar %>"> <%= pilares.nomePilar %> </option>
+                                        <option value="<%= pilares.id %>"> <%= pilares.nomePilar %> </option>
                                     <% }) %>
                                 </select>
                             </div>
@@ -92,25 +93,24 @@
                         
                         <div class="form" required>
                             <label for="disponibilidade">Disponibilidade</label>
-                            <select name="select" id="Setor" required>
-                                <option hidden>Disponibilidade</option>
-                                <option value="valor1">Disponível</option>
-                                <option value="valor2">Atestado</option>
-                                <option value="valor3">Licença</option>
-                                <option value="valor3">Férias</option>
-                                <option value="valor4">Desligado</option>
+                            <select name="select" id="disponibilidade" required>
+                                <option value="Disponível">Disponível</option>
+                                <option value="Atestado">Atestado</option>
+                                <option value="Licença">Licença</option>
+                                <option value="Férias">Férias</option>
+                                <option value="Desligado">Desligado</option>
                             </select>
                         </div>
-                    </form>
-                    <div class="modal-footer">
-                        <div>
-                            <button id="botaoCancelar">Cancelar</button>
+                        <div class="modal-footer">
+                            <div>
+                                <button id="botaoCancelar">Cancelar</button>
+                            </div>
+                            <div>
+                                <button formmethod="post" type="submit">Confirmar</button>
+                            </div>
                         </div>
 
-                        <div>
-                            <button id="botaoConfirmar" onclick="">Confirmar</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </section>
@@ -161,18 +161,18 @@
                                 <option value="valor4">Desligado</option>
                             </select>
                         </div>
-                    </form>
-                    <div class="modal-footer">
-                        <div>
-                            <button id="botaoCancelarEditar">Cancelar</button>
-                        </div>
+                        <div class="modal-footer">
+                          <div>
+                              <button id="botaoCancelarEditar">Cancelar</button>
+                          </div>
 
-                        <div>
-                            <button id="botaoConfirmar" >Confirmar</button>
-                        </div>
-                    </div>
+                          <div>
+                              <button id="botaoConfirmar" >Confirmar</button>
+                          </div>
+                      </div>
+                    </form>
                 </div>
-            </div>
+            </div>      
         </section>
 
         <section>
@@ -187,14 +187,15 @@
                 </tr>
                 <% instrutores.forEach(instrutores => { %>
                     <tr class="tableRow">
+                        <td hidden id="id"> <%= instrutores.id %> </td>
                         <td> <%= instrutores.nomeInstrutor %> </td>
                         <td> <%= instrutores.abreviacao %> </td>
                         <td> <%= instrutores.email %> </td>
                         <td> <%= instrutores.disponibilidade %> </td>
-                        <td> <%= instrutores.pilares_id %> </td>
+                        <td> <%= instrutores.Pilare.nomePilar %> </td>
                         <td>
-                            <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
-                            <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
+                            <button class="crud botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
+                            <button id="apagar" class="crud botaoApagar" type="submit"> <img src="img/delete.png" width="17px" height="17px"> </button>
                         </td>
                     </tr>
                 <% }) %>
@@ -204,7 +205,7 @@
     </main>
 
     <%- include ('partials/footer') %>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/methods/instrutores.js"></script>
 
 </body>
 </html>

@@ -10,9 +10,15 @@ router
         const pilares = await PilarCont.pegaAllRegistrosPilares()
         res.render('especializacoes', { especializacoes, pilares })
     })
+    
     .get('/especializacoes/:id', EspecializacaoCont.pegaUmRegistroEspecializacao)
-    .post('/especializacoes', EspecializacaoCont.criaEspecializacao)
+    
+    .post('/especializacoes', async (req, res) => {
+        await EspecializacaoCont.criaEspecializacao(req, res)
+    })
+    
     .put('/especializacoes/:id', EspecializacaoCont.atualizaEspecializacao)
+    
     .delete('/especializacoes/:id', EspecializacaoCont.deletaEspecializacao)
 
 module.exports = router;
