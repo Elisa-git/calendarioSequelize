@@ -60,6 +60,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 id="titulo-modal">Cadastrar Turma</h1>
+                        <span class="close">&times;</span>
                     </div>
 
                     <form id='form'>
@@ -98,66 +99,12 @@
                             <div>
                                 <button id="botaoCancelar">Cancelar</button>
                             </div>
-                            
+
                             <div>
                                 <button type="submit">Confirmar</button>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </section>
 
-        <!-- MODAL EDITAR -->
-
-        <section>
-            <div id="modalEditar" class="modal">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 id="titulo-modal">Editar Turma</h1>
-                    </div>
-
-                    <form>
-                        <div class="form" required>
-                            <label for="setor">Capacitação</label>
-                            <div class="Campo-seletor-Modal-Pequeno" required>
-                                <select name="especializacoes_id" id="especializacoes_id" required>
-                                    <% turmas.forEach(turmas => { %>
-                                        <option value="<%= turmas.especializacoes_id %>"> <%= turmas.especializacoes_id %> </option>
-                                    <% }) %>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form">
-                            <label for="codTurma" class="Titulo-Campo">Código Turma:</label>
-                            <input type="text" name="codTurma" id="codTurma" class="Campo-Modal-Grande" placeholder="Autoplay" required />
-                        </div>
-                        
-                        <div class="form">
-                            <label for="abreviacao" class="Titulo-Campo">Data Inicio:</label>
-                            <input type="date" id="dataInicio" name="dataInicio">
-                        </div>
-                        
-                        <div class="form">
-                            <label for="abreviacao" class="Titulo-Campo">Data Fim:</label>
-                            <input type="date" id="dataFim" name="dataFim">
-                        </div>
-                        
-                        <div class="form">
-                            <label for="alunos" class="Titulo-Campo">Número de alunos:</label>
-                            <input type="number" id="alunos" class="Campo-Modal-Grande" placeholder="15" required />
-                        </div>
-                        
-                        <div class="modal-footer">
-                          <div>
-                              <button id="botaoCancelarEditar">Cancelar</button>
-                          </div>
-
-                          <div>
-                              <button id="botaoConfirmar" onclick="">Confirmar</button>
-                          </div>
-                        </div>
                     </form>
                 </div>
             </div>
