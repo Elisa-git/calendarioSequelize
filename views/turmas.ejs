@@ -55,6 +55,8 @@
             </div>
         </section>
 
+        <!-- MODAL ADICIONAR -->
+
         <section>
             <div id="myModal" class="modal">
                 <div class="modal-content">
@@ -110,6 +112,61 @@
             </div>
         </section>
 
+        <!-- MODAL EDITAR -->
+
+        <section>
+            <div id="modalEditar" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="titulo-modal">Editar Turma</h1>
+                    </div>
+
+                    <form id="form">
+                        <div class="form" required>
+                            <label for="especializacoes_id">Capacitação</label>
+                            <div class="Campo-seletor-Modal-Pequeno" required>
+                                <select name="especializacoes_id" id="especializacoes_idEdit" required>
+                                    <% turmas.forEach(turmas => { %>
+                                        <option value="<%= turmas.especializacoes_id %>"> <%= turmas.especializacoes_id %> </option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form">
+                            <label for="codTurmaEdit" class="Titulo-Campo">Código Turma:</label>
+                            <input type="text" name="codTurmaEdit" id="codTurmaEdit" class="Campo-Modal-Grande" placeholder="Autoplay" required />
+                        </div>
+                        
+                        <div class="form">
+                            <label for="dataInicioEdit" class="Titulo-Campo">Data Inicio:</label>
+                            <input type="date" id="dataInicioEdit" name="dataInicioEdit">
+                        </div>
+                        
+                        <div class="form">
+                            <label for="dataFimEdit" class="Titulo-Campo">Data Fim:</label>
+                            <input type="date" id="dataFimEdit" name="dataFimEdit">
+                        </div>
+                        
+                        <div class="form">
+                            <label for="alunosEdit" class="Titulo-Campo">Número de alunos:</label>
+                            <input type="number" name="alunosEdit" id="alunosEdit" class="Campo-Modal-Grande" placeholder="15" required />
+                        </div>
+                    </form>
+
+                    <div class="modal-footer">
+                        <div>
+                            <button id="botaoCancelarEditar">Cancelar</button>
+                        </div>
+
+                        <div>
+                            <button id="botaoConfirmar" type="submit">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section>
             <table id="tbl">
                 
@@ -130,8 +187,8 @@
                         <td> <%= turmas.dataFim %> </td>
                         <td> <%= turmas.numAlunos %> </td>
                         <td>
-                            <button class="crud botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
-                            <button id="apagar" class="crud botaoApagar" type="submit"> <img src="img/delete.png" width="17px" height="17px"> </button>
+                            <button id="botaoEditar" class="crud"><img src="img/edit.png"  width="16px" height="16px"></button >
+                            <button id="botaoApagar" class="crud" type="submit"> <img src="img/delete.png" width="17px" height="17px"> </button>
                         </td>
                     </tr>
                 <% }) %>

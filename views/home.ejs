@@ -26,7 +26,9 @@
                 <div class="container-salas">
                     <div id="dia-selecionado">
 
-                        <div id="daycalendar"></div>
+                        <div id="daycalendar">
+                            <p hidden id="today"></p>
+                        </div>
                         <!-- <button id="botaofullscreen"><img src="img/full-screen.png"  width="26px" onclick="openFullscreen()" onclick="closeFullscreen()"></button> -->
                     </div>
             
@@ -54,13 +56,16 @@
                                 <div class="box">
                                     <h3> <%= locais.nomeLocal %> </h3>
                                     <% reservas.forEach(reservas => { %>
-                                        <div class="agendado" style="background-color: <%= reservas.cor %> ;">
-                                            <ul>
-                                                <li> <%= reservas.Instrutore.nomeInstrutor %> </li>
-                                                <li> <%= reservas.hrInicio %> - <%= reservas.hrFim %> </li>
-                                                <li> <%= reservas.Turma.codTurma %> </li>
-                                            </ul>
-                                        </div>
+                                        <% var today = document.getElementById('today').textContent %>
+                                        <% if (today === reservas.dataFim) { %>
+                                            <div class="agendado" style="background-color: <%= reservas.cor %> ;">
+                                                <ul>
+                                                    <li> <%= reservas.Instrutore.nomeInstrutor %> </li>
+                                                    <li> <%= reservas.hrInicio %> - <%= reservas.hrFim %> </li>
+                                                    <li> <%= reservas.Turma.codTurma %> </li>
+                                                </ul>
+                                            </div>
+                                        <% } %>
                                     <% }) %>
                                 </div>
                             </a>
@@ -88,9 +93,12 @@
         var data = new Date();
         var dia = data.getDate(); 
         var mes = data.getMonth();
+        var ano = data.getFullYear();
         var strData = dia + '/' + (mes+1);
+        var today = strData + '/' + ano;
         var diaS = new Array('Domingo','Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sábado');
         document.getElementById("daycalendar").innerHTML = `<h2>${diaS[data.getDay()]} ${strData}</h2>`;
+        document.getElementById("today").innerHTML = `${today}`;
     </script>
     <script src='/calendar2/js/calendar.js'></script>
     <script src='/calendar2/js/main.js'></script>

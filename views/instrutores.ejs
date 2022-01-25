@@ -57,6 +57,8 @@
             </div>
         </section>
 
+        <!-- MODAL ADICIONAR -->
+
         <section>
             <div id="myModal" class="modal">
                 <div class="modal-content">
@@ -117,6 +119,66 @@
             </div>
         </section>
 
+        <!-- MODAL EDITAR -->
+
+        <section>
+            <div id="modalEditar" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="titulo-modal">Editar Instrutor</h1>
+                    </div>
+                    <form id="formEdit">
+                        <div class="form">
+                            <label for="nomeInstrutorEdit" class="Titulo-Campo">Nome Instrutor:</label>
+                            <input type="text" name="nomeInstrutorEdit" id="nomeInstrutorEdit" class="Campo-Modal-Grande" placeholder="Fernando Carreira" required />
+                        </div>
+                        
+                        <div class="form">
+                            <label for="abreviacaoEdit" class="Titulo-Campo">Abreviação:</label>
+                            <input type="text" name="abreviacaoEdit" id="abreviacaoEdit" class="Campo-Modal-Grande" placeholder="Fernando" required />
+                        </div>
+                          
+                        <div class="form" required>
+                            <label for="pilares_id" class="Titulo-Campo">Pilar:</label>
+                            <div class="Campo-seletor-Modal-Pequeno" required>
+                                <select name="pilares_id" id="pilares_idEdit" required>
+                                    <% pilares.forEach(pilares => { %>
+                                        <option value="<%= pilares.nomePilar %>"> <%= pilares.nomePilar %> </option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form">
+                            <label for="emailEdit" class="Titulo-Campo">Email:</label>
+                            <input type="text" name="emailEdit" id="emailEdit" class="Campo-Modal-Grande" placeholder="exemplo@autoglass.com.br" required />
+                        </div>
+                        
+                        <div class="form" required>
+                            <label for="disponibilidadeEdit">Disponibilidade</label>
+                            <select name="disponibilidadeEdit" id="disponibilidadeEdit" required>
+                                <option hidden>Disponibilidade</option>
+                                <option value="Disponível">Disponível</option>
+                                <option value="Atestado">Atestado</option>
+                                <option value="Licença">Licença</option>
+                                <option value="Férias">Férias</option>
+                                <option value="Desligado">Desligado</option>
+                            </select>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <div>
+                            <button id="botaoCancelarEditar">Cancelar</button>
+                        </div>
+
+                        <div>
+                            <button id="botaoConfirmar" type="submit">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section>
             <table id="tbl">
                 <tr id="atributos">
@@ -136,8 +198,8 @@
                         <td> <%= instrutores.disponibilidade %> </td>
                         <td> <%= instrutores.Pilare.nomePilar %> </td>
                         <td>
-                            <button class="crud botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
-                            <button id="apagar" class="crud botaoApagar" type="submit"> <img src="img/delete.png" width="17px" height="17px"> </button>
+                            <button id="botaoEditar" class="crud"><img src="img/edit.png"  width="16px" height="16px"></button >
+                            <button id="botaoApagar" class="crud" type="submit"> <img src="img/delete.png" width="17px" height="17px"> </button>
                         </td>
                     </tr>
                 <% }) %>

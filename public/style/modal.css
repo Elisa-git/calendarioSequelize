@@ -87,7 +87,15 @@
   flex-direction: row;
 }
 
-#botaoConfirmar{
+#textoApagar {
+  color: #183884;
+  display: flex;
+  text-align: center;
+  padding: 10px;
+  height: 14px;
+}
+
+#botaoConfirmar, #botaoConfirmarEditar, #botaoConfirmarApagar{
   background-color: #183884;
   color: white;
   height: 30px;
@@ -97,11 +105,11 @@
   margin-left: 20px;
 }
 
-#botaoConfirmar:hover{
+#botaoConfirmar:hover , #botaoConfirmarEditar:hover, #botaoConfirmarApagar:hover{
   background-color: #1c46a7;
 }
 
-#botaoCancelar{
+#botaoCancelar, #botaoCancelarEditar, #botaoCancelarApagar{
   background-color: rgb(174, 174, 174);
   color: white;
   height: 30px;
@@ -110,7 +118,7 @@
   border: none;
 }
 
-#botaoCancelar:hover{
+#botaoCancelar:hover, #botaoCancelarEditar:hover, #botaoCancelarApagar:hover{
   background-color: #7e7e7e;
 }
 

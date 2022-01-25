@@ -43,6 +43,8 @@
             </div>
         </section>
 
+        <!-- MODAL ADICIONAR -->
+
         <section>
             <div id="myModal" class="modal">
                 <div class="modal-content">
@@ -69,6 +71,34 @@
             </div>
         </section>
 
+        <!-- MODAL EDITAR -->
+
+        <section>
+            <div id="modalEditar" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="titulo-modal">Editar Pilar</h1>
+                    </div>
+                    <form id="formEdit">
+                        <div class="form">
+                            <label for="nomePilarEdit" class="Titulo-Campo">Nome Pilar:</label>
+                            <input type="text" name="nomePilarEdit" id="nomePilarEdit" class="Campo-Modal-Grande" placeholder="Operacional" required />
+                        </div>
+    
+                        <div class="modal-footer">
+                            <div>
+                                <button id="botaoCancelarEditar">Cancelar</button>
+                            </div>
+    
+                            <div>
+                                <button id="botaoConfirmarEditar" type="submit">Confirmar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
         <section>
             <table id="tbl">
                 <tr id="atributos">
@@ -80,8 +110,8 @@
                         <td hidden id="id"> <%= pilares.id %> </td>
                         <td><%= pilares.nomePilar %></td>
                         <td>
-                            <button class="crud botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
-                            <button id="apagar" class="crud botaoApagar" type="submit"> <img src="img/delete.png" width="17px" height="17px"> </button>
+                            <button id="botaoEditar" class="crud"><img src="img/edit.png"  width="16px" height="16px"></button >
+                            <button id="botaoApagar" class="crud" type="submit"> <img src="img/delete.png" width="17px" height="17px"> </button>
                         </td>
                     </tr>
                 <% }) %>
