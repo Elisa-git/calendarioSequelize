@@ -34,7 +34,7 @@ class Disciplinas {
 
     static deletar() {
         // Seleciona todos com o id apagar
-        const todos = document.querySelectorAll('#botaoApagar')
+        const todos = document.querySelectorAll('#botaoConfirmarApagar')
 
         // Percorre os elementos com o id selecionado
         todos.forEach(function(todos) {

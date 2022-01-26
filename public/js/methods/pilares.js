@@ -65,47 +65,12 @@ class Pilares {
             })
         })
     }
-
-    // Editar elemento
-
-    static editar() {
-        const formEdit = document.querySelector('#formEditar')
-        
-        // Listener que criará o elemento quando o evento de submit for acionado
-        formEdit.addEventListener("submit", async (event) => {
-            const id = document.getElementById('id').textContent
-            
-            // Objeto com insformações do que será atualizado
-            let data = {
-                        nomeLocal: document.getElementById('nomeLocalEdit').value,
-                        capacidade: Number(document.getElementById('capacidadeEdit').value),
-                        sistemas: Number(document.getElementById('sistemasEdit').value)
-                       }   
-            event.preventDefault()          //Não recarrega a página
-            console.log(data);
-
-            // Requisição
-            await fetch(`http://localhost:3000/locais/${id}`, {
-                method: "PUT",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(data)
-            }).then(async (response) => {
-                const dados = await response.json()
-                console.log(dados.message);
-
-                // Recarrega a página
-                setTimeout(() => {
-                    location.reload()
-                }, 900)
-            })
-        })
-    }
         
     // Apagar dados
 
     static deletar() {
         // Seleciona todos com o id apagar
-        const todos = document.querySelectorAll('#botaoApagar')
+        const todos = document.querySelectorAll('#botaoConfirmarApagar')
 
         // Percorre os elementos com o id selecionado
         todos.forEach(function(todos) {

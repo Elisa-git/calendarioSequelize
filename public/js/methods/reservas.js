@@ -4,8 +4,8 @@ class Reservas {
         this.descricao = document.querySelector('#descricao').value
         this.dataInicio = Date(document.querySelector('#dataInicio').value)
         this.dataFim = Date(document.querySelector('#dataFim').value)
-        this.hrInicio = tim(document.querySelector('#hrInicio').valueAsDate)
-        this.hrFim = TIME(document.querySelector('#hrFim').valueAsDate)
+        this.hrInicio = document.querySelector('#hrInicio').value
+        this.hrFim = document.querySelector('#hrFim').value
         // this.cor = document.querySelector('#cor').value
         this.instrutores_id = Number(document.querySelector('#instrutores_id').value)
         this.turmas_id = Number(document.querySelector('#turmas_id').value)
@@ -45,7 +45,7 @@ class Reservas {
 
     static deletar() {
         // Seleciona todos com o id apagar
-        const todos = document.querySelectorAll('#botaoApagar')
+        const todos = document.querySelectorAll('#botaoConfirmarApagar')
 
         // Percorre os elementos com o id selecionado
         todos.forEach(function(todos) {

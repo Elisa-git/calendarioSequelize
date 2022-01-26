@@ -40,6 +40,19 @@
   color: #183884;
 }
 
+#modalApagar .modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 23%;
+  padding: 0;
+  max-width: fit-content;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  color: #183884;
+}
+
 .modal-content input{
   border-radius: 4px;
   height: 2em;
@@ -91,8 +104,9 @@
   color: #183884;
   display: flex;
   text-align: center;
-  padding: 10px;
-  height: 14px;
+  /* padding-top: 20px; */
+  /* height: 14px; */
+  margin: 15px;
 }
 
 #botaoConfirmar, #botaoConfirmarEditar, #botaoConfirmarApagar{
@@ -134,4 +148,13 @@
   color: rgb(209, 209, 209);
   text-decoration: none;
   cursor: pointer;
+}
+
+#warning img {
+  width: 70px;
+  margin-top: 15px;
+}
+
+#warning {
+  text-align: center;
 }
