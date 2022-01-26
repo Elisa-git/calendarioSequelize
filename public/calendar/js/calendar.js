@@ -17,59 +17,32 @@ document.addEventListener('DOMContentLoaded', function() {
       selectable: true,
       dayMaxEvents: true, // allow "more" link when too many events
       events: [
-
         {
-
           title: 'Operacional',
-
           start: '2022-01-25T08:00:00',
-
           end: '2022-01-28T16:00:00',
-
           color: '#ff9f89'
-
         },
-
         {
-
           title: 'Comércio',
-
           start: '2022-01-20T09:00:00',
-
           color: '#183884'
-
         },
-
         {
-
           title: 'Autoplay',
-
           start: '2022-01-26T12:00:00',
-
           color: '#FF0000'
-
         },
-
         {
-
           title: 'Autocode',
-
           start: '2022-01-28T08:00:00',
-
           color: '#FEFE2F'
-
         },
-
         {
-
           title: 'Operacional',
-
           start: '2022-01-27T08:00:00',
-
           color: '#745AC0'
-
         }
-
       ]
     });
 

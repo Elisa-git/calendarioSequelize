@@ -3,7 +3,7 @@ const database = require('../models')
 class LocalCont {
     static async pegaAllRegistrosLocais(req, res) {
         try {
-            const allRegistrosLocais = await database.Locais.findAll({ raw: true, order: [['nomeLocal', 'DESC']] });
+            const allRegistrosLocais = await database.Locais.findAll({ raw: true, order: [['nomeLocal', 'ASC']] });
             // return res.status(200).json(allRegistrosLocais);
             return allRegistrosLocais;
         } catch (error) {
