@@ -1,108 +1,122 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
 
-    <link rel="stylesheet" href="style/index.css">
-    <link href='/calendar2/css/main.css' rel='stylesheet' />
+    <link rel="stylesheet" href="style/index.css" />
+    <link href="/calendar2/css/main.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="style/paginas.css">
+    <link rel="stylesheet" href="style/paginas.css" />
     <link rel="stylesheet" href="style/header.css" />
-    <link rel="stylesheet" href="style/footer.css">
-    <link rel="stylesheet" href="style/modal.css">
+    <link rel="stylesheet" href="style/footer.css" />
+    <link rel="stylesheet" href="style/modal.css" />
 
-    <link rel="icon" href="img/logocec.png">
-
-</head>
-<body>
+    <link rel="icon" href="img/logocec.png" />
+  </head>
+  <body>
     <%- include ('partials/header') %>
     <main>
-        <section>
-            <div class="max-container container">
-            
-                <div class="container-salas">
-                    <div id="dia-selecionado">
-
-                        <div id="daycalendar">
-                            <p hidden id="today"></p>
-                        </div>
-                        <!-- <button id="botaofullscreen"><img src="img/full-screen.png"  width="26px" onclick="openFullscreen()" onclick="closeFullscreen()"></button> -->
-                    </div>
-            
-                    <script>
-                        /* Get the documentElement (<html>) to display the page in fullscreen */
-                        var elem = document.documentElement;            
-                        /* View in fullscreen */
-                        function openFullscreen() {
-                            if (elem.requestFullscreen) {
-                                elem.requestFullscreen();
-                            } 
-                            else if (elem.webkitRequestFullscreen) { /* Safari */
-                                elem.webkitRequestFullscreen();
-                            } 
-                            else if (elem.msRequestFullscreen) { /* IE11 */
-                                elem.msRequestFullscreen();
-                            }
-                        }                        
-                    </script>
-
-<!-- ordenar ordem alfabetica -->
-                    <div class="wrapper">
-                        <% locais.forEach(locais => { %>
-                            <a class="link-sala" href="">
-                                <div class="box">
-                                    <h3> <%= locais.nomeLocal %> </h3>
-                                    <% reservas.forEach(reservas => { %>
-                                        <% var today = document.getElementById('today').textContent %>
-                                        <% if (today === reservas.dataFim) { %>
-                                            <div class="agendado" style="background-color: <%= reservas.cor %> ;">
-                                                <ul>
-                                                    <li> <%= reservas.Instrutore.nomeInstrutor %> </li>
-                                                    <li> <%= reservas.hrInicio %> - <%= reservas.hrFim %> </li>
-                                                    <li> <%= reservas.Turma.codTurma %> </li>
-                                                </ul>
-                                            </div>
-                                        <% } %>
-                                    <% }) %>
-                                </div>
-                            </a>
-                        <% }) %>
-                    </div>
-                </div>
-
-                <div class="container-calendar">
-                    <div id="calendar2"></div>
-
-                    <div class="sideBody">
-                        <div class="container-pesquisa">
-                            <button class="buttons" id="botaoAgendar">Agendar</button>
-                            <div class="container-pesquisa">
-                                <i class="icone-pesquisar fa fa-search"></i>
-                                <input class="buttons" type="text" id="botaoPesquisar" placeholder="Pesquisar">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <section>
+        <div class="max-container container">
+          <div class="container-salas">
+            <div id="dia-selecionado">
+              <div id="daycalendar">
+                <p hidden id="today"></p>
+              </div>
+              <!-- <button id="botaofullscreen"><img src="img/full-screen.png"  width="26px" onclick="openFullscreen()" onclick="closeFullscreen()"></button> -->
             </div>
-        </section>
-  </main>
+
+            <script>
+              /* Get the documentElement (<html>) to display the page in fullscreen */
+              var elem = document.documentElement;
+              /* View in fullscreen */
+              function openFullscreen() {
+                if (elem.requestFullscreen) {
+                  elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) {
+                  /* Safari */
+                  elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) {
+                  /* IE11 */
+                  elem.msRequestFullscreen();
+                }
+              }
+            </script>
+
+            <!-- ordenar ordem alfabetica -->
+            <div class="wrapper">
+              <% locais.forEach(locais => { %>
+              <a class="link-sala">
+                <div class="box" id="<%= reservas.id %>">
+                  <h3><%= locais.nomeLocal %></h3>
+                  <% reservas.forEach(reservas => { %> <% if(reservas.locais_id
+                  == locais.id){%> <% if(reservas.dataFim == '2022-01-05'){%>
+                  <div
+                    class="agendado"
+                    style="background-color: <%= reservas.cor %>"
+                  >
+                    <ul>
+                      <li><%= reservas.Instrutore.nomeInstrutor %></li>
+
+                      <li><%= reservas.hrInicio %> - <%= reservas.hrFim %></li>
+                      <li><%= reservas.Turma.codTurma %></li>
+                    </ul>
+                  </div>
+                  <%}%> <%}%> <%})%>
+                </div>
+              </a>
+              <%})%>
+            </div>
+          </div>
+
+          <div class="container-calendar">
+            <div id="calendar2"></div>
+
+            <div class="sideBody">
+              <div class="container-pesquisa">
+                <button class="buttons" id="botaoAgendar">Agendar</button>
+                <div class="container-pesquisa">
+                  <i class="icone-pesquisar fa fa-search"></i>
+                  <input
+                    class="buttons"
+                    type="text"
+                    id="botaoPesquisar"
+                    placeholder="Pesquisar"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
     <script>
-        var data = new Date();
-        var dia = data.getDate(); 
-        var mes = data.getMonth();
-        var ano = data.getFullYear();
-        var strData = dia + '/' + (mes+1);
-        var today = strData + '/' + ano;
-        var diaS = new Array('Domingo','Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sábado');
-        document.getElementById("daycalendar").innerHTML = `<h2>${diaS[data.getDay()]} ${strData}</h2>`;
-        document.getElementById("today").innerHTML = `${today}`;
+      var data = new Date();
+      var dia = data.getDate();
+      var mes = data.getMonth();
+      var ano = data.getFullYear();
+      var strData = dia + "/" + (mes + 1);
+      var today = strData + "/" + ano;
+      var diaS = new Array(
+        "Domingo",
+        "Segunda-feira",
+        "Terça-feira",
+        "Quarta-feira",
+        "Quinta-feira",
+        "Sexta-feira",
+        "Sábado"
+      );
+      document.getElementById("daycalendar").innerHTML = `<h2>${
+        diaS[data.getDay()]
+      } ${strData}</h2>`;
+      document.getElementById("today").innerHTML = `${today}`;
     </script>
-    <script src='/calendar2/js/calendar.js'></script>
-    <script src='/calendar2/js/main.js'></script>
-    <script src='/js/modal.js'></script>
+    <script src="/calendar2/js/calendar.js"></script>
+    <script src="/calendar2/js/main.js"></script>
+    <script src="/js/modal.js"></script>
     <%- include ('partials/footer') %>
-</body>
+  </body>
 </html>
