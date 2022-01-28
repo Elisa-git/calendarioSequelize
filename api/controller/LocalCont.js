@@ -55,7 +55,7 @@ class LocalCont {
                     id: Number(id)
                 }
             });
-            return res.status(200).json(localAtualizado);
+            return res.status(200).json({ message: "Atualizado com sucesso!" });
         } catch (error) {
             return res.status(500).json({ mensagem: error });
         }

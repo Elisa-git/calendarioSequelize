@@ -21,9 +21,9 @@
 
     <%- include ('partials/header') %>
 
-      <main>
+    <main>
 
-        <section>
+      <section>
           <div id="segundaHeader">
             <div id="Titulo">
               <h1>Locais</h1>
@@ -50,74 +50,30 @@
               <option value="30">30 por página</option>
             </select>
           </div>
-        </section>
-        
-        <!-- MODAL ADICIONAR -->
+      </section>
+
+      <!-- MODAL ADICIONAR -->
   
-        <section>
-          <div id="myModal" class="modal">
-            <div class="modal-content">
-  
-              <div class="modal-header">
-                <h1 id="titulo-modal">Cadastrar Local</h1>
-                <span class="close">&times;</span>
-              </div>
-  
-              <form id="form">
-                <div class="form">
-                  <label for="nomeLocal" class="Titulo-Campo">Local:</label>
-                  <input type="text" name="nomeLocal" id="nomeLocal" class="Campo-Modal-Grande" placeholder="Ex: Sala 1" required />
-                </div>
-    
-                <div class="form">
-                  <label for="capacidade" class="Titulo-Campo">Capacidade:</label>
-                  <input type="number" name="capacidade" id="capacidade" class="Campo-Modal-Grande" placeholder="Ex: 20" required />
-                </div>
-    
-                <div class="form">
-                  <label for="sistemas" class="Titulo-Campo">Possui Sistemas ?</label>
-                  <div class="Campo-seletor-Modal-Pequeno" required>
-                    <select name="select" name="sistemas" id="sistemas" required>
-                      <option value="0">Possui</option>
-                      <option value="1">Não Possui</option>
-                    </select>
-                  </div>
-                </div>
-    
-                <div class="modal-footer">
-                  <div>
-                    <button id="botaoCancelar">Cancelar</button>
-                  </div>
-                  <div>
-                    <button formmethod="post" type="submit">Confirmar</button>
-                  </div>
-                </div>
-              </form>
-  
+      <section>
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h1 id="titulo-modal">Cadastrar Local</h1>
+              <span class="close">&times;</span>
             </div>
-          </div>
-        </section>
 
-        <!-- MODAL EDITAR -->
-
-        <section>
-          <div id="modalEditar" class="modal">
-            <div class="modal-content">
-  
-              <div class="modal-header">
-                <h1 id="titulo-modal">Editar Local Local</h1>
-              </div>
-  
+            <form id="form">
               <div class="form">
                 <label for="nomeLocal" class="Titulo-Campo">Local:</label>
-                <input type="text" name="nomeLocal" id="nomeLocal" class="Campo-Modal-Grande" placeholder="Sala 1" required />
+                <input type="text" name="nomeLocal" id="nomeLocal" class="Campo-Modal-Grande" placeholder="Ex: Sala 1" required />
               </div>
-  
+        
               <div class="form">
                 <label for="capacidade" class="Titulo-Campo">Capacidade:</label>
-                <input type="number" name="capacidade" id="capacidade" class="Campo-Modal-Grande" placeholder="20" required />
+                <input type="number" name="capacidade" id="capacidade" class="Campo-Modal-Grande" placeholder="Ex: 20" required />
               </div>
-  
+        
               <div class="form">
                 <label for="sistemas" class="Titulo-Campo">Possui Sistemas ?</label>
                 <div class="Campo-seletor-Modal-Pequeno" required>
@@ -127,21 +83,71 @@
                   </select>
                 </div>
               </div>
+        
+              <div class="modal-footer">
+                <div>
+                  <button id="botaoCancelar">Cancelar</button>
+                </div>
+
+                <div>
+                  <button formmethod="post" type="submit">Confirmar</button>
+                </div>
+              </div>
+            
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODAL EDITAR -->
+
+      <section>
+        <div id="modalEditar" class="modal">
+          <div class="modal-content">
   
+            <div class="modal-header">
+              <h1 id="titulo-modal">Editar Local</h1>
+            </div>
+
+            <form id="formEditar">
+
+              <div class="form">
+                <label for="nomeLocalEdit" class="Titulo-Campo">Local:</label>
+                <input type="text" name="nomeLocalEdit" id="nomeLocalEdit" class="Campo-Modal-Grande" placeholder="Sala 1" required />
+              </div>
+  
+              <div class="form">
+                <label for="capacidadeEdit" class="Titulo-Campo">Capacidade:</label>
+                <input type="number" name="capacidadeEdit" id="capacidadeEdit" class="Campo-Modal-Grande" placeholder="20" required />
+              </div>
+    
+              <div class="form">
+                <label for="sistemasEdit" class="Titulo-Campo">Possui Sistemas ?</label>
+                <div class="Campo-seletor-Modal-Pequeno" required> 
+                  <select name="select" name="sistemasEdit" id="sistemasEdit" required>
+                    <option value="0">Possui</option>
+                    <option value="1">Não Possui</option>
+                  </select>
+                </div>
+              </div>
+    
               <div class="modal-footer">
                 <div>
                   <button id="botaoCancelarEditar">Cancelar</button>
                 </div>
+              
                 <div>
-                  <button id="botaoConfirmarEditar" onclick="">Confirmar</button>
+                  <button id="botaoConfirmarEditar" formmethod="put" type="submit">Confirmar</button>
                 </div>
               </div>
-  
-            </div>
-          </div>
-        </section>
 
-        <section>
+            </form>
+  
+          </div>
+        </div>
+      </section>
+
+      <section>
           <table id="tbl">
             <tr id="atributos">
               <th>Sala</th>
@@ -151,7 +157,7 @@
             </tr>
             <% locais.forEach(locais=> { %>
               <tr class="tableRow">
-                <td type="hidden" id="id"> <%= locais.id %> </td>
+                <td hidden id="id"> <%= locais.id %> </td>
                 <td> <%= locais.nomeLocal %> </td>
                 <td> <%= locais.capacidade %> </td>
                 <td> <% if (locais.sistemas==0) { %>
@@ -161,18 +167,18 @@
                       <% } %> 
                 </td> 
                 <td>
-                  <button class="crud botaoEditar"><img src="img/edit.png" width="16px" height="16px"></button>
-                  <button id="apagar" class="crud botaoApagar" type="submit"> <img src="img/delete.png" width="17px" height="17px"> </button>
+                  <button id="botaoEditar" class="crud"><img src="img/edit.png" width="16px" height="16px"></button>
+                  <button id="botaoApagar" class="crud"> <img src="img/delete.png" width="17px" height="17px"> </button>
                 </td>
               </tr>
             <% }) %>
           </table>
-        </section>
+      </section>
 
-      </main>
+    </main>
 
-      <%- include ('partials/footer') %>
-      <script src="/js/methods/locais.js"></script>
+    <%- include ('partials/footer') %>
+    <script src="/js/methods/locais.js"></script>
 
   </body>
 

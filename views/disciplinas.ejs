@@ -53,6 +53,8 @@
 
             </section>
 
+            <!-- MODAL EDITAR -->
+
             <section>
                 <div id="myModal" class="modal">
                     <div class="modal-content">
@@ -91,66 +93,46 @@
                         </form>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- MODAL EDITAR -->
-
-        <section>
-            <div id="modalEditar" class="modal">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 id="titulo-modal">Editar Disciplina</h1>
-                        <span class="close">&times;</span>
-                    </div>
-                    <form method="post" action="disciplinas">
-                        <div class="form">
-                            <label for="local" class="Titulo-Campo">Nova Disciplina:</label>
-                            <input type="text" name="nomeDisciplina" id="nomeDisciplina" class="Campo-Modal-Grande" placeholder="Sequelize" required />
-                        </div>
-
-                        <div class="form">
-                            <label for="Pilar" class="Titulo-Campo">Pilar:</label>
-                            <div class="Campo-seletor-Modal-Pequeno" required>
-                                <select name="pilares_id" id="pilares_id" required>
-                                    <% pilares.forEach(pilares => { %>
-                                        <option value="<%= pilares.nomePilar %>"> <%= pilares.nomePilar %> </option>
-                                    <% }) %>
-                                </select>
-                            </div>
-                        </div>
-                    </form>
-                    <div class="modal-footer">
-                        <div>
-                            <button id="botaoCancelarEditar">Cancelar</button>
-                        </div>
-                        <div>
-                            <button id="botaoConfirmar">Confirmar</button>
-                        </div>
-                    </div>                    
-                </div>
-            </div>
-        </section>
-
-
-        <section>
-
-            <table id="tbl">
-                <tr id="atributos">
-                    <th>Disciplina</th>
-                    <th>Pilar</th>
-                    <th id="colunaCrud"></th>
-                </tr>
-                <% disciplinas.forEach(disciplinas => { %>
-                    <tr class="tableRow">
-                        <td> <%= disciplinas.nomeDisciplina %> </td>
-                        <td> <%= disciplinas.pilares_id %> </td>
-                        <td>
-                            <button class="crud" id="botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
-                            <button class="crud" id="botaoApagar" onclick='removeLinha(this)'><img src="img/delete.png" width="17px" height="17px"></button>
-                        </td>
             </section>
+            
+            <!-- MODAL EDITAR -->
 
+            <section>
+                <div id="modalEditar" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 id="titulo-modal">Editar Disciplina</h1>
+                            <span class="close">&times;</span>
+                        </div>
+
+                        <form id="formEdit">
+                            <div class="form">
+                                <label for="nomeDisciplinaEdit" class="Titulo-Campo">Nova Disciplina:</label>
+                                <input type="text" name="nomeDisciplinaEdit" id="nomeDisciplinaEdit" class="Campo-Modal-Grande" placeholder="Sequelize" required />
+                            </div>
+
+                            <div class="form">
+                                <label for="pilares_id" class="Titulo-Campo">Pilar:</label>
+                                <div class="Campo-seletor-Modal-Pequeno" required>
+                                    <select name="pilares_id" id="pilares_idEdit" required>
+                                        <% pilares.forEach(pilares => { %>
+                                            <option value="<%= pilares.nomePilar %>"> <%= pilares.nomePilar %> </option>
+                                        <% }) %>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="modal-footer">
+                            <div>
+                                <button id="botaoCancelarEditar">Cancelar</button>
+                            </div>
+                            <div>
+                                <button id="botaoConfirmar" type="submit">Confirmar</button>
+                            </div>
+                        </div>                    
+                    </div>
+                </div>
+            </section>
             <section>
 
                 <table id="tbl">
@@ -165,8 +147,8 @@
                             <td> <%= disciplinas.nomeDisciplina %> </td>
                             <td> <%= disciplinas.Pilare.nomePilar %> </td>
                             <td>
-                                <button class="crud botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
-                                <button id="apagar" class="crud botaoApagar" type="submit"> <img src="img/delete.png" width="17px" height="17px"> </button>
+                                <button id="botaoEditar" class="crud"><img src="img/edit.png"  width="16px" height="16px"></button >
+                                <button id="botaoApagar" class="crud" type="submit"> <img src="img/delete.png" width="17px" height="17px"> </button>
                             </td>
                         </tr>
                     <% }) %>

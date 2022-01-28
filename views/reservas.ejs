@@ -69,6 +69,8 @@
             </div>
         </section>
 
+        <!-- MODAL ADICIONAR -->
+
         <section>
             <div id="myModal" class="modal">
                 <div class="modal-content">
@@ -76,6 +78,7 @@
                     <form id="form">
                         <div class="modal-header">
                             <h1 id="titulo-modal">Reservar Evento</h1>
+                            <span class="close">&times;</span>
                         </div>
                         
                         <div class="form">
@@ -166,36 +169,37 @@
                 </div>
             </div>
         </section>
-
+          
         <!-- MODAL EDITAR -->
 
         <section>
             <div id="modalEditar" class="modal">
                 <div class="modal-content">
                 
-                    <form method="post" action="salvaraula">
+                    <form id="formEdit">
                         <div class="modal-header">
                             <h1 id="titulo-modal">Editar reserva</h1>
                         </div>
                         
                         <div class="form">
-                            <label for="nomeReserva" class="Titulo-Campo">Nome Reserva:</label>
-                            <input type="text" name="nomeReserva" id="nomeReserva" class="Campo-Modal-Grande" placeholder="Sequelize" required />
+                            <label for="nomeReservaEdit" class="Titulo-Campo">Nome Reserva:</label>
+                            <input type="text" name="nomeReservaEdit" id="nomeReservaEdit" class="Campo-Modal-Grande" placeholder="Sequelize" required />
                         </div>
 
                         <div id="turmaProfessor">
                             <div class="form" required>
                                 <label for="turmas_id">Turma</label>
-                                <select name="turmas_id" id="turmas_id" required>
+                                <select name="turmas_id" id="turmas_idEdit" required>
                                     <option hidden>Turma</option>
                                     <% reservas.forEach(reservas => { %>
                                         <option value="<%= reservas.turmas_id %>"> <%= reservas.turmas_id %> </option>
                                     <% }) %>
                                 </select>
                             </div>
+
                             <div class="form" required>
                                 <label for="instrutores_id">Instrutor</label>
-                                <select name="instrutores_id" id="instrutores_id" required>
+                                <select name="instrutores_id" id="instrutores_idEdit" required>
                                     <option hidden>Instrutor</option>
                                     <% reservas.forEach(reservas => { %>
                                         <option value="<%= reservas.instrutores_id %>"> <%= reservas.instrutores_id %> </option>
@@ -207,16 +211,17 @@
                         <div id="localDisplina">
                             <div class="form" required>
                                 <label for="local">Local</label>
-                                <select name="local" id="local" required>
+                                <select name="local" id="localEdit" required>
                                     <option hidden>Local</option>
                                     <% reservas.forEach(reservas => { %>
                                         <option value="<%= reservas.locais_id %>"> <%= reservas.locais_id %> </option>
                                     <% }) %>
                                 </select>
                             </div>
+
                             <div class="form" required>
                                 <label for="disciplinas_id">Disciplina</label>
-                                <select name="disciplinas_id" id="disciplinas_id" required>
+                                <select name="disciplinas_id" id="disciplinas_idEdit" required>
                                     <option hidden>Disciplina</option>
                                     <% reservas.forEach(reservas => { %>
                                         <option value="<%= reservas.disciplinas_id %>"> <%= reservas.disciplinas_id %> </option>
@@ -227,31 +232,29 @@
         
                         <div id="horarios">
                             <div class="form">
-                                <label for="dataInicio" class="Titulo-Campo">Data</label>
-                                <input type="date" name="dataInicio" id="dataInicio">
+                                <label for="dataInicioEdit" class="Titulo-Campo">Data</label>
+                                <input type="date" name="dataInicioEdit" id="dataInicioEdit">
                             </div>
                             <div class="form">
-                                <label for="dataFim" class="Titulo-Campo">Data Final</label>
-                                <input type="date" name="dataFim" id="dataFim">
+                                <label for="dataFimEdit" class="Titulo-Campo">Data Final</label>
+                                <input type="date" name="dataFimEdit" id="dataFimEdit">
                             </div>
                         </div>
 
                         <div id="horarios">
                             <div class="form">
-                                <label for="Horario Inicio">Horário Inicio</label>
-                                <input type="time" name='hrInicio' id="hrInicio" min="08:00" max="18:00" required>
+                                <label for="hrInicioEdit">Horário Inicio</label>
+                                <input type="time" name='hrInicioEdit' id="hrInicioEdit" min="08:00" max="18:00" required>
                             </div>
                             <div class="form">
-                                <label for="Horario Fim">Horário Fim</label>
-                                <input value="time" type="time" name="hrFim" id="hrFim" min="08:00" max="18:00" required>
+                                <label for="hrFimEdit">Horário Fim</label>
+                                <input value="time" type="time" name="hrFimEdit" id="hrFimEdit" min="08:00" max="18:00" required>
                             </div>
                         </div>
 
-                        <!-- Cor? -->
-
                         <div class="form">
-                            <label for="descricao" class="Titulo-Campo">Descrição:</label>
-                            <textarea name="descricao" id="descricao" class="form-control" >Adicione alguma observação sobre sua reserva...</textarea>
+                            <label for="descricaoEdit" class="Titulo-Campo">Descrição:</label>
+                            <textarea name="descricaoEdit" id="descricaoEdit" class="form-control" >Adicione alguma observação sobre sua reserva...</textarea>
                         </div>
         
                         <div class="modal-footer">
@@ -259,14 +262,14 @@
                                 <button id="botaoCancelarEditar">Cancelar</button>
                             </div>
                             <div>
-                                <button id="botaoConfirmarEditar" onclick="">Confirmar</button>
+                                <button id="botaoConfirmarEditar" type="submit">Confirmar</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </section>
-          
+
         <section>
             <table id="tbl">
                 <tr id="atributos">
@@ -291,8 +294,8 @@
                         <td> <%= reservas.dataInicio%> </td>
                         <td> <%= reservas.hrInicio%> - <%= reservas.hrFim%> </td>
                         <td>
-                            <button class="crud botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
-                            <button id="apagar" class="crud botaoApagar" type="submit"> <img src="img/delete.png" width="17px" height="17px"> </button>
+                            <button id="botaoEditar" class="crud"><img src="img/edit.png"  width="16px" height="16px"></button >
+                            <button id="botaoApagar" class="crud" type="submit"> <img src="img/delete.png" width="17px" height="17px"> </button>
                         </td>
                     </tr>
                 <% }) %>

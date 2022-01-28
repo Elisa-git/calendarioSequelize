@@ -15,7 +15,9 @@ router
         await LocalCont.criaLocal(req, res)
     })
     
-    .put('/locais/:id', LocalCont.atualizaLocal)
+    .put('/locais/:id', async (req, res) => {
+        await LocalCont.atualizaLocal(req, res) 
+    })
     
     .delete('/locais/:id', async (req, res) => {
         await LocalCont.deletaLocal(req, res)

@@ -47,6 +47,8 @@
             </div>
         </section>
 
+        <!-- MODAL ADICIONAR -->
+        
         <section>
             <div id="myModal" class="modal">
                 <div class="modal-content">
@@ -94,15 +96,15 @@
                         <h1 id="titulo-modal">Editar Capacitação</h1>
                         <span class="close">&times;</span>
                     </div>
-                    <form>
+                    <form id="formEdit">
                         <div class="form">
-                            <label for="nomeEspecializacoes" class="Titulo-Campo">Nome Capacitação:</label>
-                            <input type="text" name="nomeEspecializacoes" id="nomeEspecializacoes" class="Campo-Modal-Grande" placeholder="AutoPlay" required />
+                            <label for="nomeEspecializacoesEdit" class="Titulo-Campo">Nome Capacitação:</label>
+                            <input type="text" name="nomeEspecializacoesEdit" id="nomeEspecializacoesEdit" class="Campo-Modal-Grande" placeholder="AutoPlay" required />
                         </div>
                         <div class="form">
-                            <label for="Pilar" class="Titulo-Campo">Pilar:</label>
+                            <label for="pilares_id" class="Titulo-Campo">Pilar:</label>
                             <div class="Campo-seletor-Modal-Pequeno" required>
-                                <select name="pilares_id" id="pilares_id" required>
+                                <select name="pilares_id" id="pilares_idEdit" required>
                                     <% pilares.forEach(pilares => { %>
                                         <option value="<%= pilares.nomePilar %>"> <%= pilares.nomePilar %> </option>
                                     <% }) %>
@@ -116,7 +118,7 @@
                         </div>
 
                         <div>
-                            <button id="botaoConfirmar" >Confirmar</button>
+                            <button id="botaoConfirmar" type="submit" >Confirmar</button>
                         </div>
                     </div>
                 </div>
@@ -136,8 +138,8 @@
                         <td> <%= especializacoes.nomeEspecializacoes %> </td>
                         <td> <%= especializacoes.Pilare.nomePilar %> </td>
                         <td>
-                            <button class="crud botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
-                            <button id="apagar" class="crud botaoApagar" type="submit"> <img src="img/delete.png" width="17px" height="17px"> </button>
+                            <button id="botaoEditar" class="crud"><img src="img/edit.png"  width="16px" height="16px"></button >
+                            <button id="botaoApagar" class="crud" type="submit"> <img src="img/delete.png" width="17px" height="17px"> </button>
                         </td>
                     </tr>
                 <% }) %>

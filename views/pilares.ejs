@@ -43,11 +43,14 @@
             </div>
         </section>
 
+        <!-- MODAL ADICIONAR -->
+
         <section>
             <div id="myModal" class="modal">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 id="titulo-modal">Cadastrar Pilar</h1>
+                        <span class="close">&times;</span>
                     </div>
                     <form id="form">
                         <div class="form">
@@ -76,21 +79,22 @@
                     <div class="modal-header">
                         <h1 id="titulo-modal">Editar Pilar</h1>
                     </div>
-
-                    <div class="form">
-                        <label for="nomePilar" class="Titulo-Campo">Nome Pilar:</label>
-                        <input type="text" name="nomePilar" id="nomePilar" class="Campo-Modal-Grande" placeholder="Operacional" required />
-                    </div>
-
-                    <div class="modal-footer">
-                        <div>
-                            <button id="botaoCancelarEditar">Cancelar</button>
+                    <form id="formEdit">
+                        <div class="form">
+                            <label for="nomePilarEdit" class="Titulo-Campo">Nome Pilar:</label>
+                            <input type="text" name="nomePilarEdit" id="nomePilarEdit" class="Campo-Modal-Grande" placeholder="Operacional" required />
                         </div>
-
-                        <div>
-                            <button id="botaoConfirmarEditar" onclick="">Confirmar</button>
+    
+                        <div class="modal-footer">
+                            <div>
+                                <button id="botaoCancelarEditar">Cancelar</button>
+                            </div>
+    
+                            <div>
+                                <button id="botaoConfirmarEditar" type="submit">Confirmar</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </section>
@@ -106,8 +110,8 @@
                         <td hidden id="id"> <%= pilares.id %> </td>
                         <td><%= pilares.nomePilar %></td>
                         <td>
-                            <button class="crud botaoEditar"><img src="img/edit.png"  width="16px" height="16px"></button >
-                            <button id="apagar" class="crud botaoApagar" type="submit"> <img src="img/delete.png" width="17px" height="17px"> </button>
+                            <button id="botaoEditar" class="crud"><img src="img/edit.png"  width="16px" height="16px"></button >
+                            <button id="botaoApagar" class="crud" type="submit"> <img src="img/delete.png" width="17px" height="17px"> </button>
                         </td>
                     </tr>
                 <% }) %>
